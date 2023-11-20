@@ -18,7 +18,7 @@ class ClienteService {
       const client = await db("cliente").where("id", id).first();
       return client;
     } catch (e) {
-      console.error("Error fetching client by ID:", error);
+      console.error("Error fetching client by ID:", e);
       return null;
     }
   }
@@ -28,16 +28,51 @@ class ClienteService {
       const clients = await db("cliente")
       return clients
     } catch (e) {
-      console.error("Error fetching all clients:", error);
+      console.error("Error fetching all clients:", e);
       return [];
     }
   }
 
-  async create(newClientData){
-    try{
-      
-    }catch (e) {
+  async create(newClientData) {
+    try {
+      const newClientId = await db("cliente").insert(newClientData)
+      return newClientId;
+    } catch (e) {
+      console.error('Error creating a new client:', e);
+      return null;
+    }
+  }
+  async updateByIds(ids, updates) {
+    try {
+      const updateArray = Array.isArray(updates) ? updates : [updates];
 
+      const promises = updateArray.map(async (update) => {
+        const keys = Object.keys(update);
+        const values = Object.values(update);
+
+        const updateObject = keys.reduce((acc, key, index) => {
+          return { ...acc, [key]: values[index] };
+        }, {});
+
+        await db("cliente").where("id", ids).update(updateObject);
+      });
+
+      await Promise.all(promises);
+      return true;
+    } catch (e) {
+      console.error("Error updating client by IDs:", e);
+      return false;
+    }
+  }
+  async deleteByIds(ids) {
+    try {
+      await db("cliente").whereIn("id", ids).del();
+      return true;
+    } catch (e) {
+      console.error("Error deleting client by ID:", e);
+      return false;
     }
   }
 }
+
+export default ClienteService;

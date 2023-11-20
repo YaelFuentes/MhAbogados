@@ -1,6 +1,6 @@
 import { databaseServiceFactory } from "@/core/connection/databaseService"
 import { authServiceFactory } from "@/core/connection/authService"
-import withSession from "../../lib/session";
+import withSession from "@/lib/session";
 
 const dbService = databaseServiceFactory();
 const authService = authServiceFactory();

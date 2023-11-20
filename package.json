@@ -10,9 +10,13 @@
     "create-tables": "node -r @babel/register ./src/core/connection/createTable.js"
   },
   "dependencies": {
-    "axios": "^1.6.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.18",
+    "axios": "^1.6.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
+    "flowbite": "^2.1.1",
     "knex": "^3.0.1",
     "mysql": "^2.18.1",
     "next": "13.5.6",

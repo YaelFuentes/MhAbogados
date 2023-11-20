@@ -1,29 +1,15 @@
 import { db } from "../connection/databaseService";
 
-class ExpedienteService {
-  constructor(idexp, caratula, juzgasecret, avisodeuda, observaciones, honoinicial, honocamara, honocortsupr,
-    honoretromcaut, honofinal, decretos, camara, fechacautelar, idfuerza, fechasentencia, sentencia) {
-    this.idexp = idexp;
-    this.caratula = caratula;
-    this.juzgasecret = juzgasecret;
-    this.avisodeuda = avisodeuda;
-    this.observaciones = observaciones;
-    this.honoinicial = honoinicial;
-    this.honocamara = honocamara;
-    this.honocortsupr = honocortsupr;
-    this.honoretromcaut = honoretromcaut;
-    this.honofinal = honofinal;
-    this.decretos = decretos;
-    this.camara = camara;
-    this.fechacautelar = fechacautelar;
-    this.idfuerza = idfuerza;
-    this.fechasentencia = fechasentencia;
-    this.sentencia = sentencia;
+class UserService{
+  constructor(id, username, password){
+    this.id = id;
+    this.username = username;
+    this.password = password;
   }
   async getById(id) {
     try {
-      const file = await db('expediente').where('id', id).first()
-      return file;
+      const user = await db('users').where('id', id).first()
+      return user;
     } catch (e) {
       console.error("Error fetching user by ID:", e);
       return null;
@@ -31,8 +17,8 @@ class ExpedienteService {
   }
   async getAll() {
     try {
-      const files = await db('expediente');
-      return files;
+      const users = await db('users');
+      return users;
     } catch (e) {
       console.error("Error fetching all users:", e);
       return [];
@@ -40,8 +26,8 @@ class ExpedienteService {
   }
   async create(newFileData) {
     try {
-      const newFileId = await db('expediente').insert(newFileData)
-      return newFileId;
+      const newUserId = await db('users').insert(newFileData)
+      return newUserId;
     } catch (e) {
       console.error('Error creating a new user:', e);
       return null;
@@ -59,7 +45,7 @@ class ExpedienteService {
           return { ...acc, [key]: values[index] };
         }, {});
 
-        await db("expediente").where("id", ids).update(updateObject);
+        await db("users").where("id", ids).update(updateObject);
       });
 
       await Promise.all(promises);
@@ -71,7 +57,7 @@ class ExpedienteService {
   }
   async deleteByIds(ids) {
     try {
-      await db("expediente").whereIn("id", ids).del();
+      await db("users").whereIn("id", ids).del();
       return true;
     } catch (e) {
       console.error("Error deleting user by ID:", error);
@@ -80,4 +66,4 @@ class ExpedienteService {
   }
 }
 
-export default ExpedienteService;
+export default UserService;

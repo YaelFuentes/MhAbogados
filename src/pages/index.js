@@ -1,9 +1,9 @@
 import Head from 'next/head'
+import { Inter } from 'next/font/google'
 import withSession from "../lib/session";
-import SearchTable from '@/components/flowbite/table';
-import Tabs from '@/components/flowbite/tabs';
-import TextInput from '@/components/flowbite/textInput';
+import HomePage from './Home';
 
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ user }) {
 
@@ -46,16 +46,10 @@ export default function Home({ user }) {
       <Head>
         <title>Home</title>
       </Head>
-
-      <h2>Bienvenido a Mh Abogados  {user.username}!</h2>
-      <a href='/api/logout'>Logout</a>
-      <div>
-        <Tabs tabs={tabsData} />
-      </div>
-      <div>
-        <SearchTable data={data} columns={headers}/>
-      </div>
-
+      <main className={`${inter.className}`}>
+        <HomePage user={user} />
+        <a href='/api/logout'>Logout</a>
+      </main>
     </div>
   )
 }
