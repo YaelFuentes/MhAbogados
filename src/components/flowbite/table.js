@@ -48,11 +48,11 @@ export default function TableResponsive({ columns, rows, optional, routes}) {
               return (
                 <tr id={i.id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                   {columns.map((column) => (
-                    <td class="px-6 py-4" key={`${i.id}-${column.id}`} >
+                    <td className="px-6 py-4" key={`${i.id}-${column.id}`} >
                       <button onClick={() => {
                         router.push({
                           pathname: `/${routes}/[id]`,
-                          query: { id: i.membershipNum || i.id }
+                          query: { id: i.clientId || i.id }
                         })
                       }}>
                         {i[column.id]}

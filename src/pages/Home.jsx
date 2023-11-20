@@ -37,7 +37,7 @@ const HomePage = ({ user }) => {
     <>
       <div>
         <h1>Hola {user.username}, bienvenido.</h1>
-        {<TableResponsive rows={users} columns={columnsTable} routes={'products'}/>}
+        {<TableResponsive rows={users} columns={columnsTable} routes={'clientInfo'}/>}
       </div>
     </>
   );
