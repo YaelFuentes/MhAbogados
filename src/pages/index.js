@@ -1,5 +1,9 @@
 import Head from 'next/head'
+import { Inter } from 'next/font/google'
 import withSession from "../lib/session";
+import HomePage from './Home';
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ user }) {
   return (
@@ -7,9 +11,10 @@ export default function Home({ user }) {
       <Head>
         <title>Home</title>
       </Head>
-
-      <h2>Welcome to the home page {user.username}!</h2>
-      <a href='/api/logout'>Logout</a>
+      <main className={`${inter.className}`}>
+        <HomePage user={user} />
+        <a href='/api/logout'>Logout</a>
+      </main>
     </div>
   )
 }
