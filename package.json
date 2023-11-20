@@ -10,7 +10,7 @@
     "create-tables": "node -r @babel/register ./src/core/connection/createTable.js"
   },
   "dependencies": {
-    "axios": "^1.6.1",
+    "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
     "knex": "^3.0.1",
