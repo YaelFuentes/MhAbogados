@@ -51,35 +51,33 @@ export default function Login() {
     setPassword(e.target.value);
   }
 
-  console.log(users)
-
   return (
     <main>
       <div>
         {!user ?
           (<Loading />)
           :
-          <section className="bg-gray-50 dark:bg-gray-900">
+          <section className="bg-primary-50 dark:bg-gray-900">
             {!user.isLoggedIn &&
               <div className="flex flex-col gap items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 {isLoading ? (
                   <Loading /> // Mostrar el componente de carga si isLoading es true
                 ) : (
                   <div>
-                    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-white">
                       <div className="p-4 space-y-4 md:space-y-6 sm:p-8">
                         <div className="p-4 space-y-4 md:space-y-6 sm:p-8">
                           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                            <img className="mx-auto h-28 w-auto"
-                              src="/img/login/LOGO.png"
+                            <img className="mx-auto h-32 w-auto"
+                              src="/img/logo/Logo.png"
                               alt="Mevep" />
                           </div>
-                          <h1 className="text-xl text-center ml-8 mr-8 font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                            MH Abogados
+                          <h1 className="text-xl text-center ml-8 mr-8 font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-white">
+                            Bienvenidos
                           </h1>
                           <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                             <div>
-                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de usuario</label>
+                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-black dark:text-white">Nombre de usuario</label>
                               <input
                                 name="uname"
                                 type="text"
@@ -89,7 +87,7 @@ export default function Login() {
                                 placeholder="MarianaHeredia" />
                             </div>
                             <div>
-                              <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
+                              <label htmlFor="password" className="block mb-2 text-sm font-medium text-black dark:text-white">Contraseña</label>
                               <input
                                 name="psw"
                                 type="password"
@@ -98,11 +96,11 @@ export default function Login() {
                                 placeholder="••••••••"
                                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                             </div>
-                            <a href="#" className="text-sm font-medium text-primary-10 hover:underline dark:text-primary-500">Olvidaste la contraseña?</a>
+                            <a href="#" className="text-sm font-medium text-white hover:underline dark:text-primary-500">Olvidaste la contraseña?</a>
                             <div>
                               <button
                                 type="submit"
-                                className="w-full text-white bg-primary-10 hover:bg-primary-20 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                className="w-full text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                 Ingresar
                               </button>
                               {/* <p className="text-sm font-light text-gray-500 dark:text-gray-400">

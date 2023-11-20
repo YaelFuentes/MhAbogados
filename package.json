@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "create-tables": "node -r @babel/register ./src/core/connection/createTable.js"
+    "create-tables": "node -r @babel/register ./src/services/createTable.js",
+    "update-tables": "node ./src/services/updateTable.js"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
