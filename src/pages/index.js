@@ -6,6 +6,7 @@ import HomePage from './Home';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ user }) {
+
   return (
     <div>
       <Head>
