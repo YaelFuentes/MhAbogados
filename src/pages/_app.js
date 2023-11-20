@@ -5,6 +5,7 @@ import { SWRConfig } from "swr";
 import fetch from "../lib/fetchJson";
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import ResponsiveAppBar from '@/layout/headers';
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -41,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           },
         }
         }
-      >{isLoggedIn && !isLoginPage /* && <ResponsiveAppBar /> */}
+      >{isLoggedIn && !isLoginPage   && <ResponsiveAppBar />  }
         <Component {...pageProps} isLoggedIn={isLoggedIn} />
       </SWRConfig>
     </main>
