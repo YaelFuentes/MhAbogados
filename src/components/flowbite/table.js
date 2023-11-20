@@ -3,7 +3,7 @@ import axios from 'axios';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 
-export default function TableResponsive({ columns, rows, optional, routes, idLink }) {
+export default function TableResponsive({ columns, rows, optional, routes}) {
   const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState({});
