@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import CardTab from '@/components/flowbite/cardTabs';
 import InfoClientTab from '@/components/views/editInfoClient/editInfoClient';
 
+import ExpedienteCliente from '@/components/views/expedienteClient/expedienteClient';
 
 const idClient = () => {
     const router = useRouter()
@@ -10,8 +11,8 @@ const idClient = () => {
 
     const tabData = [
         {
-            title: 'Tab 1',
-            content: "contenido" /* <ExpedienteCliente id={clientId}/> */
+            title: 'Expedientes',
+            content: <ExpedienteCliente id={clientId} />
         },
         {
             title: 'Información personal',
