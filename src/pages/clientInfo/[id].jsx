@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router';
 import CardTab from '@/components/flowbite/cardTabs'
+import ExpedienteCliente from '@/components/views/expedienteClient/expedienteClient';
 
 const idClient = () => {
     const router = useRouter()
@@ -8,18 +9,18 @@ const idClient = () => {
 
     const tabData = [
         {
-            title:'Tab 1',
-            content : "contenido" /* <ExpedienteCliente id={clientId}/> */
+            title: 'Expedientes',
+            content: <ExpedienteCliente id={clientId} />
         },
         {
             title: 'Tab 2',
-            content : "contenido 2"/* <EditInfoClient id={clientId}/> */
+            content: "contenido 2"/* <EditInfoClient id={clientId}/> */
         }
     ]
 
-    return(
+    return (
         <>
-        <CardTab tabs={tabData} />
+            <CardTab tabs={tabData} />
         </>
     )
 }

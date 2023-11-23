@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { userServiceFactory } from "../clientServices/userService.js";
 import useUser from "../lib/useUser";
 import Loading from "@/components/mui/Loading.jsx";
-import axios from 'axios'
 
 
 const userService = userServiceFactory();
@@ -16,19 +15,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [users, setUsers] = useState({})
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try{
-        const response = await axios.get('/api/cliente/cliente')
-        setUsers(response.data)
-      }catch(e){
-        console.error('error al traer los datos.')
-      }
-      fetchData();
-    }
-  }, [])
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -57,7 +44,7 @@ export default function Login() {
         {!user ?
           (<Loading />)
           :
-          <section className="bg-primary-50 dark:bg-gray-900">
+          <section className="bg-primary-10 dark:bg-gray-900">
             {!user.isLoggedIn &&
               <div className="flex flex-col gap items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 {isLoading ? (

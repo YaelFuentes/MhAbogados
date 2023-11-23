@@ -9,15 +9,15 @@ const CardTab = ({ tabs }) => {
     };
 
     return (
-        <div className="flex flex-col items-center mt-4">
+        <div className="flex flex-col items-center mt-4 w-full bg-light">
             <div className="flex flex-wrap justify-center">
                 {tabs.map((tab, index) => (
                     <button
                         key={index}
                         onClick={() => handleTabClick(index)}
                         className={`px-6 py-3 text-sm font-medium rounded-md mb-4 mr-4 w-48 ${activeTab === index
-                            ? 'bg-blue-500 text-white'
-                            : 'text-blue-500 bg-white'
+                            ? 'bg-primary-10 text-white'
+                            : 'text-primary-10 bg-white'
                             }`}
                     >
                         {tab.title}

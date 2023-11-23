@@ -8,8 +8,6 @@ const HomePage = ({ user }) => {
 
   const [users, setUsers] = useState([])
 
-  console.log(users)
-
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -22,13 +22,27 @@ class ExpedienteService {
   }
   async getById(id) {
     try {
-      const file = await db('expediente').where('id', id).first()
-      return file;
+      const getClientDni = await db('cliente').where('id', id).first()
+      const expCliente = await db('expcliente').where('dni', getClientDni.dni)
+      const expedienteInfo = await Promise.all(
+        expCliente.map(async (exp) => {
+          const expedienteData = await db('expediente').where('idexp', exp.idexp).first();
+          return expedienteData;
+        })
+      );
+      const resultArray = {
+        getClientDni,
+        expCliente,
+        expedienteInfo,
+      };
+      console.log('ResultArray : ', resultArray)
+      return resultArray;
     } catch (e) {
       console.error("Error fetching user by ID:", e);
       return null;
     }
   }
+
   async getAll() {
     try {
       const files = await db('expediente');
@@ -38,6 +52,7 @@ class ExpedienteService {
       return [];
     }
   }
+
   async create(newFileData) {
     try {
       const newFileId = await db('expediente').insert(newFileData)
@@ -47,6 +62,7 @@ class ExpedienteService {
       return null;
     }
   }
+
   async updateByIds(ids, updates) {
     try {
       const updateArray = Array.isArray(updates) ? updates : [updates];
@@ -69,6 +85,7 @@ class ExpedienteService {
       return false;
     }
   }
+
   async deleteByIds(ids) {
     try {
       await db("expediente").whereIn("id", ids).del();
