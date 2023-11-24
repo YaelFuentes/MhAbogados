@@ -97,23 +97,23 @@ function ResponsiveAppBar() {
                   onClick={handleCloseNavMenu}
 
                 >
-                  <Link href='/'>Inicio</Link>
+                  <Link href='/'>Clientes</Link>
                 </Button>
                 <Button
                   onClick={handleCloseNavMenu}
 
                 >
-                  <Link href='/socios'>Socios</Link>
+                  <Link href='/socios'>Decretos</Link>
                 </Button>
                 <Button
                   onClick={handleCloseNavMenu}
                 >
-                  <Link href='/pagos'>Pagos</Link>
+                  <Link href='/pagos'>Consultas</Link>
                 </Button>
                 <Button
                   onClick={handleCloseNavMenu}
                 >
-                  <Link href='/turnos'>Turnos</Link>
+                  <Link href='/turnos'>Honorarios</Link>
                 </Button>
               </Box>
             </Menu>
@@ -167,6 +167,12 @@ function ResponsiveAppBar() {
               sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
             >
               <Link href='/turnos'>Honorarios</Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
+            >
+              <Link href='/administrador'>Administrador</Link>
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>

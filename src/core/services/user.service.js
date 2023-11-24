@@ -1,35 +1,42 @@
 import { db } from "../connection/databaseService";
 
-class UserService{
-  constructor(id, username, password){
+class UserService {
+  constructor(id, username, password, name, lastname, phone, address) {
     this.id = id;
     this.username = username;
     this.password = password;
+    this.name = name;
+    this.lastname = lastname;
+    this.phone = phone;
+    this.address = address;
   }
+
   async getById(id) {
     try {
-      const user = await db('users').where('id', id).first()
+      const user = await db("users").where("id", id).first();
       return user;
     } catch (e) {
       console.error("Error fetching user by ID:", e);
       return null;
     }
   }
+
   async getAll() {
     try {
-      const users = await db('users');
-      return users;
+      const users = await db("users")
+      return users
     } catch (e) {
       console.error("Error fetching all users:", e);
       return [];
     }
   }
-  async create(newFileData) {
+
+  async create(newUserData) {
     try {
-      const newUserId = await db('users').insert(newFileData)
+      const newUserId = await db("users").insert(newUserData)
       return newUserId;
     } catch (e) {
-      console.error('Error creating a new user:', e);
+      console.error('Error creating a new client:', e);
       return null;
     }
   }
@@ -60,7 +67,7 @@ class UserService{
       await db("users").whereIn("id", ids).del();
       return true;
     } catch (e) {
-      console.error("Error deleting user by ID:", error);
+      console.error("Error deleting user by ID:", e);
       return false;
     }
   }

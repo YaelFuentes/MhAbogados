@@ -3,7 +3,7 @@ import axios from 'axios';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 
-export default function TableResponsive({ columns, rows, optional, routes}) {
+export default function TableResponsive({ columns, rows, optional, routes }) {
   const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState({});
@@ -44,26 +44,27 @@ export default function TableResponsive({ columns, rows, optional, routes}) {
             </tr>
           </thead>
           <tbody>
-            {currentUsers.map((i) => {
-              return (
-                <tr id={i.id} classNameName="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  {columns.map((column) => (
-                    <td classNameName="px-6 py-4" key={`${i.id}-${column.id}`} >
-                      <button onClick={() => {
-                        router.push({
-                          pathname: `/${routes}/[id]`,
-                          query: { id: i.clientId || i.id }
-                        })
-                      }}>
+            {currentUsers.map((i) => (
+              <tr
+                id={i.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                key={i.id}
+              >
+                {columns.map((column) => (
+                  <td className="px-6 py-4" key={`${i.id}-${column.id}`}>
+                    {routes ? (
+                      <Link href={`/${routes}/[id]`} as={`/${routes}/${i.clientId || i.id}`}>
                         {i[column.id]}
-                      </button>
-
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
+                      </Link>
+                    ) : (
+                      <span>{i[column.id]}</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
           </tbody>
+
         </table>
         <nav className="flex items-center justify-between pt-4" aria-label="Table navigation">
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
