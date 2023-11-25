@@ -43,12 +43,13 @@ const ExpedienteCliente = ({ id }) => {
   const columnsTable = [
     { id: "idexp", label: 'Expediente' },
     { id: "caratula", label: 'Caratula' },
-    { id: "dni", label: 'DNI' },
+    { id: 'juzgasecret', label: 'Secretaría' },
+    { id: "camara", label: 'Camara' },
     { id: "decretos", label: 'Decretos' },
-    { id: "email", label: 'Correo Electrónico' },
     { id: "fechasentencia", label: 'Fecha Sentencia' },
-    /*  { id: "", label: 'Editar' }, */
   ];
+
+  console.log(expediente.expedienteInfo)
   return (
     <>
       <div className='w-full'>
@@ -68,7 +69,7 @@ const ExpedienteCliente = ({ id }) => {
           />
         </div>
         <div>
-          <NewFile />
+          <NewFile id={id}/>
         </div>
       </div>
     </>
