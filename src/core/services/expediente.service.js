@@ -55,7 +55,16 @@ class ExpedienteService {
 
   async create(newFileData) {
     try {
-      const newFileId = await db('expediente').insert(newFileData)
+      console.log('newFileData: ', newFileData)
+      const dataId = await db('cliente').where('id', newFileData.id).first()
+      const dataExpediente = { ...newFileData }
+      delete dataExpediente.id
+      console.log(dataExpediente)
+      const newData = await db('expediente').insert(dataExpediente);
+      console.log('consulta base de datos: ', newData)
+      const [newFileId] = await db('expediente').select('id').orderBy('id', 'desc').limit(1);
+      console.log(newFileId)
+      await db('expcliente').insert({ idexp: dataExpediente.idexp, dni: dataId.dni })
       return newFileId;
     } catch (e) {
       console.error('Error creating a new user:', e);
