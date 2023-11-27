@@ -110,11 +110,11 @@ function ResponsiveAppBar() {
                 >
                   <Link href='/pagos'>Consultas</Link>
                 </Button>
-                <Button
+                {/* <Button
                   onClick={handleCloseNavMenu}
                 >
                   <Link href='/turnos'>Honorarios</Link>
-                </Button>
+                </Button> */}
               </Box>
             </Menu>
           </Box>
@@ -162,12 +162,12 @@ function ResponsiveAppBar() {
             >
               <Link href='/pagos'>Consultas</Link>
             </Button>
-            <Button
+           {/*  <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
             >
               <Link href='/turnos'>Honorarios</Link>
-            </Button>
+            </Button> */}
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
