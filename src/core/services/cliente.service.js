@@ -44,6 +44,7 @@ class ClienteService {
   }
   async updateByIds(ids, updates) {
     try {
+
       const updateArray = Array.isArray(updates) ? updates : [updates];
 
       const promises = updateArray.map(async (update) => {
@@ -53,9 +54,12 @@ class ClienteService {
         const updateObject = keys.reduce((acc, key, index) => {
           return { ...acc, [key]: values[index] };
         }, {});
-
+        const responseData = await db("cliente").where("id", ids)
+        console.log("dni", responseData[0].dni, "newDni: ", updateObject)
         await db("cliente").where("id", ids).update(updateObject);
+        await db("expcliente").where("dni", responseData[0].dni).update({ dni: updateObject.dni })
       });
+
 
       await Promise.all(promises);
       return true;

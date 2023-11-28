@@ -6,6 +6,7 @@ import fetch from "../lib/fetchJson";
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import ResponsiveAppBar from '@/layout/headers';
+import { Toaster } from 'react-hot-toast';
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <main className={`${montserrat.variable} font-mont bg-light dark:bg-dark w-full min-h-screen`}>
       {/* {isLoggedIn && <ResponsiveAppBar />} */}
+      <Toaster position="bottom-left" reverseOrder={false} />
       <SWRConfig
         value={{
           fetcher: fetch,
@@ -42,7 +44,7 @@ function MyApp({ Component, pageProps }) {
           },
         }
         }
-      >{isLoggedIn && !isLoginPage && <ResponsiveAppBar />  }
+      >{isLoggedIn && !isLoginPage && <ResponsiveAppBar />}
         <Component {...pageProps} isLoggedIn={isLoggedIn} />
       </SWRConfig>
     </main>
