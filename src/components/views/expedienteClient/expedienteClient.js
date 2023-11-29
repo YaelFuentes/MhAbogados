@@ -12,7 +12,6 @@ const ExpedienteCliente = ({ id }) => {
     try {
       const response = await axios.get(`/api/expediente/expediente?id=${id}`);
       const data = response.data;
-      console.log('Data from API:', data);
       localStorage.setItem(`expedienteData_${id}`, JSON.stringify(data));
       setExpediente(data);
       setLoading(false);
@@ -49,7 +48,6 @@ const ExpedienteCliente = ({ id }) => {
     { id: "fechasentencia", label: 'Fecha Sentencia' },
   ];
 
-  console.log(expediente.expedienteInfo)
   return (
     <>
       <div className='w-full'>

@@ -1,6 +1,9 @@
 import React from 'react'
 
 const TableEdit = ({ columns, rows, editButtonComponent }) => {
+  if (!rows || !Array.isArray(rows)) {
+    return <p>No hay datos disponibles.</p>;
+  }
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -28,7 +31,7 @@ const TableEdit = ({ columns, rows, editButtonComponent }) => {
             >
               {columns.map((column) => (
                 <td key={column.id} className="px-6 py-4">
-                  {row[column.id]}
+                  {row && typeof row === 'object' && column.id in row ? row[column.id] : ''}
                 </td>
               ))}
               <td className="px-6 py-4">
