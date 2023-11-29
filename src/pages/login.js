@@ -8,7 +8,7 @@ const userService = userServiceFactory();
 
 export default function Login() {
   const { user, mutateUser } = useUser({
-    redirectTo: "/",
+    redirectTo: "/login",
     redirectIfFound: true,
   });
 
