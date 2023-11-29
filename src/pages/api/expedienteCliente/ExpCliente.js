@@ -1,32 +1,32 @@
 
-/* import { ClientController } from "@/core/controller/index"; */
+import { ExpClienteController } from "@/core/controller";
 
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET':
       if (req.query.id) {
         const clientId = parseInt(req.query.id);
-        const client = await ClientController.getClientById(clientId);
+        const client = await ExpClienteController.getDataById(clientId);
         res.json(client);
       } else {
-        const clients = await ClientController.getAllClients();
+        const clients = await ExpClienteController.getAllData();
         res.json(clients);
       }
       break;
     case 'POST':
       const fieldsUpdate = req.body;
-      const client = await ClientController.createClient(fieldsUpdate);
+      const client = await ExpClienteController.createData(fieldsUpdate);
       res.status(201).json(client)
       break;
     case 'PUT':
       const clientId = parseInt(req.query.id);
       const fieldsToUpdate = req.body;
-      await ClientController.updateClientById(clientId, fieldsToUpdate);
+      await ExpClienteController.updateDataById(clientId, fieldsToUpdate);
       res.json({ success: true });
       break;
     case 'DELETE':
       const clientIds = parseInt(req.query.id);
-      await ClientController.deleteClientById(clientIds);
+      await ExpClienteController.deleteDataById(clientIds);
       res.json({ success: true });
       break;
     default:
