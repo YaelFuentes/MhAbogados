@@ -7,29 +7,21 @@ import NewFile from '../nuevoExpediente/newFile';
 const ExpedienteCliente = ({ id }) => {
   const [expediente, setExpediente] = useState([])
   const [loading, setLoading] = useState(true);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`/api/expediente/expediente?id=${id}`);
-      const data = response.data;
-      localStorage.setItem(`expedienteData_${id}`, JSON.stringify(data));
-      setExpediente(data);
-      setLoading(false);
-    } catch (e) {
-      console.error(e);
-      setLoading(false);
-    }
-  };
+  console.log(expediente)
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem(`expedienteData_${id}`));
-    if (storedData) {
-      setExpediente(storedData);
-      setLoading(false);
-    } else {
-      fetchData();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/expediente/expediente?id=${id}`)
+        setExpediente(response.data)
+        setLoading(false)
+      } catch (e) {
+        console.error(e)
+        setLoading(false)
+      }
     }
-  }, [id]);
+    fetchData()
+  }, [id])
 
   if (loading) {
     return <p>Cargando...</p>;
@@ -39,13 +31,22 @@ const ExpedienteCliente = ({ id }) => {
     return <p>Error al cargar los datos.</p>;
   }
 
+  const formatDate = (dateString) => {
+    if (!dateString) {
+      return 'Sin fecha colocada';
+    }
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
+    return formattedDate;
+  }
+
   const columnsTable = [
     { id: "idexp", label: 'Expediente' },
     { id: "caratula", label: 'Caratula' },
     { id: 'juzgasecret', label: 'Secretaría' },
     { id: "camara", label: 'Camara' },
     { id: "decretos", label: 'Decretos' },
-    { id: "fechasentencia", label: 'Fecha Sentencia' },
+    { id: "fechasentencia", label: 'Fecha Sentencia', format: (value) => formatDate(value) },
   ];
 
   return (
@@ -67,7 +68,7 @@ const ExpedienteCliente = ({ id }) => {
           />
         </div>
         <div>
-          <NewFile id={id}/>
+          <NewFile id={id} />
         </div>
       </div>
     </>

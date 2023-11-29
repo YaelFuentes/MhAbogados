@@ -4,6 +4,13 @@ const TableEdit = ({ columns, rows, editButtonComponent }) => {
   if (!rows || !Array.isArray(rows)) {
     return <p>No hay datos disponibles.</p>;
   }
+  const renderCellContent = (column, row) => {
+    if (column.id === 'fechasentencia' && column.format) {
+      return row && typeof row === 'object' && 'fechasentencia' in row ? column.format(row[column.id]) : '';
+    }
+
+    return row && typeof row === 'object' && column.id in row ? row[column.id] : '';
+  };
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -31,7 +38,7 @@ const TableEdit = ({ columns, rows, editButtonComponent }) => {
             >
               {columns.map((column) => (
                 <td key={column.id} className="px-6 py-4">
-                  {row && typeof row === 'object' && column.id in row ? row[column.id] : ''}
+                  {renderCellContent(column, row)}
                 </td>
               ))}
               <td className="px-6 py-4">

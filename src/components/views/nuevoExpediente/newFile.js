@@ -4,7 +4,6 @@ import axios from 'axios'
 const NewFile = ({ id }) => {
   const [formData, setFormData] = useState([]);
   const [fuerza, setFuerza] = useState([])
-  console.log(formData)
 
   useEffect(() => {
     const fetchData = async () => {
