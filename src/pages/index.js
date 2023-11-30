@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import withSession from "../lib/session";
 import HomePage from './Home';
+import ProtectedRoute from '@/services/protectedRoute';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,7 +14,9 @@ export default function Home({ user }) {
         <title>Home</title>
       </Head>
       <main className={`${inter.className}`}>
-        <HomePage user={user} />
+        <ProtectedRoute user={user}>
+          <HomePage user={user} />
+        </ProtectedRoute>
       </main>
     </div>
   )

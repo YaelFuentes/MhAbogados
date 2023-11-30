@@ -3,8 +3,9 @@ import Tabs from '@/components/flowbite/tabs';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TableResponsive from '@/components/flowbite/table';
+import withSession from '@/lib/session';
 
-const HomePage = ({ user }) => {
+export default function HomePage({ user }) {
 
   const [users, setUsers] = useState([])
 
@@ -41,4 +42,17 @@ const HomePage = ({ user }) => {
   );
 }
 
-export default HomePage;
+export const getServerSideProps = withSession(async function ({ req, res }) {
+  const user = req.session.get("user");
+
+  if (user === undefined) {
+    res.setHeader("location", "/login");
+    res.statusCode = 302;
+    res.end();
+    return { props: {} };
+  }
+
+  return {
+    props: { user: req.session.get("user") },
+  };
+});

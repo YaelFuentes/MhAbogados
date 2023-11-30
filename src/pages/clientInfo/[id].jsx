@@ -4,11 +4,11 @@ import CardTab from '@/components/flowbite/cardTabs';
 import InfoClientTab from '@/components/views/editInfoClient/editInfoClient';
 import ExpedienteCliente from '@/components/views/expedienteClient/expedienteClient';
 import HonorariosCliente from '@/components/views/honorarioClient/honorarioClient';
+import ProtectedRoute from '@/services/protectedRoute';
 
-const idClient = () => {
+const idClient = ({ user }) => {
   const router = useRouter()
   const clientId = router.query.id;
-  console.log(clientId)
 
   if (!clientId) {
     return <p>Cargando...</p>;
@@ -31,7 +31,9 @@ const idClient = () => {
 
   return (
     <>
-      <CardTab tabs={tabData} />
+      <ProtectedRoute user={user}>
+        <CardTab tabs={tabData} />
+      </ProtectedRoute>
     </>
   )
 }

@@ -33,7 +33,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <main className={`${montserrat.variable} font-mont bg-light dark:bg-dark w-full min-h-screen`}>
-      {/* {isLoggedIn && <ResponsiveAppBar />} */}
       <SWRConfig
         value={{
           fetcher: fetch,
@@ -42,7 +41,7 @@ function MyApp({ Component, pageProps }) {
           },
         }
         }
-      >{isLoggedIn && !isLoginPage && <ResponsiveAppBar />  }
+      >{isLoggedIn && !isLoginPage && <ResponsiveAppBar />}
         <Component {...pageProps} isLoggedIn={isLoggedIn} />
       </SWRConfig>
     </main>

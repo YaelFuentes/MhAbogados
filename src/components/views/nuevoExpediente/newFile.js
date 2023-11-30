@@ -5,10 +5,26 @@ const NewFile = ({ id }) => {
   const [formData, setFormData] = useState([]);
   const [fuerza, setFuerza] = useState([])
 
+  console.log(formData)
+
+  /* const enviarMensajeWhatsapp = async (clienteId, mensaje) => {
+    try {
+      // Llamada al controlador de WhatsApp para enviar el mensaje
+      await axios.post('/api/whatsapp/whatsapp', { clienteId, mensaje });
+
+      console.log('Mensaje de WhatsApp enviado con éxito');
+    } catch (error) {
+      console.error('Error al enviar el mensaje de WhatsApp:', error);
+    }
+  }; */
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/api/fuerza/fuerza')
+        /* const clienteId = 1; // Ajusta según la estructura de tu formulario
+        const mensaje = 'Expediente guardado con éxito en la aplicación.';
+        await enviarMensajeWhatsapp(clienteId, mensaje); */
         setFuerza(response.data)
       } catch (e) {
         console.error('Error al intentar mostrar los datos: ', e)
@@ -17,11 +33,16 @@ const NewFile = ({ id }) => {
     fetchData()
   }, [])
 
+
+
   const handleSubmit = async () => {
     try {
       const response = await axios.post(`/api/expediente/expediente`, formData)
       if (response.status === 200) {
         console.log('Expediente guardado con exito')
+        const clienteId = 1; // Ajusta según la estructura de tu formulario
+        const mensaje = 'Expediente guardado con éxito en la aplicación.';
+        await enviarMensajeWhatsapp(clienteId, mensaje);
       } else {
         console.error(response.data.error)
       }
