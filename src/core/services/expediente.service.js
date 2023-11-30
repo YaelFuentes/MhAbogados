@@ -22,14 +22,30 @@ class ExpedienteService {
   }
   async getById(id) {
     try {
-      const getClientDni = await db('cliente').where('id', id).first()
-      const expCliente = await db('expcliente').where('dni', getClientDni.dni)
+      // Verificar la longitud del id para determinar si es DNI o ID
+      const isDNI = id && id.toString().length >= 6;
+
+      let clienteQuery;
+      if (isDNI) {
+        // Si es DNI, buscar por DNI
+        clienteQuery = db('cliente').where('dni', id);
+      } else {
+        // Si no es DNI, buscar por ID
+        clienteQuery = db('cliente').where('id', id);
+      }
+
+      const getClientDni = await clienteQuery.first();
+
+      // Resto del código para obtener información relacionada
+
+      const expCliente = await db('expcliente').where('dni', getClientDni.dni);
       const expedienteInfo = await Promise.all(
         expCliente.map(async (exp) => {
           const expedienteData = await db('expediente').where('idexp', exp.idexp).first();
           return expedienteData;
         })
       );
+
       const resultArray = {
         getClientDni,
         expCliente,

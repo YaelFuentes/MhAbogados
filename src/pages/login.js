@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { userServiceFactory } from "../clientServices/userService.js";
 import useUser from "../lib/useUser";
 import Loading from "@/components/mui/Loading.jsx";
-
+import NavbarWeb from "./navbarWeb";
 
 const userService = userServiceFactory();
 
@@ -40,6 +40,7 @@ export default function Login() {
 
   return (
     <main>
+      <NavbarWeb />
       <div>
         {!user ?
           (<Loading />)
