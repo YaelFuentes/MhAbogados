@@ -15,7 +15,6 @@ const MovementView = ({ rows, selectedRow }) => {
     tipomov: '',
     fecha: ''
   })
-  const [data, setData] = useState({})
 
   const handleRowClick = (row) => {
     setSelected(row);
@@ -31,10 +30,6 @@ const MovementView = ({ rows, selectedRow }) => {
   const deleteRow = async () => {
     try {
       const id = selected && selected.idmovimiento ? selected.idmovimiento : []
-      console.log(editMode)
-      console.log(id)
-      console.log(selected)
-      console.log(data)
       const response = await axios.delete(`/api/movimientos/movimientos?id=${id}`)
       return response
     } catch (e) {
@@ -62,6 +57,15 @@ const MovementView = ({ rows, selectedRow }) => {
       }
     } catch (e) {
 
+    }
+  }
+
+  const sendNotification = async () => {
+    try {
+      const response = await axios.post(`/api/notification/notification`)
+      console.log(response)
+    } catch (e) {
+      console.error('Error al enviar las notificaciones: ',e)
     }
   }
 
@@ -113,12 +117,11 @@ const MovementView = ({ rows, selectedRow }) => {
   const buttons = [{
     button: <ButtonIcon
       icon={<DeleteIcon />}
-      onClick={Alert}
+      onClick={sendNotification}
     />,
     onClick: (row) => {
-      console.log(row)
       handleRowClick(row)
-      setData(row)
+      sendNotification
     }
   }, {
     button: <BasicModal
