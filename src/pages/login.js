@@ -8,7 +8,7 @@ const userService = userServiceFactory();
 
 export default function Login() {
   const { user, mutateUser } = useUser({
-    redirectTo: "/login",
+    redirectTo: "/",
     redirectIfFound: true,
   });
 
@@ -20,7 +20,7 @@ export default function Login() {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 4000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
       const userData = await userService.login(username, password);
       window.location.reload();
       mutateUser(userData);

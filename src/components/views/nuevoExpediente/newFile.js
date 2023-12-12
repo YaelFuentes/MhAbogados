@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const NewFile = ({ id }) => {
-  const [formData, setFormData] = useState([]);
+  const [formData, setFormData] = useState({});
   const [fuerza, setFuerza] = useState([])
 
   useEffect(() => {

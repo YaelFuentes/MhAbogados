@@ -1,4 +1,5 @@
 import { db } from "../connection/databaseService";
+import { format } from "date-fns";
 
 class ExpedienteService {
   constructor(idexp, caratula, juzgasecret, avisodeuda, observaciones, honoinicial, honocamara, honocortsupr,
@@ -72,14 +73,25 @@ class ExpedienteService {
       const updateArray = Array.isArray(updates) ? updates : [updates];
 
       const promises = updateArray.map(async (update) => {
-        const keys = Object.keys(update);
-        const values = Object.values(update);
+        const updateData = { ...update };
+        delete updateData.idexpOld;
+        if (updateData.fechasentencia) {
+          updateData.fechasentencia = format(new Date(updateData.fechasentencia), 'yyyy-MM-dd HH:mm:ss');
+        }
+        await db('expcliente')
+          .where({ dni: ids, idexp: updates.idexpOld })
+          .update({ idexp: updateData.idexp });
 
-        const updateObject = keys.reduce((acc, key, index) => {
-          return { ...acc, [key]: values[index] };
-        }, {});
-
-        await db("expediente").where("id", ids).update(updateObject);
+        await db('expediente')
+          .where('idexp', updates.idexpOld)
+          .update({
+            idexp: updateData.idexp,
+            fechasentencia: updateData.fechasentencia,
+            caratula: updateData.caratula,
+            juzgasecret: updateData.juzgasecret,
+            decretos: updateData.decretos,
+            camara: updateData.camara
+          })
       });
 
       await Promise.all(promises);
@@ -90,13 +102,17 @@ class ExpedienteService {
     }
   }
 
-  async deleteByIds(ids) {
+  async deleteByIds(ids, idexpe) {
+    console.log(idexpe, ids)
     try {
-      await db("expediente").whereIn("id", ids).del();
-      return true;
+      await db.transaction(async (trx) => {
+        await db("expcliente").transacting(trx).where({ dni: ids, idexp: idexpe }).del();
+        await db("expediente").transacting(trx).where("idexp", idexpe).del();
+      });
+      return { status: 200, message: "Operación exitosa" };
     } catch (e) {
-      console.error("Error deleting user by ID:", error);
-      return false;
+      console.error("Error deleting user by ID:", e);
+      return { status: 400, message: "Operación Fallida" };
     }
   }
 }

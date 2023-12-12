@@ -6,7 +6,7 @@ class FuerzaService {
     this.tipofuerza = tipofuerza;
   }
 
-  async getById() {
+  async getById(id) {
     try {
       const table = 'fuerza'
       const result = await db(`${table}`).where('idfuerza', id).first()

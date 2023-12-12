@@ -18,8 +18,8 @@ class ExpedienteController {
     return await this.expedienteService.updateByIds(ids, fieldsToUpdate);
   }
 
-  static async deleteFileById(ids) {
-    return await this.expedienteService.deleteByIds(ids);
+  static async deleteFileById(ids, idexp) {
+    return await this.expedienteService.deleteByIds(ids, idexp);
   }
 }
 

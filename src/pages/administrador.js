@@ -7,8 +7,6 @@ const Administrador = () => {
   const [users, setUsers] = useState([])
   const [passwordMatchError, setPasswordMatchError] = useState(false);
 
-  console.log(users)
-
   useEffect(() => {
     const fetchData = async () => {
       try {

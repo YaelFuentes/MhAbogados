@@ -7,8 +7,6 @@ const InfoClientTab = ({ id }) => {
   const [editedClient, setEditedClient] = useState({});
   const [editMode, setEditMode] = useState(false);
 
-  /* console.log(client) */
-
   useEffect(() => {
     const fetchData = async () => {
       try {

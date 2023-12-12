@@ -31,7 +31,7 @@ const idClient = () => {
 
   return (
     <>
-      <CardTab tabs={tabData} />
+      <CardTab tabs={tabData}/>
     </>
   )
 }

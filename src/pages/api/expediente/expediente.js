@@ -25,7 +25,8 @@ export default async function handler(req, res) {
       break;
     case 'DELETE':
       const filesIds = parseInt(req.query.id);
-      await ExpedienteController.deleteFileById(filesIds);
+      const filesIdexp = req.query.idexp
+      await ExpedienteController.deleteFileById(filesIds, filesIdexp);
       res.json({ success: true });
       break;
     default:
