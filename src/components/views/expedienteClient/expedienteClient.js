@@ -16,7 +16,8 @@ const ExpedienteCliente = ({ id }) => {
   const [selectedRow, setSelectedRow] = useState(null);
   const [movimientosDelExpediente, setMovimientosDelExpediente] = useState([]);
 
-  console.log(movimientos)
+  console.log(expediente.getClientDni)
+  console.log(selectedRow)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,6 +105,7 @@ const ExpedienteCliente = ({ id }) => {
             <MovementView
               rows={movimientosDelExpediente}
               selectedRow={selectedRow}
+              infoClient={expediente.getClientDni}
             />
           </>
         }

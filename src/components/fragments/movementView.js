@@ -7,7 +7,7 @@ import axios from 'axios'
 import BasicModal from '../mui/modal';
 import Swal from 'sweetalert2';
 
-const MovementView = ({ rows, selectedRow }) => {
+const MovementView = ({ rows, selectedRow, infoClient }) => {
   const [selected, setSelected] = useState(null)
   const [editMode, setEditMode] = useState({
     idmov: selected && selected.idmovimiento ? selected.idmovimiento : '',
@@ -15,7 +15,6 @@ const MovementView = ({ rows, selectedRow }) => {
     tipomov: '',
     fecha: ''
   })
-  const [data, setData] = useState({})
 
   const handleRowClick = (row) => {
     setSelected(row);
@@ -34,7 +33,6 @@ const MovementView = ({ rows, selectedRow }) => {
       console.log(editMode)
       console.log(id)
       console.log(selected)
-      console.log(data)
       const response = await axios.delete(`/api/movimientos/movimientos?id=${id}`)
       return response
     } catch (e) {
@@ -118,7 +116,6 @@ const MovementView = ({ rows, selectedRow }) => {
     onClick: (row) => {
       console.log(row)
       handleRowClick(row)
-      setData(row)
     }
   }, {
     button: <BasicModal
@@ -195,6 +192,7 @@ const MovementView = ({ rows, selectedRow }) => {
           />
           <NewMovement
             idexp={selectedRow && selectedRow.idexp ? selectedRow.idexp : []}
+            infoClient={infoClient}
           />
         </div>
       </div>

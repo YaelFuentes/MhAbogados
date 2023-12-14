@@ -2,11 +2,14 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import BasicModal from '../mui/modal'
 
-const NewMovement = ({ idexp }) => {
+const NewMovement = ({ idexp, infoClient }) => {
   const [formData, setFormData] = useState({
     idexp: idexp,
     fecha: ''
   })
+
+  console.log(infoClient)
+  console.log(formData)
 
 
   useEffect(() => {
@@ -21,7 +24,10 @@ const NewMovement = ({ idexp }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      const dataMail = { formData, infoClient }
+      console.log(dataMail)
       const response = await axios.post(`/api/movimientos/movimientos`, formData)
+      const sendMail = await axios.post(`/api/notification/notification`, dataMail)
       console.log('response: ', response)
       if (response.status === 201) {
         console.log('Movimiento creado con exito')
