@@ -1,16 +1,13 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import BasicModal from '../mui/modal'
+import Swal from 'sweetalert2'
 
-const NewMovement = ({ idexp, infoClient }) => {
+const NewMovement = ({ idexp, infoClient, infoExp }) => {
   const [formData, setFormData] = useState({
     idexp: idexp,
     fecha: ''
   })
-
-  console.log(infoClient)
-  console.log(formData)
-
 
   useEffect(() => {
     const today = new Date();
@@ -24,15 +21,34 @@ const NewMovement = ({ idexp, infoClient }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const dataMail = { formData, infoClient }
-      console.log(dataMail)
+      const dataMail = { formData, infoClient, infoExp }
       const response = await axios.post(`/api/movimientos/movimientos`, formData)
       const sendMail = await axios.post(`/api/notification/notification`, dataMail)
-      console.log('response: ', response)
-      if (response.status === 201) {
-        console.log('Movimiento creado con exito')
+      if (response.status === 201 && sendMail.status === 201) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `Movimiento guardado con exito y Notificado al usuario`,
+          showConfirmButton: false,
+          timer: '1500',
+          customClass: {
+            container: 'z-[1500]' // Ajusta este valor según sea necesario
+          }
+        })
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
       } else {
-        console.error('Error status 404 no se pudo conectar con el servidor: ', response.data.error)
+        Swal.fire({
+          position: 'bottom-start',
+          icon: 'error',
+          title: 'Error al guardar Movimiento, intentelo mas tarde',
+          showConfirmButton: false,
+          timer: '1500',
+          customClass: {
+            container: 'z-[1500]' // Ajusta este valor según sea necesario
+          }
+        })
       }
     } catch (e) {
       console.error('No se pudo cargar el movimiento: ', e)
@@ -65,7 +81,7 @@ const NewMovement = ({ idexp, infoClient }) => {
                       value={idexp}
                       className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                     />
-                    <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                       Nro Expediente
                     </label>
                   </div>
@@ -78,7 +94,7 @@ const NewMovement = ({ idexp, infoClient }) => {
                       required
                       className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                     />
-                    <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                       Movimiento
                     </label>
                   </div>
@@ -93,7 +109,7 @@ const NewMovement = ({ idexp, infoClient }) => {
                       required
                       className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                     />
-                    <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                       Fecha
                     </label>
                   </div>

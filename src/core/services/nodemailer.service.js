@@ -63,14 +63,15 @@ class NotificationService {
 
         <p><strong>Nombre y Apellido:</strong> ${mailOptions.infoClient.nombre} ${mailOptions.infoClient.apellido}</p>
         <p><strong>Nro Expediente:</strong> ${mailOptions.formData.idexp}</p>
+        <p><strong>Decreto:</strong>${mailOptions.infoExp.decretos}</p>
         <p><strong>Fecha:</strong> ${mailOptions.formData.fecha}</p>
         <p><strong>Movimiento Realizado:</strong> ${mailOptions.formData.tipomov}</p>
       </body>
         `
       }
       /* const infoDataMail = { from, ...mailOptions } */
-      const info = await transporter.sendMail(mailDataInfo)
-      console.log(info)
+      /* const info = await transporter.sendMail(mailDataInfo) */
+      /* console.log(info) */
     } catch (e) {
       console.log('Error al notificar al cliente: ', e)
     }

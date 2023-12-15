@@ -8,6 +8,7 @@ import IconButton from '@/components/mui/iconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import NewMovement from '@/components/fragments/newMovement';
 import MovementView from '@/components/fragments/movementView';
+import Swal from 'sweetalert2';
 
 const ExpedienteCliente = ({ id }) => {
   const [expediente, setExpediente] = useState([])
@@ -15,9 +16,6 @@ const ExpedienteCliente = ({ id }) => {
   const [movimientos, setMovimientos] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
   const [movimientosDelExpediente, setMovimientosDelExpediente] = useState([]);
-
-  console.log(expediente.getClientDni)
-  console.log(selectedRow)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,14 +53,40 @@ const ExpedienteCliente = ({ id }) => {
     setSelectedRow(row);
   };
 
-  const deleteRow = async () => {
+  const deleteRow = async (e) => {
+    e.preventDefault()
     try {
       const response = await axios.delete(`/api/expediente/expediente?id=${expediente.getClientDni.dni}&idexp=${selectedRow.idexp}`);
-      console.log('response: ', response)
       if (response.status === 200) {
-        console.log('Dato eliminado con exito.');
+        const confirmResult = await Swal.fire({
+          title: '¿Estás seguro que deseas eliminar esto?',
+          text: '¡No podrás revertirlo!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '',
+          confirmButtonText: 'Sí, Elimínalo!',
+        });
+        if (confirmResult.isConfirmed) {
+          Swal.fire({
+            position: 'bottom-start',
+            icon: 'success',
+            title: 'Expediente eliminado con éxito',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setTimeout(() => {
+            location.reload();
+          }, 1500);
+        }
       } else {
-        console.error('Error en la actualización:', response.data.error);
+        Swal.fire({
+          position: 'bottom-start',
+          icon: 'error',
+          title: 'Error al eliminar expediente, intentelo mas tarde',
+          showConfirmButton: false,
+          timer: '1500'
+        })
       }
     } catch (e) {
       console.error('Error al intentar eliminar los datos: ', e)

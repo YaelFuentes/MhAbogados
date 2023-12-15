@@ -28,7 +28,7 @@ const HomePage = ({ user }) => {
     { id: "telcel", label: 'Contacto' },
     { id: "email", label: 'Correo Electrónico' },
     { id: "domicilio", label: 'Domicilio' },
-    { id: "domicilio", label: 'Domicilio' },
+    /* { id: "domicilio", label: 'Domicilio' }, */
   ];
 
   return (
