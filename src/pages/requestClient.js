@@ -50,8 +50,6 @@ const RequestClient = () => {
   const [showTable, setShowTable] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  console.log(searchResult);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -107,7 +105,7 @@ const RequestClient = () => {
           onSubmit={handleSubmit}
           aria-label="Formulario de búsqueda de cliente"
         >
-          <div class="relative z-0 w-full mb-5 group"></div>
+          <div className="relative z-0 w-full mb-5 group"></div>
           <label htmlFor="clientInfo">Ingrese su número de documento:</label>
           <input
             id="clientInfo"
@@ -115,7 +113,7 @@ const RequestClient = () => {
             type="number"
             value={clientInfo}
             onChange={handleClient}
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 mb-3 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 mb-3 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder="DNI..."
             required
           />

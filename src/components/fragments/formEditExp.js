@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const FormEditExp = ({ row }) => {
   const [editMode, setEditMode] = useState({
@@ -21,7 +22,19 @@ const FormEditExp = ({ row }) => {
       }
       const response = await axios.put(`/api/expediente/expediente?id=${row[1]}`, updatedData)
       if (response.data.success) {
-        console.log('Actualización exitosa');
+        Swal.fire({
+          position: 'bottom-start',
+          icon: 'success',
+          title: 'Expediente modificado con exito',
+          showConfirmButton: false,
+          timer: '1500',
+          customClass: {
+            container: 'z-[1500]' 
+          }
+        })
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
       } else {
         console.error('Error en la actualización:', response.data.error);
       }
@@ -59,7 +72,7 @@ const FormEditExp = ({ row }) => {
           required
         />
         <label
-          for="floating_email"
+          htmlFor="floating_email"
           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >
           Expediente Nro
@@ -76,7 +89,7 @@ const FormEditExp = ({ row }) => {
           required
         />
         <label
-          for="floating_password"
+          htmlFor="floating_password"
           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >
           Caratula
@@ -93,7 +106,7 @@ const FormEditExp = ({ row }) => {
           required
         />
         <label
-          for="floating_repeat_password"
+          htmlFor="floating_repeat_password"
           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >
           Secretaría
@@ -111,7 +124,7 @@ const FormEditExp = ({ row }) => {
             required
           />
           <label
-            for="floating_first_name"
+            htmlFor="floating_first_name"
             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Camara
@@ -129,7 +142,7 @@ const FormEditExp = ({ row }) => {
             required
           />
           <label
-            for="floating_last_name"
+            htmlFor="floating_last_name"
             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Decretos
@@ -147,7 +160,7 @@ const FormEditExp = ({ row }) => {
           required
         />
         <label
-          for="floating_phone"
+          htmlFor="floating_phone"
           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >
           Fecha Sentencia

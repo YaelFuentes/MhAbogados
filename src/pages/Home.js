@@ -1,12 +1,12 @@
-import SearchTable from '@/components/flowbite/table';
-import Tabs from '@/components/flowbite/tabs';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TableResponsive from '@/components/flowbite/table';
+import SearchComponent from '@/components/fragments/searchComponent';
 
 const HomePage = ({ user }) => {
 
   const [users, setUsers] = useState([])
+  const [filteresUsers, setFilteredUsers] = useState(users)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +21,29 @@ const HomePage = ({ user }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users])
+
+  const handleSearch = (searchTerm) => {
+    const searchTermsArray = searchTerm.toLowerCase().split(' ');
+
+    if (searchTermsArray.length === 0) {
+      setFilteredUsers(users);
+      return;
+    }
+
+    const filtered = users.filter((item) =>
+      searchTermsArray.every(term =>
+        Object.values(item).some((value) =>
+          value !== null && value.toString().toLowerCase().includes(term)
+        )
+      )
+    );
+
+    setFilteredUsers(filtered);
+  };
+
   const columnsTable = [
     { id: "nombre", label: 'Nombre' },
     { id: "apellido", label: 'Apellido' },
@@ -28,7 +51,6 @@ const HomePage = ({ user }) => {
     { id: "telcel", label: 'Contacto' },
     { id: "email", label: 'Correo Electrónico' },
     { id: "domicilio", label: 'Domicilio' },
-    { id: "Observaciones", label: 'observaciones' },
   ];
 
   return (

@@ -8,7 +8,6 @@ import HonorariosCliente from '@/components/views/honorarioClient/honorarioClien
 const idClient = () => {
   const router = useRouter()
   const clientId = router.query.id;
-  console.log(clientId)
 
   if (!clientId) {
     return <p>Cargando...</p>;
