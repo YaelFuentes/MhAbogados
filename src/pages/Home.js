@@ -28,14 +28,14 @@ const HomePage = ({ user }) => {
     { id: "telcel", label: 'Contacto' },
     { id: "email", label: 'Correo Electrónico' },
     { id: "domicilio", label: 'Domicilio' },
-    { id: "domicilio", label: 'Domicilio' },
+    { id: "Observaciones", label: 'observaciones' },
   ];
 
   return (
     <>
       <div>
-        <h1>Hola {user.username}, bienvenido.</h1>
-        {<TableResponsive rows={users} columns={columnsTable} routes={'clientInfo'}/>}
+        <h1 className="container mx-auto my-4 text-xl font-bold ">Bienvenido, {user.username}</h1>
+        {<TableResponsive rows={users} columns={columnsTable} routes={'clientInfo'} />}
       </div>
     </>
   );

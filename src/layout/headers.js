@@ -8,13 +8,12 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
-
-const settings = ['Profile', 'Account', 'Dashboard'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -103,22 +102,11 @@ function ResponsiveAppBar() {
                   onClick={handleCloseNavMenu}
 
                 >
-                  <Link href='/socios'>Decretos</Link>
+                  <Link href='/administrador'>Administrador</Link>
                 </Button>
-                <Button
-                  onClick={handleCloseNavMenu}
-                >
-                  <Link href='/pagos'>Consultas</Link>
-                </Button>
-                {/* <Button
-                  onClick={handleCloseNavMenu}
-                >
-                  <Link href='/turnos'>Honorarios</Link>
-                </Button> */}
               </Box>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -135,7 +123,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MH ABOGADOS
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginLeft: '80px' }}>
             <Button
@@ -148,37 +136,14 @@ function ResponsiveAppBar() {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
             >
-              <Link href='/socios'>Decretos</Link>
-            </Button>
-            {/* <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
-            >
-              <Link href='/mercaderia'>Expedientes</Link>
-            </Button> */}
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
-            >
-              <Link href='/pagos'>Consultas</Link>
-            </Button>
-           {/*  <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
-            >
-              <Link href='/turnos'>Honorarios</Link>
-            </Button> */}
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
-            >
               <Link href='/administrador'>Administrador</Link>
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Opciones">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+                <AccountCircleIcon style={{ color: 'white', width: '40', height: '40' }} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -197,15 +162,9 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-
-                </MenuItem>
-              ))}
               <MenuItem>
                 <Typography textAlign="center">
-                  <a href='/api/logout'>Logout</a>
+                  <a href='/api/logout'>Cerrar sesión</a>
                 </Typography>
               </MenuItem>
             </Menu>

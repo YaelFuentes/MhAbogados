@@ -54,8 +54,9 @@ const Administrador = () => {
 
   return (
     <>
-      <div className='bg-light'>
-        <div className='grid grid-cols-2 gap-4 text-center bg-white'>
+      <div >
+        <div className='xl:grid-cols-2 sm:grid-cols-1 gap-4'>
+          <h1 className='font-bold m-2 text-xl text-center'>Crear nuevo usuario</h1>
           <div>
             <form className='p-4 m-2' onSubmit={handleSubmit}>
               <div class="relative z-0 w-full mb-5 group">
@@ -163,6 +164,7 @@ const Administrador = () => {
             </form>
           </div>
           <div>
+          <h1 className='font-bold m-2 text-xl text-center'>Listado de usuarios</h1>
             <TableResponsive
               columns={columnsTable}
               rows={users} />

@@ -13,7 +13,7 @@ const InfoClientTab = ({ id }) => {
         const response = await axios.get(`/api/cliente/cliente?id=${id}`);
         const data = response.data;
         setClient(data);
-        setEditedClient(data); // Inicializar editedClient con los datos del cliente
+        setEditedClient(data);
       } catch (error) {
         console.error(error);
       }
@@ -53,71 +53,98 @@ const InfoClientTab = ({ id }) => {
       <div>
         {editMode ? (
           <>
-            <div>
-              <div className='bg-gray-200 p-4'>
-                <h3 className='font-bold text-lg'>Nombre</h3>
-                <input
-                  type='text'
-                  name='nombre'
-                  placeholder='Nombre'
-                  value={editedClient.nombre}
-                  onChange={handleClientChange}
-                  className='w-full p-2 mb-2'
-                />
-                <h3 className='font-bold text-lg'>Apellido</h3>
+            <div  class="grid lg:grid-cols-3 sm:grid-cols-12 gap-4">
+              <div>
+                <div className='mb-4'>
+                  <label htmlFor='nombre' className='block text-lg font-bold mb-2'>Nombre</label>
+                  <input
+                    type='text'
+                    name='nombre'
+                    placeholder='Nombre'
+                    value={editedClient.nombre}
+                    onChange={handleClientChange}
+                    className='w-full p-2 mb-2 border border-gray-300 rounded'
+                  />
+                </div>
+              </div>
+              <div><div className='mb-4'>
+                <label htmlFor='apellido' className='block text-lg font-bold mb-2'>Apellido</label>
                 <input
                   type='text'
                   name='apellido'
                   placeholder='Apellido'
                   value={editedClient.apellido}
                   onChange={handleClientChange}
-                  className='w-full p-2 mb-2'
+                  className='w-full p-2 mb-2 border border-gray-300 rounded'
                 />
-                <h3 className='font-bold text-lg'>Dni</h3>
-                <input
-                  type='number'
-                  name='dni'
-                  placeholder='Dni'
-                  value={editedClient.dni}
-                  onChange={handleClientChange}
-                  className='w-full p-2 mb-2'
-                />
-                <h3 className='font-bold text-lg'>Contacto</h3>
-                <input
-                  type='text'
-                  name='phone'
-                  placeholder='Contacto'
-                  value={editedClient.telcel}
-                  onChange={handleClientChange}
-                  className='w-full p-2 mb-2'
-                />
-                <h3 className='font-bold text-lg'>Email</h3>
-                <input
-                  type='text'
-                  name='email'
-                  placeholder='Correo electronico'
-                  value={editedClient.email}
-                  onChange={handleClientChange}
-                  className='w-full p-2 mb-2'
-                />
-                <h3 className='font-bold text-lg'>Domicilio</h3>
-                <input
-                  type='text'
-                  name='domicilio'
-                  placeholder='Domicilio'
-                  value={editedClient.direccion}
-                  onChange={handleClientChange}
-                  className='w-full p-2 mb-2'
-                />
-                <h3 className='font-bold text-lg'>Observaciones</h3>
-                <input
-                  type='text'
-                  name='observaciones'
-                  placeholder='Observaciones'
-                  value={editedClient.observaciones}
-                  onChange={handleClientChange}
-                  className='w-full p-2 mb-2'
-                />
+              </div>
+              </div>
+              <div>
+                <div className='mb-4'>
+                  <label htmlFor='dni' className='block text-lg font-bold mb-2'>DNI</label>
+                  <input
+                    type='number'
+                    name='dni'
+                    placeholder='DNI'
+                    value={editedClient.dni}
+                    onChange={handleClientChange}
+                    className='w-full p-2 mb-2 border border-gray-300 rounded'
+                  />
+                </div>
+              </div>
+              <div>
+                <div className='mb-4'>
+                  <label htmlFor='phone' className='block text-lg font-bold mb-2'>Contacto</label>
+                  <input
+                    type='text'
+                    name='phone'
+                    placeholder='Contacto'
+                    value={editedClient.telcel}
+                    onChange={handleClientChange}
+                    className='w-full p-2 mb-2 border border-gray-300 rounded'
+                  />
+                </div>
+              </div>
+              <div>
+                <div className='mb-4'>
+                  <label htmlFor='email' className='block text-lg font-bold mb-2'>Email</label>
+                  <input
+                    type='text'
+                    name='email'
+                    placeholder='Correo electrónico'
+                    value={editedClient.email}
+                    onChange={handleClientChange}
+                    className='w-full p-2 mb-2 border border-gray-300 rounded'
+                  />
+                </div>
+              </div>
+              <div>
+                <div className='mb-4'>
+                  <label htmlFor='domicilio' className='block text-lg font-bold mb-2'>Domicilio</label>
+                  <input
+                    type='text'
+                    name='domicilio'
+                    placeholder='Domicilio'
+                    value={editedClient.direccion}
+                    onChange={handleClientChange}
+                    className='w-full p-2 mb-2 border border-gray-300 rounded'
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className='p-4'>
+                <div className='mb-4'>
+                  <label htmlFor='observaciones' className='block text-lg font-bold mb-2'>Observaciones</label>
+                  <input
+                    type='text'
+                    name='observaciones'
+                    placeholder='Observaciones'
+                    value={editedClient.observaciones}
+                    onChange={handleClientChange}
+                    className='w-full p-2 mb-2 border border-gray-300 rounded'
+                  />
+                </div>
               </div>
             </div>
           </>
@@ -125,35 +152,38 @@ const InfoClientTab = ({ id }) => {
           <>
             <div>
               <div>
-                <div className='bg-gray-200 p-4'>
-                  <h3 className='font-bold text-lg text-black'>
-                    Nombre del cliente : <span>{client.nombre}</span>
-                  </h3>
-                  <h3 className='font-bold text-lg'>
-                    Apellido del cliente: {client.apellido}
-                  </h3>
-                  <h3 className='font-bold text-lg'>DNI: {client.dni}</h3>
-                </div>
-                <div className='bg-blue-200 p-4'>
-                  <h3>
+                <div class="grid lg:grid-cols-3 sm:grid-cols-12 gap-4">
+                  <div><h3 className='font-bold m-2 text-xl '>
+                    Nombre del cliente :
+                    <br />
+                    <span>{client.nombre}</span>
+                  </h3></div>
+                  <div><h3 className='font-bold m-2 text-xl '>
+                    Apellido del cliente:
+                    <br />
+                    {client.apellido}
+                  </h3></div>
+                  <div><h3 className='font-bold m-2 text-xl '>DNI:
+                    <br />
+                    {client.dni}</h3></div>
+                  <div><h3 className='font-bold m-2 text-xl '>
                     Contacto :{' '}
-                    <span className='font-bold text-sm text-black'>
-                      {client.telcel}
-                    </span>
-                  </h3>
-                  <h3>
+                    <br />
+                    {client.telcel}
+                  </h3></div>
+                  <div><h3 className='font-bold m-2 text-xl '>
                     email :{' '}
-                    <p className='font-bold text-sm text-black'>
-                      {client.email}
-                    </p>
-                  </h3>
-                  <h3>
+                    <br />
+                    {client.email}
+                  </h3></div>
+                  <div><h3 className='font-bold m-2 text-xl '>
                     Domicilio :{' '}
-                    <p className='font-bold text-sm text-black'>
-                      {client.domicilio}
-                    </p>
-                  </h3>
-                  <h3>
+                    <br />
+                    {client.domicilio}
+                  </h3></div>
+                </div>
+                <div>
+                  <h3 className='font-bold m-2 text-xl '>
                     Observaciones :{' '}
                     <p className='font-bold text-sm text-black'>
                       {client.observaciones}
@@ -166,9 +196,9 @@ const InfoClientTab = ({ id }) => {
         )}
         <button
           onClick={editMode ? handleSave : handleEdit}
-          className='bg-blue-500 text-white p-2 rounded'
+          class="text-white bg-primary-10 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          {editMode ? 'Guardar' : 'Editar'}
+          {editMode ? 'Guardar cambios' : 'Editar información'}
         </button>
       </div>
     </div>
