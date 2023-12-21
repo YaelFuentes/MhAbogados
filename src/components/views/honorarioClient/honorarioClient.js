@@ -153,7 +153,7 @@ const HonorariosCliente = ({ id }) => {
     <>
       <div className='w-full'>
         <div>
-          <h1 className='font-bold m-2 text-center'>
+          <h1 className='font-bold m-2 text-xl text-center'>
             Honorarios generados para el cliente {honorarios?.getClientDni?.nombre} {honorarios?.getClientDni?.apellido}
           </h1>
           <TableEdit

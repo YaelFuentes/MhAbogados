@@ -177,13 +177,21 @@ const ExpedienteCliente = ({ id }) => {
   return (
     <>
       <div className='w-full'>
-        <div className='text-center p-2 m-2'>
-          <h1 className='font-bold m-2'>Datos del cliente</h1>
-          <h3>Nombre y apellido : {expediente.getClientDni.nombre} {expediente.getClientDni.apellido}</h3>
-          <h3>Dni : {expediente.getClientDni.dni}</h3>
+        <div className='p-2 m-2'>
+          <h1 className='font-bold m-2 text-xl text-center'>Datos del cliente</h1>
+        </div>
+        <div className="p-4 flex text-center">
+          <div className="w-1/2">
+            <h3 className=" font-semibold">
+              Nombre y apellido: {expediente.getClientDni.nombre} {expediente.getClientDni.apellido}
+            </h3>
+          </div>
+          <div className="w-1/2">
+            <h3 className=" font-semibold">Dni: {expediente.getClientDni.dni}</h3>
+          </div>
         </div>
         <div>
-          <h1 className='font-bold m-2 text-center'>Expediente</h1>
+          <h1 className='font-bold m-2 text-xl text-center'>Listado de expedientes</h1>
           <TableEdit
             columns={columnsTable}
             rows={expediente.expedienteInfo}
@@ -195,6 +203,7 @@ const ExpedienteCliente = ({ id }) => {
           <NewFile id={id} />
         </div>
       </div>
+
     </>
   )
 }

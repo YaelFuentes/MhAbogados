@@ -9,7 +9,7 @@ const CardTab = ({ tabs }) => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-4 w-full bg-light">
+    <div className="items-center mt-4 w-full bg-light">
       <div className="flex flex-wrap justify-center">
         {tabs.map((tab, index) => (
           <button

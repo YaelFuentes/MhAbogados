@@ -28,72 +28,69 @@ export default function TableResponsive({ columns, rows, optional, routes }) {
 
   return (
     <>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              {columns.map((i) => {
-                return (
-                  <>
-                    <th scope="col" className="px-6 py-3" key={i.id}>
-                      {i.label}
-                    </th>
-                  </>
-                )
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {currentUsers.map((i) => (
-              <tr
-                id={i.id}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                key={i.id}
-              >
-                {columns.map((column) => (
-                  <td className="px-6 py-4" key={`${i.id}-${column.id}`}>
-                    {routes ? (
-                      <Link href={`/${routes}/[id]`} as={`/${routes}/${i.clientId || i.id}`}>
-                        {i[column.id]}
-                      </Link>
-                    ) : (
-                      <span>{i[column.id]}</span>
-                    )}
-                  </td>
+      <div className="container mx-auto my-4">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                {columns.map((i) => (
+                  <th scope="col" className="px-6 py-3 border-r border-gray-300 bg-blue-800 text-white" key={i.id}>
+                    {i.label}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-
-        </table>
-        <nav className="flex items-center justify-between pt-4" aria-label="Table navigation">
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Mostrando
-            <span className="font-semibold text-gray-900 dark:text-white">
-              {indexOfFirstUser + 1} - {indexOfLastUser > rows.length ? rows.length : indexOfLastUser}
-            </span> clientes de <span className="font-semibold text-gray-900 dark:text-white">
-              {rows.length}
+            </thead>
+            <tbody>
+              {currentUsers.map((i) => (
+                <tr
+                  id={i.id}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  key={i.id}
+                >
+                  {columns.map((column) => (
+                    <td className="px-6 py-4" key={`${i.id}-${column.id}`}>
+                      {routes ? (
+                        <Link href={`/${routes}/[id]`} as={`/${routes}/${i.clientId || i.id}`}>
+                          {i[column.id]}
+                        </Link>
+                      ) : (
+                        <span>{i[column.id]}</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <nav className="flex items-center justify-between pt-4" aria-label="Table navigation">
+            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+              Mostrando
+              <span className="font-semibold text-gray-900 dark:text-white">
+                {indexOfFirstUser + 1} - {indexOfLastUser > rows.length ? rows.length : indexOfLastUser}
+              </span> clientes de <span className="font-semibold text-gray-900 dark:text-white">
+                {rows.length}
+              </span>
             </span>
-          </span>
-          <ul className="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a
-                onClick={handlePreviousPage}
-                href="#"
-                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                Anterior
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={handleNextPage}
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                Siguiente
-              </a>
-            </li>
-          </ul>
-        </nav>
+            <ul className="inline-flex -space-x-px text-sm h-8">
+              <li>
+                <a
+                  onClick={handlePreviousPage}
+                  href="#"
+                  className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                  Anterior
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={handleNextPage}
+                  href="#"
+                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                  Siguiente
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </>
   );

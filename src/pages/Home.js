@@ -56,9 +56,8 @@ const HomePage = ({ user }) => {
   return (
     <>
       <div>
-        <h1>Hola {user.username}, bienvenido.</h1>
-        <SearchComponent onSearch={handleSearch} />
-        {<TableResponsive rows={filteresUsers} columns={columnsTable} routes={'clientInfo'} />}
+        <h1 className="container mx-auto my-4 text-xl font-bold ">Bienvenido, {user.username}</h1>
+        {<TableResponsive rows={users} columns={columnsTable} routes={'clientInfo'} />}
       </div>
     </>
   );

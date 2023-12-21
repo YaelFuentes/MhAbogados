@@ -180,6 +180,7 @@ const Administrador = () => {
             </form>
           </div>
           <div>
+          <h1 className='font-bold m-2 text-xl text-center'>Listado de usuarios</h1>
             <TableResponsive
               columns={columnsTable}
               rows={users} />
