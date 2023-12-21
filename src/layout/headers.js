@@ -138,6 +138,12 @@ function ResponsiveAppBar() {
             >
               <Link href='/administrador'>Administrador</Link>
             </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
+            >
+              <Link href='/recordatorios'>Notificaciones</Link>
+            </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Opciones">
