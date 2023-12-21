@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/es';
@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 
 moment.locale('es');
 
@@ -32,18 +33,41 @@ const Recordatorios = () => {
         setNewEvent({ ...newEvent, title: e.target.value });
     };
 
-    const handleAddEvent = async (e) => {
-        if (newEvent.title.trim() !== '') {
-            const response = await axios.post('/api/')
-            if (response.data !== null) {
-                setEvents([...events, newEvent]);
-                setModalOpen(false);
-            } else {
-                console.error('El servidor devolvió una respuesta nula.');
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/recordatorios/recordatorios')
+                setEvents(response.data)
+            } catch (e) {
+                console.error('Error al mostrar los datos: ', e)
             }
+        }
+        fetchData()
+    }, [])
 
-        } else {
-            alert('Por favor, ingresa un título para el recordatorio.');
+    const handleAddEvent = async (e) => {
+        try {
+            if (newEvent.title.trim() !== '') {
+                const formattedEvent = {
+                    content: newEvent.title,
+                    startDate: moment(newEvent.start).format('YYYY-MM-DD HH:mm:ss'),
+                    endDate: moment(newEvent.end).format('YYYY-MM-DD HH:mm:ss'),
+                };
+
+                const response = await axios.post('/api/recordatorios/recordatorios', formattedEvent);
+
+                if (response.data !== null) {
+                    setEvents([...events, formattedEvent]);
+                    setModalOpen(false);
+                } else {
+                    console.error('El servidor devolvió una respuesta nula.');
+                }
+
+            } else {
+                alert('Por favor, ingresa un título para el recordatorio.');
+            }
+        } catch (error) {
+            console.error('Error al enviar el formulario:', error);
         }
     };
 
