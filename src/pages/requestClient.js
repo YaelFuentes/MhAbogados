@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TableEdit from '@/components/flowbite/tableEdit';
 import NavbarWeb from "./navbarWeb";
+import BasicModal from '@/components/mui/modal';
+import { Backdrop, CircularProgress } from '@mui/material';
+import Loading from '@/components/mui/Loading';
+
 
 function obtenerTextoPorIDFuerza(idFuerza) {
   switch (idFuerza) {
@@ -48,16 +52,32 @@ const RequestClient = () => {
   const [clientInfo, setClientInfo] = useState("");
   const [searchResult, setSearchResult] = useState(null);
   const [showTable, setShowTable] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [movimientosDelExpediente, setMovimientosDelExpediente] = useState([]);
+
+  const id = selectedRow && selectedRow.idexp ? selectedRow.idexp : '';
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`/api/movimientos/movimientos?dni=${id}`)
+        setMovimientosDelExpediente(response.data)
+      } catch (e) {
+        console.error(e)
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData()
+  }, [selectedRow])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       if (clientInfo.trim() !== "") {
         const response = await axios.get(`/api/expediente/expediente?id=${clientInfo}`);
-
         if (response.data !== null) {
           setSearchResult(response.data);
           setShowTable(true);
@@ -76,6 +96,15 @@ const RequestClient = () => {
     setClientInfo(e.target.value);
   };
 
+  const formatDate = (dateString) => {
+    if (!dateString) {
+      return 'Sin fecha colocada';
+    }
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
+    return formattedDate;
+  }
+
   const columnsTable = [
     { id: "idexp", label: 'Expediente' },
     { id: "caratula", label: 'Caratula' },
@@ -89,17 +118,61 @@ const RequestClient = () => {
     paddingTop: "15px",
     paddingBottom: '15px'
   };
+  const columnsTableMovimientos = [
+    { id: 'idexp', label: 'Nro Exp' },
+    { id: 'tipomov', label: 'Movimiento' },
+    { id: 'fecha', label: 'Fecha', format: (value) => formatDate(value) }
+  ];
+
+  const handleRowClick = (row) => {
+    setSelectedRow(row);
+  };
+
+  const buttons = [
+    {
+      button: <BasicModal
+        nameButton={'Ver movimientos'}
+        titleModal={`Informacion del expediente Nro. ${selectedRow && selectedRow.idexp ? selectedRow.idexp : ''}
+         Caratula. ${selectedRow && selectedRow.caratula ? selectedRow.caratula : ''}`}
+        contentModal={
+          <>
+            <TableEdit
+              rows={movimientosDelExpediente}
+              columns={columnsTableMovimientos}
+            />
+          </>
+        }
+        styled={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '60%',
+          maxHeight: '80vh',
+          overflowY: 'auto',
+          bgcolor: 'white',
+          border: '2',
+          borderColor: 'black',
+          boxShadow: 'lg',
+          p: '4',
+        }}
+      />,
+      onClick: (row) => {
+        handleRowClick(row)
+      }
+    }
+  ]
 
   return (
-    <><NavbarWeb />
+    <>
+      <NavbarWeb />
       <div style={contenidoEstilo}>
         <h1 className={`text-4xl font-bold mb-4 text-[#284285]`}>Formulario de consulta online</h1>
         <h3 className={`text-[#284285]`}>
-          En este formulario podrás realizar un seguimiento de tu causa y ver cada uno de los movimientos realizados por nuestro estudio de abogados
+          En este formulario podrás realizar un seguimiento de su causa y ver cada uno de los movimientos realizados por nuestro estudio de abogados
         </h3>
       </div>
       <div>
-
         <form
           className="max-w-md mx-auto mt-8"
           onSubmit={handleSubmit}
@@ -157,10 +230,13 @@ const RequestClient = () => {
             </div>
             <TableEdit
               columns={columnsTable}
-              rows={searchResult.expedienteInfo} /></>
-
+              rows={searchResult.expedienteInfo}
+              buttons={buttons}
+            />
+          </>
         )}
-      </div></>
+      </div>
+    </>
   );
 };
 

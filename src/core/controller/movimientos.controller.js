@@ -2,17 +2,17 @@ import { MovimientosService } from "../services";
 
 class MovimientoController {
   static movimientoService = new MovimientosService();
-  static async getDataById(id) {
-    return await this.movimientoService.getById(id);
+  static async getDataById(id, dni) {
+    return await this.movimientoService.getById(id, dni);
   }
 
   static async createData(fileData) {
     return await this.movimientoService.create(fileData);
   }
 
-  static async getAllData() {
+  /* static async getAllData() {
     return await this.movimientoService.getAll();
-  }
+  } */
 
   static async updateDataByIds(ids, fieldsToUpdate) {
     return await this.movimientoService.updateByIds(ids, fieldsToUpdate);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import TableEdit from '../flowbite/tableEdit'
 import NewMovement from './newMovement'
 import ButtonIcon from '../mui/iconButton'
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 const MovementView = ({ rows, selectedRow, infoClient }) => {
   const [selected, setSelected] = useState(null)
   const [editMode, setEditMode] = useState({
-    idmov: selected && selected.idmovimiento ? selected.idmovimiento : '',
+    idmovimiento: selected && selected.idmovimiento ? selected.idmovimiento : '',
     idexp: selectedRow.idexp,
     tipomov: '',
     fecha: ''
@@ -19,7 +19,7 @@ const MovementView = ({ rows, selectedRow, infoClient }) => {
   const handleRowClick = (row) => {
     setSelected(row);
     setEditMode({
-      idmov: editMode.idmov || row.idmovimiento,
+      idmovimiento: editMode.idmov || row.idmovimiento,
       idexp: row.idexp,
       tipomov: editMode.tipomov || row.tipomov || '',
       fecha: editMode.fecha || row.fecha || '',
@@ -40,23 +40,25 @@ const MovementView = ({ rows, selectedRow, infoClient }) => {
   const Alert = async () => {
     try {
       const result = await Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Eliminar movimiento?',
+        text: "Si lo hace no podra revertir esto!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
+        confirmButtonText: 'Si, Elimínalo!',
         customClass: {
           container: 'z-[1500]' // Ajusta este valor según sea necesario
         }
       });
       if (result.isConfirmed) {
         await deleteRow(); // Invoca deleteRow como una función async
-        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        Swal.fire('Eliminado!', 'Su movimiento fue eliminado con exito.', 'success');
+      } else {
+        Swal.fire('Error', 'Error al intentar eliminar, intentelo mas tarde', 'error')
       }
     } catch (e) {
-
+      console.log('Error al eliminar los datos: ', e)
     }
   }
 
@@ -92,7 +94,7 @@ const MovementView = ({ rows, selectedRow, infoClient }) => {
         })
       }
     } catch (e) {
-      console.error(`Error al modificaar los datos: `, e)
+      console.error(`Error al modificar los datos: `, e)
     }
   }
 
@@ -204,16 +206,17 @@ const MovementView = ({ rows, selectedRow, infoClient }) => {
     <>
       <div>
         <div>
-          <TableEdit
-            rows={rows || []}
-            columns={columnsTableMovimientos}
-            buttons={buttons}
-          />
           <NewMovement
             idexp={selectedRow && selectedRow.idexp ? selectedRow.idexp : []}
             infoClient={infoClient}
             infoExp={selectedRow}
           />
+          <TableEdit
+            rows={rows || []}
+            columns={columnsTableMovimientos}
+            buttons={buttons}
+          />
+
         </div>
       </div>
     </>

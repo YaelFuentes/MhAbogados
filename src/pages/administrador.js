@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TableResponsive from '@/components/flowbite/table'
+import Swal from 'sweetalert2'
 
 const Administrador = () => {
   const [formData, setFormData] = useState([])
@@ -28,12 +29,28 @@ const Administrador = () => {
     const { confirmPassword, ...dataToSend } = formData;
     try {
       const response = await axios.post('/api/usuarios/usuario', dataToSend)
+      console.log(dataToSend);
       if (response.status === 200) {
         setFormData({});
-        console.log('Usuario guardado con exito')
+        Swal.fire({
+          position: 'bottom-start',
+          icon: 'success',
+          title: 'Usuario  añadido con exito',
+          showConfirmButton: false,
+          timer: '1500',
+        })
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
         setPasswordMatchError(false);
       } else {
-        console.error(response.data.error)
+        Swal.fire({
+          position:'bottom-start',
+          icon:'error',
+          title:'Error al intentar añadir un usuario, intentelo mas tarde',
+          showConfirmButton: false,
+          timer: '1500'
+        })
       }
     } catch (e) {
       console.error('Error al insertar los datos: ', e)
@@ -55,7 +72,7 @@ const Administrador = () => {
   return (
     <>
       <div className='bg-light'>
-        <div className='grid grid-cols-2 gap-4 text-center bg-white'>
+        <div className='grid grid-cols-2 gap-4 bg-white'>
           <div>
             <form className='p-4 m-2' onSubmit={handleSubmit}>
               <div className="relative z-0 w-full mb-5 group">

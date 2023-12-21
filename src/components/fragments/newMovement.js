@@ -35,9 +35,9 @@ const NewMovement = ({ idexp, infoClient, infoExp }) => {
             container: 'z-[1500]' // Ajusta este valor según sea necesario
           }
         })
-        setTimeout(() => {
+        /* setTimeout(() => {
           location.reload();
-        }, 2000);
+        }, 2000); */
       } else {
         Swal.fire({
           position: 'bottom-start',
@@ -63,7 +63,7 @@ const NewMovement = ({ idexp, infoClient, infoExp }) => {
 
   return (
     <>
-      <div className='text-center m-4 p-4'>
+      <div className='text-center mb-4'>
         <BasicModal
           nameButton='Añadir movimiento'
           titleModal='Añadir nuevo movimiento'

@@ -1,4 +1,5 @@
 import { db } from "../connection/databaseService";
+import * as bcrypt from "bcryptjs"
 
 class UserService {
   constructor(id, username, password, name, lastname, phone, address) {
@@ -33,8 +34,16 @@ class UserService {
 
   async create(newUserData) {
     try {
-      const newUserId = await db("users").insert(newUserData)
-      return newUserId;
+      console.log(newUserData)
+      const hashedPassword = await bcrypt.hash(newUserData.password, 60);
+      console.log(hashedPassword);
+      const newDataInfo = {
+        ...newUserData,
+        password: hashedPassword,
+      };
+      console.log('newDataInfo', newDataInfo)
+      /* const newUserId = await db("users").insert(newUserData)
+      return newUserId; */
     } catch (e) {
       console.error('Error creating a new client:', e);
       return null;
