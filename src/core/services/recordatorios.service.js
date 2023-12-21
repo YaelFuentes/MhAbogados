@@ -7,6 +7,16 @@ class RecordatorioService {
     this.endDate = endDate;
   }
 
+  async getAll(){
+    try{
+      const table = 'eventos'
+      const records = await db(`${table}`)
+    }catch(e){
+      console.error("Error fetching records by ID:", e)
+      return null
+    }
+  }
+
   async create(newDataRecord){
     try{
       console.log(newDataRecord)
