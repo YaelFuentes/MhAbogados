@@ -104,6 +104,12 @@ function ResponsiveAppBar() {
                 >
                   <Link href='/administrador'>Administrador</Link>
                 </Button>
+                <Button
+                  onClick={handleCloseNavMenu}
+
+                >
+                  <Link href='/recordatorios'>Notificaciones</Link>
+                </Button>
               </Box>
             </Menu>
           </Box>
