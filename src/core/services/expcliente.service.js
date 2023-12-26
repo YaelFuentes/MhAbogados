@@ -74,7 +74,6 @@ class ExpclienteService {
   async updateByIds(ids, updates) {
     try {
       const updateArray = Array.isArray(updates) ? updates : [updates];
-      console.log(updates, ids)
       const promises = updateArray.map(async (update) => {
         const keys = Object.keys(update);
         const values = Object.values(update);

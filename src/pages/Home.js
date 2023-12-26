@@ -55,10 +55,11 @@ const HomePage = ({ user }) => {
 
   return (
     <>
-      <div>
-        <h1 className="container mx-auto my-4 text-xl font-bold ">Bienvenido, {user.username}</h1>
-        {<TableResponsive rows={users} columns={columnsTable} routes={'clientInfo'} />}
+      <div className="flex items-center justify-between px-10 m-4">
+        <h1 className="text-xl font-bold">Bienvenido, {user.username}</h1>
+        <SearchComponent onSearch={handleSearch} className='' />
       </div>
+      <TableResponsive rows={filteresUsers} columns={columnsTable} routes={'clientInfo'} />
     </>
   );
 }

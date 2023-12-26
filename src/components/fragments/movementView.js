@@ -135,7 +135,6 @@ const MovementView = ({ rows, selectedRow, infoClient }) => {
       onClick={Alert}
     />,
     onClick: (row) => {
-      console.log(row)
       handleRowClick(row)
     }
   }, {

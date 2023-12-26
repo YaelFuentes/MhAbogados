@@ -6,7 +6,6 @@ export default async function handler(req, res) {
       if (req.query.id || req.query.dni) {
         const id = parseInt(req.query.id);
         const dni = parseInt(req.query.dni)
-        console.log('req.query: ',req.query)
         const response = await MovimientoController.getDataById(id, dni);
         res.json(response);
       } else {

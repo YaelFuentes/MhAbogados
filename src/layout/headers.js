@@ -7,15 +7,13 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ mail }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -86,11 +84,6 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))} */}
               <Box onClick={handleCloseNavMenu}>
                 <Button
                   onClick={handleCloseNavMenu}
@@ -100,7 +93,6 @@ function ResponsiveAppBar() {
                 </Button>
                 <Button
                   onClick={handleCloseNavMenu}
-
                 >
                   <Link href='/administrador'>Administrador</Link>
                 </Button>
@@ -142,13 +134,12 @@ function ResponsiveAppBar() {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
             >
-              <Link href='/recordatorios'>Notificaciones</Link>
+              <Link href={`/recordatorios?mail=${encodeURIComponent(mail)}`}>Notificaciones</Link>
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Opciones">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                 <AccountCircleIcon style={{ color: 'white', width: '40', height: '40' }} />
               </IconButton>
             </Tooltip>

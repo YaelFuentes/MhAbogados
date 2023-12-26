@@ -13,12 +13,9 @@ class MovimientosService {
       const tableClient = 'cliente'
       const tableExpcliente = 'expcliente'
       if (dni) {
-        console.log('dni: ', dni)
         const movimientoExpcliente = await db(`${table}`).where('idexp', dni);
         return movimientoExpcliente;
       } else {
-        console.log('id: ', id)
-        console.log('id: ', id)
         const dataClient = await db(`${tableClient}`).where('id', id).first()
         const dataExpcliente = await db(`${tableExpcliente}`).where('dni', dataClient.dni)
 
@@ -35,17 +32,7 @@ class MovimientosService {
       return null;
     }
   }
-  /* async getAll() {
-    try {
-      const table = 'movimiento'
-      const result = await db(`${table}`)
-      return result
-      console.log('hola')
-    } catch (e) {
-      console.error(`Error al traer los datos de movimiento: `, e);
-      return [];
-    }
-  } */
+
   async create(newData) {
     try {
       const table = 'movimiento'
@@ -58,7 +45,6 @@ class MovimientosService {
   }
   async updateByIds(ids, updates) {
     try {
-      console.log(updates)
       const table = 'movimiento'
       const updateArray = Array.isArray(updates) ? updates : [updates];
 
@@ -85,7 +71,6 @@ class MovimientosService {
   }
   async deleteByIds(ids) {
     try {
-      console.log(ids)
       const table = 'movimiento'
       await db(`${table}`).where('idmovimiento', ids).del()
       return true

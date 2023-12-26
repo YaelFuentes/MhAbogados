@@ -31,7 +31,6 @@ const HonorariosCliente = ({ id }) => {
     try {
       const dataId = selectedRow && selectedRow.idexpcliente ? selectedRow.idexpcliente : ''
       const response = await axios.put(`/api/expedienteCliente/ExpCliente?id=${dataId}`, formData);
-      console.log(response)
       if (response.status === 200) {
         Swal.fire({
           position: 'center',

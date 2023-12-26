@@ -22,7 +22,6 @@ const NewFile = ({ id }) => {
     e.preventDefault()
     try {
       const response = await axios.post(`/api/expediente/expediente`, formData)
-      console.log(response)
       if (response.status === 201) {
         Swal.fire({
           position: 'bottom-start',

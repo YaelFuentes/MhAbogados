@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           },
         }
         }
-      >{isLoggedIn && !isLoginPage && <ResponsiveAppBar />  }
+      >{isLoggedIn && !isLoginPage && <ResponsiveAppBar mail={pageProps.mail}/>  }
         <Component {...pageProps} isLoggedIn={isLoggedIn} />
       </SWRConfig>
     </main>
