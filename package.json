@@ -13,6 +13,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fullcalendar/core": "^6.1.10",
+    "@fullcalendar/daygrid": "^6.1.10",
+    "@fullcalendar/react": "^6.1.10",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "axios": "^1.6.1",
@@ -26,7 +29,9 @@
     "next-iron-session": "^4.2.0",
     "nodemailer": "^6.9.7",
     "react": "^18",
+    "react-big-calendar": "^1.8.5",
     "react-dom": "^18",
+    "save": "^2.9.0",
     "sweetalert2": "^11.10.1",
     "swr": "^2.2.4"
   },
