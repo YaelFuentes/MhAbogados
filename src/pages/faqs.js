@@ -12,13 +12,6 @@ const PreguntasFrecuentes = () => {
     return (
         <div className="bg-[#284285]">
             <div style={{ position: 'relative', textAlign: 'center' }}>
-                <Image
-                    src={faqs}
-                    alt="Imagen de fondo"
-                    layout="fill"
-                    quality={100}
-                    style={{ position: 'absolute', objectFit: 'cover' }}
-                />
                 <div style={{ position: 'relative', zIndex: 2 }}>
                     <h1 style={{
                         color: '#fff',
