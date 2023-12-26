@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/es';
@@ -18,8 +18,7 @@ const Recordatorios = () => {
     const [events, setEvents] = useState([]);
     const [newEvent, setNewEvent] = useState({ title: '', start: '', end: '' });
     const [modalOpen, setModalOpen] = useState(false);
-    console.log(events)
-    console.log(newEvent)
+
     const handleSelectSlot = ({ start, end }) => {
         setNewEvent({ title: '', start, end });
         setModalOpen(true);
