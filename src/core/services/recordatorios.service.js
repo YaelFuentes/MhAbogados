@@ -11,6 +11,7 @@ class RecordatorioService {
     try{
       const table = 'eventos'
       const records = await db(`${table}`)
+      return records
     }catch(e){
       console.error("Error fetching records by ID:", e)
       return null

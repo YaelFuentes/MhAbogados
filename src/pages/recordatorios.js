@@ -37,13 +37,40 @@ const Recordatorios = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('/api/recordatorios/recordatorios')
-                setEvents(response.data)
+                if (response.data !== null) {
+                    const formattedEvents = response.data.map(event => ({
+                        title: event.content,
+                        start: moment(event.startDate).toDate(),
+                        end: moment(event.endDate).toDate(),
+                    }));
+                    setEvents(formattedEvents);
+                } else {
+                    console.error('El servidor devolvió una respuesta nula.');
+                }
             } catch (e) {
                 console.error('Error al mostrar los datos: ', e)
             }
         }
         fetchData()
     }, [])
+
+    const loadEvents = async () => {
+        try {
+            const response = await axios.get('/api/recordatorios/recordatorios');
+            if (response.data !== null) {
+                const formattedEvents = response.data.map((event) => ({
+                    title: event.content,
+                    start: moment(event.startDate).toDate(),
+                    end: moment(event.endDate).toDate(),
+                }));
+                setEvents(formattedEvents);
+            } else {
+                console.error('El servidor devolvió una respuesta nula.');
+            }
+        } catch (e) {
+            console.error('Error al mostrar los datos: ', e);
+        }
+    };
 
     const handleAddEvent = async (e) => {
         try {
@@ -59,6 +86,7 @@ const Recordatorios = () => {
                 if (response.data !== null) {
                     setEvents([...events, formattedEvent]);
                     setModalOpen(false);
+                    loadEvents();
                 } else {
                     console.error('El servidor devolvió una respuesta nula.');
                 }
