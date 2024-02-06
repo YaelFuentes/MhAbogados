@@ -5,7 +5,7 @@ import aboutUs from "../../public/img/logo/aboutUs.jpg";
 import * as React from 'react';
 import FooterWeb from './footerWeb'
 import PreguntasFrecuentes from "./faqs";
-import { Roboto } from 'next/font/google'
+import wppIcon from '../../public/img/logo/whatsapp.png'
 
 
 
@@ -32,16 +32,6 @@ const WebsiteHome = () => {
     lineHeight: "30px"
   };
 
-  const spamContent = {
-    float: "right",
-    fontSize: "60px",
-    color: "#d7d7d7",
-    fontFamily: 'Lora serif',
-    fontWeight: "bold",
-    position: "relative",
-    top: "-16px"
-  };
-
   const contenidoEstilo = {
     position: "absolute",
     top: "50%",
@@ -51,6 +41,18 @@ const WebsiteHome = () => {
     color: "white",
 
   };
+
+  const wppIconStyle = {
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+    width: '50px', 
+    height: '50px',
+    cursor: 'pointer',
+    zIndex: '9999', 
+  };
+
+  const wppLink = `https://wa.me/2612084810`;
 
   return (
     <>
@@ -166,6 +168,9 @@ const WebsiteHome = () => {
       </div>
 
       <PreguntasFrecuentes />
+      <a href={wppLink} target="_blank" rel="noopener noreferrer">
+        <Image src={wppIcon} alt="WhatsApp" style={wppIconStyle} />
+      </a>
       <FooterWeb />
     </>
   );

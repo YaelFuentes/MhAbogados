@@ -10,8 +10,6 @@ export default function FooterWeb() {
             <span className="self-center text-2xl font-semibold whitespace-nowrap">Mariana Heredia abogados</span>
           </a>
           <div className="sm:w-full md:w-2/3 lg:w-3/4">
-            <h1 className="mb-2">Edificio Piazza - San Martin N° 1035</h1>
-            <h1 className="mb-2">Piso 8° Oficina 37, Ciudad Mendoza</h1>
             <h1 className="mb-2">Contacto: 261 256 0300</h1>
             <h1>Correo electrónico: estudioherediamza@gmail.com</h1>
           </div>
