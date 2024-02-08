@@ -52,7 +52,7 @@ const WebsiteHome = () => {
     zIndex: '9999', 
   };
 
-  const wppLink = `https://wa.me/2612084810`;
+  const wppLink = `https://wa.me/2612560300`;
 
   return (
     <>
