@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const InfoClientTab = ({ id }) => {
+const InfoClientTab = ({ id, statusObs }) => {
 
   const [client, setClient] = useState({});
   const [editedClient, setEditedClient] = useState({});
@@ -53,7 +53,7 @@ const InfoClientTab = ({ id }) => {
       <div>
         {editMode ? (
           <>
-            <div  class="grid lg:grid-cols-3 sm:grid-cols-12 gap-4">
+            <div class="grid lg:grid-cols-3 sm:grid-cols-12 gap-4">
               <div>
                 <div className='mb-4'>
                   <label htmlFor='nombre' className='block text-lg font-bold mb-2'>Nombre</label>
@@ -133,19 +133,21 @@ const InfoClientTab = ({ id }) => {
               </div>
             </div>
             <div>
-              <div className='p-4'>
-                <div className='mb-4'>
-                  <label htmlFor='observaciones' className='block text-lg font-bold mb-2'>Observaciones</label>
-                  <input
-                    type='text'
-                    name='observaciones'
-                    placeholder='Observaciones'
-                    value={editedClient.observaciones}
-                    onChange={handleClientChange}
-                    className='w-full p-2 mb-2 border border-gray-300 rounded'
-                  />
-                </div>
-              </div>
+              {statusObs == 1 ?
+                <div className='p-4'>
+                  <div className='mb-4'>
+                    <label htmlFor='observaciones' className='block text-lg font-bold mb-2'>Observaciones</label>
+                    <input
+                      type='text'
+                      name='observaciones'
+                      placeholder='Observaciones'
+                      value={editedClient.observaciones}
+                      onChange={handleClientChange}
+                      className='w-full p-2 mb-2 border border-gray-300 rounded'
+                    />
+                  </div>
+                </div> :
+                <></>}
             </div>
           </>
         ) : (
@@ -182,14 +184,16 @@ const InfoClientTab = ({ id }) => {
                     {client.domicilio}
                   </h3></div>
                 </div>
-                <div>
-                  <h3 className='font-bold m-2 text-xl '>
-                    Observaciones :{' '}
-                    <p className='font-bold text-sm text-black'>
-                      {client.observaciones}
-                    </p>
-                  </h3>
-                </div>
+                {statusObs == 1 ?
+                  <div>
+                    <h3 className='font-bold m-2 text-xl '>
+                      Observaciones :{' '}
+                      <p className='font-bold text-sm text-black'>
+                        {client.observaciones}
+                      </p>
+                    </h3>
+                  </div> :
+                  <></>}
               </div>
             </div>
           </>

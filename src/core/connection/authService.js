@@ -9,6 +9,7 @@ const authServiceFactory = () => {
   return { validate };
 };
 
+
 module.exports = {
   authServiceFactory
 };

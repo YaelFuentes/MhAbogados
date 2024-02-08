@@ -51,7 +51,7 @@ const TableEdit = ({ columns, rows, buttons, onClickRow }) => {
               {columns.map((column) => (
                 <td
                   key={column.id}
-                  className="px-6 py-4 sm:w-1/4 md:w-1/6 lg:w-1/8 xl:w-1/12"
+                  className="px-6 py-4 sm:w-1/4 md:w-1/6 lg:w-1/8 xl:w-1/12 text-center"
                 >
                   {renderCellContent(column, row)}
                 </td>

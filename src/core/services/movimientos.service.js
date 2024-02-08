@@ -13,8 +13,17 @@ class MovimientosService {
       const tableClient = 'cliente'
       const tableExpcliente = 'expcliente'
       if (dni) {
-        const movimientoExpcliente = await db(`${table}`).where('idexp', dni);
-        return movimientoExpcliente;
+        /* const movimientoExpcliente = await db(`${table}`).where('idexp', dni);
+        return movimientoExpcliente; */
+        const dataExpcliente = await db(`${tableExpcliente}`).where('dni', dni)
+
+        const movimientoExpclienteInfo = await Promise.all(
+          dataExpcliente.map(async (exp) => {
+            const movimientoExpcliente = await db(`${table}`).where('idexp', exp.idexp);
+            return movimientoExpcliente;
+          })
+        );
+        return movimientoExpclienteInfo
       } else {
         const dataClient = await db(`${tableClient}`).where('id', id).first()
         const dataExpcliente = await db(`${tableExpcliente}`).where('dni', dataClient.dni)

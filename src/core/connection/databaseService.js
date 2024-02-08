@@ -26,7 +26,7 @@ const databaseServiceFactory = () => {
   const getUser = async (username) => {
     const user = await db(TABLE).select().where('username', username);
     if (user.length === 0) {
-      throw new Error("User not found");
+      throw new Error("Usuario no encontrado");
     }
     return user[0];
   };
@@ -34,9 +34,23 @@ const databaseServiceFactory = () => {
   return { getUser };
 };
 
+const databaseServiceClient = () => {
+  const TABLE = 'cliente'
+
+  const getClient = async (username, dni) => {
+    const client = await db(TABLE).select().where({apellido:username, dni:dni});
+    if (client.length === 0) {
+      throw new Error(`El cliente ${username}, ${dni} no existe`);
+    }
+    return client;
+  }
+  return { getClient }
+}
+
 
 
 module.exports = {
   databaseServiceFactory,
+  databaseServiceClient,
   db
 }

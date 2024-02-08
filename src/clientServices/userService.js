@@ -7,7 +7,14 @@ const userServiceFactory = () => {
 
   return { login };
 };
+const clientServiceFactory = () => {
+  function login(username, password) {
+    return axios.post(`/api/authClient`, { username, password })
+  }
+  return { login }
+}
 
 module.exports = {
-  userServiceFactory
+  userServiceFactory,
+  clientServiceFactory
 };

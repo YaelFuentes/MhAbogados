@@ -3,18 +3,18 @@ import { Inter } from 'next/font/google'
 import withSession from "../lib/session";
 import HomePage from './Home';
 import Recordatorios from './recordatorios';
+import RequestClient from './requestClient';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ user, mail }) {
-
+export default function Home({ user, mail, dni }) {
   return (
     <div>
       <Head>
         <title>Home</title>
       </Head>
       <main className={`${inter.className}`}>
-        <HomePage user={user} mail={mail}/>
+        {dni ? <RequestClient user={user} dni={dni}/> : <HomePage user={user} mail={mail} />}
       </main>
     </div>
   )
@@ -22,7 +22,8 @@ export default function Home({ user, mail }) {
 
 export const getServerSideProps = withSession(async function ({ req, res }) {
   const user = req.session.get("user");
-  const mail = req.session.get("mail")
+  const mail = req.session.get("mail");
+  const status = req.session.get("status");
 
   if (user === undefined) {
     res.setHeader("location", "/websiteHome");
@@ -32,6 +33,11 @@ export const getServerSideProps = withSession(async function ({ req, res }) {
   }
 
   return {
-    props: { user: req.session.get("user"), mail: req.session.get("email") },
+    props: {
+      user: req.session.get("user"),
+      mail: req.session.get("email") ? req.session.get("email") : null,
+      status: req.session.get("status"),
+      dni: req.session.get('DNI') ? req.session.get('DNI') : null
+    },
   };
 });

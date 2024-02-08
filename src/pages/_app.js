@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [status, setStatus] = useState([]);
   const isLoginPage = router.pathname === '/login';
 
   useEffect(() => {
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
       try {
         const response = await axios.get('/api/user');
         const data = response.data
+        setStatus(response.data.status)
         setIsLoggedIn(data.isLoggedIn);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -42,7 +44,7 @@ function MyApp({ Component, pageProps }) {
           },
         }
         }
-      >{isLoggedIn && !isLoginPage && <ResponsiveAppBar mail={pageProps.mail}/>  }
+      >{isLoggedIn && !isLoginPage && status == 0 && <ResponsiveAppBar mail={pageProps.mail}/>  }
         <Component {...pageProps} isLoggedIn={isLoggedIn} />
       </SWRConfig>
     </main>

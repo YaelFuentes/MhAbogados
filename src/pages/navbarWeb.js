@@ -18,7 +18,7 @@ export default function NavbarMenu() {
             <Link href='/' color='inherit'>Home</Link>
           </Button>
           <Button color="inherit" sx={{ color: 'white' }}>
-            <Link href='/requestClient' color='inherit'>Mis juicios</Link>
+            <Link href='/loginClient' color='inherit'>Mis juicios</Link>
           </Button>
           <Button color="inherit" sx={{ color: 'white' }}>
             <Link href='/login' color='inherit'>Ingresar</Link>
