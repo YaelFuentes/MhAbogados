@@ -113,7 +113,6 @@ class ExpedienteService {
   }
 
   async deleteByIds(ids, idexpe) {
-    console.log(idexpe, ids)
     try {
       await db.transaction(async (trx) => {
         await db("expcliente").transacting(trx).where({ dni: ids, idexp: idexpe }).del();

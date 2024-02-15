@@ -17,7 +17,7 @@ const style = {
   zIndex: 10,
 };
 
-export default function BasicModal({ nameButton, titleModal, contentModal, styled, onClose, onOpen }) {
+export default function BasicModal({ nameButton, titleModal, contentModal, styled, onClose, onOpen, styledButton }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -39,7 +39,7 @@ export default function BasicModal({ nameButton, titleModal, contentModal, style
 
   return (
     <div>
-      <Button onClick={handleOpen}>{nameButton}</Button>
+      <Button onClick={handleOpen} sx={styledButton ? styledButton : ''}>{nameButton}</Button>
       <Modal
         open={open}
         onClose={handleClose}

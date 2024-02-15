@@ -7,14 +7,14 @@ import RequestClient from './requestClient';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ user, mail, dni }) {
+export default function Home({ user, mail, status, dni }) {
   return (
     <div>
       <Head>
         <title>Home</title>
       </Head>
       <main className={`${inter.className}`}>
-        {dni ? <RequestClient user={user} dni={dni}/> : <HomePage user={user} mail={mail} />}
+        {status == 1 ? <RequestClient user={user} dni={dni}/> : <HomePage user={user} mail={mail} />}
       </main>
     </div>
   )

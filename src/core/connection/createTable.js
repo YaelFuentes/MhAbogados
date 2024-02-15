@@ -10,7 +10,6 @@ async function createTable() {
         table.string('username')
         table.string('password')
       })
-      console.log(usersTable);
     }
   } catch (e) {
     console.log(`La tabla que esta intentando crear ya se encuentra en ${process.env.DB_HOST}`);

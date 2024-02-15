@@ -8,6 +8,9 @@ class NotitifacionController {
   static async envioRecordatorio(mailOptions) {
     return await this.notificationService.recordatorioMail(mailOptions)
   }
+  static async forgotPassword(dni){
+    return await this.notificationService.forgotPassword(dni)
+  }
 }
 
 export default NotitifacionController;
