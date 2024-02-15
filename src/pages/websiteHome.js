@@ -46,10 +46,10 @@ const WebsiteHome = () => {
     position: 'fixed',
     bottom: '20px',
     right: '20px',
-    width: '50px', 
+    width: '50px',
     height: '50px',
     cursor: 'pointer',
-    zIndex: '9999', 
+    zIndex: '9999',
   };
 
   const wppLink = `https://wa.me/2612560300`;
@@ -68,7 +68,7 @@ const WebsiteHome = () => {
           />
           <div style={contenidoEstilo}>
             <h1 className={` text-4xl font-bold mb-4`}>MH Estudio Juridico</h1>
-            <h3>Resguardando Derechos con Excelencia Legal: Especialistas en el Reajuste de Haberes para Personal de Fuerzas Armadas y Seguridad</h3>
+            <h3>Especialistas en el Reajuste de Haberes para Personal de Fuerzas Armadas y Seguridad</h3>
           </div>
         </div>
       </div>
@@ -77,22 +77,13 @@ const WebsiteHome = () => {
         <div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 flex items-center justify-center">
           <Image
             src={aboutUs}
-            className="rounded-xl hidden md:block" // Oculta la imagen en tamaños pequeños (menos de 768px) y la muestra en tamaños medianos y grandes
+            className="rounded-xl hidden md:block" 
             alt="About Us"
           />
         </div>
 
         <div className="col-span-12 md:col-span-6 lg:col-span-6 p-4">
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={assetContent}>
-              <h2 className="text-left text-[#E7ECF8]">
-                <strong>Excelencia</strong>
-              </h2>
-
-              <h2 className="text-left text-[#E7ECF8]">
-                <strong>En el Resguardo de tus Derechos Financieros</strong>
-              </h2>
-            </div>
             <span style={{
               float: 'right',
               fontSize: '60px',
@@ -111,14 +102,11 @@ const WebsiteHome = () => {
             color: '#E7ECF8',
             fontWeight: "bold"
           }}>
-            En nuestra firma, nos especializamos en liderar causas vinculadas al reajuste de haberes del personal de las Fuerzas Armadas y de Seguridad, ya sea en situación de retiro o en actividad. Nos destacamos por desafiar de manera estratégica todos los Decretos y reglamentaciones que, de manera inconstitucional, afectan la remuneración de nuestro valioso personal.
+            Nos especializamos en causas vinculadas al reajuste de haberes del personal de las Fuerzas Armadas y de Seguridad,
+            ya sea en situación de retiro o en actividad, procurando el dictado de sentencia favorable y posterior coboro por parte del cliente de las sumas que deriven en virtud del dictado de sentencia firme.
           </p>
           <br />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={assetContent}>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Nuestra Misión:</strong></h2>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Tu Tranquilidad Financiera</strong></h2>
-            </div>
             <span style={{
               float: 'right',
               fontSize: '60px',
@@ -136,14 +124,12 @@ const WebsiteHome = () => {
             color: '#E7ECF8',
             fontWeight: "bold"
           }}>
-            Aspiramos a ser la opción más efectiva para proteger los derechos de cada individuo perteneciente a las Fuerzas Armadas y de Seguridad, asegurando una liquidación justa de sus haberes. Lo logramos mediante el uso experto de herramientas judiciales adaptadas a la perfección para su defensa dentro del marco normativo y constitucional actual.
+            Nuesto objetivo siempre es en defensa del personal de las Fuerzas Armadas y de Seguridad, aún cuando en dicha defensa se insuma más tiempo o implique la apertura de nuevos procesos para lograr el cobro de lo que corresponde.
+            <br />
+            La comunicación del cliente con el estudio es preferentemente a través de esta página web y de los canales que ofrece (correo electrónico y whatsappa), ya que la totalidad de la información de cada expediente se encuentra volcada en este sitio y permite al cliente conocer los movimientos procesales que posee.
           </p>
           <br />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={assetContent}>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Comprometidos</strong></h2>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Con la Excelencia y Atención Personalizada</strong></h2>
-            </div>
             <span style={{
               float: 'right',
               fontSize: '60px',
@@ -161,7 +147,7 @@ const WebsiteHome = () => {
             color: '#E7ECF8',
             fontWeight: "bold"
           }}>
-            En nuestro enfoque, destacamos la atención personalizada al cliente, la gestión comprometida y responsable, la defensa de principios y valores fundamentales, así como la comunicación constante sobre el estado judicial de cada caso y las últimas novedades jurisprudenciales en la Provincia de Mendoza, entre otros aspectos cruciales.
+            Aspiramos a que ésta sea una herramienta útil para el cliente, en el sentido de poder conocer que sus causas se encuentran en mvimiento y siempre direccionadas al objetivo fianl que no es otro que percibir lo que les corresponde conforme a derechos.
           </p>
         </div>
 
