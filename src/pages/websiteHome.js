@@ -46,10 +46,10 @@ const WebsiteHome = () => {
     position: 'fixed',
     bottom: '20px',
     right: '20px',
-    width: '50px', 
+    width: '50px',
     height: '50px',
     cursor: 'pointer',
-    zIndex: '9999', 
+    zIndex: '9999',
   };
 
   const wppLink = `https://wa.me/2612560300`;
@@ -68,7 +68,7 @@ const WebsiteHome = () => {
           />
           <div style={contenidoEstilo}>
             <h1 className={` text-4xl font-bold mb-4`}>MH Estudio Juridico</h1>
-            <h3>Resguardando Derechos con Excelencia Legal: Especialistas en el Reajuste de Haberes para Personal de Fuerzas Armadas y Seguridad</h3>
+            <h3>{/* Resguardando Derechos con Excelencia Legal:  */}Especialistas en el Reajuste de Haberes para Personal de Fuerzas Armadas y Seguridad</h3>
           </div>
         </div>
       </div>
@@ -116,8 +116,11 @@ const WebsiteHome = () => {
           <br />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={assetContent}>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Nuestra Misión:</strong></h2>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Tu Tranquilidad Financiera</strong></h2>
+              <h2 className="text-left text-[#E7ECF8]">
+                <strong>Nuestra Misión:</strong></h2>
+              <h2 className="text-left text-[#E7ECF8]">
+                <strong>Tu Tranquilidad Financiera</strong>{/* sacar text */}
+              </h2>
             </div>
             <span style={{
               float: 'right',
@@ -141,8 +144,12 @@ const WebsiteHome = () => {
           <br />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={assetContent}>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Comprometidos</strong></h2>
-              <h2 className="text-left text-[#E7ECF8]"><strong>Con la Excelencia y Atención Personalizada</strong></h2>
+              <h2 className="text-left text-[#E7ECF8]">
+                <strong>Comprometidos</strong>
+              </h2>
+              <h2 className="text-left text-[#E7ECF8]">
+                <strong>Con la Excelencia y Atención Personalizada</strong> {/* sacar texto */}
+              </h2>
             </div>
             <span style={{
               float: 'right',

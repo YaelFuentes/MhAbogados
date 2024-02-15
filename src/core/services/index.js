@@ -6,3 +6,4 @@ export { default as ExpclienteService } from '@/core/services/expcliente.service
 export { default as MovimientosService } from '@/core/services/movimientos.service'
 export { default as NotificationService } from '@/core/services/nodemailer.service'
 export { default as RecordatorioService } from '@/core/services/recordatorios.service'
+export { default as UserClientService } from '@/core/services/userClient.service'

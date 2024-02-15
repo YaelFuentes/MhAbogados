@@ -10,7 +10,7 @@ const InfoClientTab = ({ id, statusObs }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/cliente/cliente?id=${id}`);
+        const response = await axios.get(`/api/usuarios/userClient?id=${id}`);
         const data = response.data;
         setClient(data);
         setEditedClient(data);
@@ -27,7 +27,7 @@ const InfoClientTab = ({ id, statusObs }) => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`/api/cliente/cliente?id=${id}`, editedClient);
+      await axios.put(`/api/usuarios/userClient?id=${client.dni}`, editedClient);
       setEditMode(false);
       setClient(editedClient);
     } catch (err) {
@@ -59,9 +59,9 @@ const InfoClientTab = ({ id, statusObs }) => {
                   <label htmlFor='nombre' className='block text-lg font-bold mb-2'>Nombre</label>
                   <input
                     type='text'
-                    name='nombre'
+                    name='name'
                     placeholder='Nombre'
-                    value={editedClient.nombre}
+                    value={editedClient.name}
                     onChange={handleClientChange}
                     className='w-full p-2 mb-2 border border-gray-300 rounded'
                   />
@@ -71,15 +71,15 @@ const InfoClientTab = ({ id, statusObs }) => {
                 <label htmlFor='apellido' className='block text-lg font-bold mb-2'>Apellido</label>
                 <input
                   type='text'
-                  name='apellido'
+                  name='lastname'
                   placeholder='Apellido'
-                  value={editedClient.apellido}
+                  value={editedClient.lastname}
                   onChange={handleClientChange}
                   className='w-full p-2 mb-2 border border-gray-300 rounded'
                 />
               </div>
               </div>
-              <div>
+              {/* <div>
                 <div className='mb-4'>
                   <label htmlFor='dni' className='block text-lg font-bold mb-2'>DNI</label>
                   <input
@@ -91,13 +91,13 @@ const InfoClientTab = ({ id, statusObs }) => {
                     className='w-full p-2 mb-2 border border-gray-300 rounded'
                   />
                 </div>
-              </div>
+              </div> */}
               <div>
                 <div className='mb-4'>
                   <label htmlFor='phone' className='block text-lg font-bold mb-2'>Contacto</label>
                   <input
                     type='text'
-                    name='phone'
+                    name='cel'
                     placeholder='Contacto'
                     value={editedClient.telcel}
                     onChange={handleClientChange}
@@ -118,7 +118,7 @@ const InfoClientTab = ({ id, statusObs }) => {
                   />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <div className='mb-4'>
                   <label htmlFor='domicilio' className='block text-lg font-bold mb-2'>Domicilio</label>
                   <input
@@ -130,7 +130,7 @@ const InfoClientTab = ({ id, statusObs }) => {
                     className='w-full p-2 mb-2 border border-gray-300 rounded'
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
             <div>
               {statusObs == 1 ?
@@ -158,12 +158,12 @@ const InfoClientTab = ({ id, statusObs }) => {
                   <div><h3 className='font-bold m-2 text-xl '>
                     Nombre del cliente :
                     <br />
-                    <span>{client.nombre}</span>
+                    <span>{client.name}</span>
                   </h3></div>
                   <div><h3 className='font-bold m-2 text-xl '>
                     Apellido del cliente:
                     <br />
-                    {client.apellido}
+                    {client.lastname}
                   </h3></div>
                   <div><h3 className='font-bold m-2 text-xl '>DNI:
                     <br />
@@ -178,11 +178,11 @@ const InfoClientTab = ({ id, statusObs }) => {
                     <br />
                     {client.email}
                   </h3></div>
-                  <div><h3 className='font-bold m-2 text-xl '>
+                  {/* <div><h3 className='font-bold m-2 text-xl '>
                     Domicilio :{' '}
                     <br />
                     {client.domicilio}
-                  </h3></div>
+                  </h3></div> */}
                 </div>
                 {statusObs == 1 ?
                   <div>

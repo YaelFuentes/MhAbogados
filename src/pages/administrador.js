@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TableResponsive from '@/components/flowbite/table'
+import Swal from 'sweetalert2'
 
 const Administrador = () => {
   const [formData, setFormData] = useState([])
@@ -30,10 +31,22 @@ const Administrador = () => {
       const response = await axios.post('/api/usuarios/usuario', dataToSend)
       if (response.status === 200) {
         setFormData({});
-        console.log('Usuario guardado con exito')
+        Swal.fire({
+          position: 'bottom-start',
+          icon: 'success',
+          title: 'Usuario creado con exito.',
+          showConfirmButton: false,
+          timer: '1500'
+        })
         setPasswordMatchError(false);
       } else {
-        console.error(response.data.error)
+        Swal.fire({
+          position: 'bottom-start',
+          icon: 'error',
+          title: 'Error al crear un usuario, intentelo nuevamente mas tarde.',
+          showConfirmButton: false,
+          timer: '1500'
+        })
       }
     } catch (e) {
       console.error('Error al insertar los datos: ', e)
@@ -164,7 +177,7 @@ const Administrador = () => {
             </form>
           </div>
           <div>
-          <h1 className='font-bold m-2 text-xl text-center'>Listado de usuarios</h1>
+            <h1 className='font-bold m-2 text-xl text-center'>Listado de usuarios</h1>
             <TableResponsive
               columns={columnsTable}
               rows={users} />

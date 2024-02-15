@@ -6,3 +6,4 @@ export { default as ExpClienteController } from '@/core/controller/expcliente.co
 export { default as MovimientoController } from '@/core/controller/movimientos.controller'
 export { default as NotificationController } from '@/core/controller/nodemailer.controller'
 export { default as RecordatorioController } from '@/core/controller/recordatorios.controller'
+export { default as UserClientController } from '@/core/controller/userClient.controller'

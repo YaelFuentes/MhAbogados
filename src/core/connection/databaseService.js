@@ -35,14 +35,13 @@ const databaseServiceFactory = () => {
 };
 
 const databaseServiceClient = () => {
-  const TABLE = 'cliente'
-
-  const getClient = async (username, dni) => {
-    const client = await db(TABLE).select().where({apellido:username, dni:dni});
+  const getClient = async (dni) => {
+    const TABLECLIENT = 'userclient'
+    const client = await db(TABLECLIENT).select().where('dni', dni);
     if (client.length === 0) {
-      throw new Error(`El cliente ${username}, ${dni} no existe`);
+      throw new Error(`El cliente con dni: ${dni} no existe`);
     }
-    return client;
+    return client[0];
   }
   return { getClient }
 }

@@ -50,12 +50,12 @@ const RequestClient = ({ user, dni }) => {
   const [dataClient, setDataClient] = useState([]);
   const [clientInfo, setClientInfo] = useState("");
   const [selectedRow, setSelectedRow] = useState(null);
-
+  console.log(dni)
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/movimientos/movimientos?dni=${dni.password}`)
-        const expResponse = await axios.get(`/api/expediente/expediente?id=${dni.password}`)
+        const response = await axios.get(`/api/movimientos/movimientos?dni=${dni.username}`)
+        const expResponse = await axios.get(`/api/expediente/expediente?id=${dni.username}`)
         setDataClient(response.data)
         setClientInfo(expResponse.data)
       } catch (e) {
