@@ -15,7 +15,7 @@ export default function Home({ user, mail, status, dni }) {
         <title>Home</title>
       </Head>
       <main className={`${inter.className}`}>
-        {status == 1 ? <RequestClient user={user} dni={dni}/> : <WebsiteHome />}
+        {status == 1 ? <RequestClient user={user} dni={dni}/> : <HomePage  />}
       </main>
     </div>
   )
