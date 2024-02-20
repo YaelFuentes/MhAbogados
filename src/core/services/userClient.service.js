@@ -14,11 +14,14 @@ class UserClientService {
   }
   async getById(id) {
     try {
+
       let TABLECLIENT = 'userclient'
       let TABLE = 'cliente'
       const clientData = await db(TABLE).where('id', id).first();
+
       const userClient = await db(TABLECLIENT).where('dni', clientData.dni).first();
-      return userClient
+
+      return userClient ? userClient : clientData
     } catch (e) {
       console.error("Error fetching userClient by ID:", e);
       return null;

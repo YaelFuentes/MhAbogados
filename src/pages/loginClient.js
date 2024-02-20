@@ -5,6 +5,7 @@ import Loading from '@/components/mui/Loading';
 import useUser from '@/lib/useUser';
 import RegisterClient from './registerClient';
 import ForgotPassword from './forgotPassword';
+import NavbarWeb from "./navbarWeb";
 
 const clientService = clientServiceFactory()
 
@@ -42,6 +43,7 @@ const LoginClient = () => {
 
   return (
     <main>
+      <NavbarWeb />
       <div>
         {!user ?
           (<Loading />) :
@@ -51,21 +53,33 @@ const LoginClient = () => {
                 {isLoading ?
                   (<Loading />) :
                   (
-                    <div>
-                      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-white">
-                        <div className="p-4 space-y-4 md:space-y-6 sm:p-8">
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="md:mx-4">
+                        <h1 className="mb-4">¡Bienvenido al servicio de acceso en línea de MhAbogados!</h1>
+                        <p className="mb-4">
+                          Nuestro portal en línea te brinda acceso a toda la información asociada a tu causa. Te invitamos a completar el formulario de login en tu primer acceso para garantizar la seguridad de tus datos.
+                        </p>
+                        <br />
+                        <p className="mb-4">
+                          Una vez dentro del portal, podrás acceder a la información asociada a tus causas, las 24 horas del día, los 7 días de la semana.
+                        </p>
+                        <br />
+                        <p>
+                          Queda bajo su exclusiva responsabilidad el uso del Sitio al ingresar en una jurisdicción en la cual no reside en forma habitual, y nos deslindamos de toda responsabilidad por cualquier incumplimiento de leyes o regulaciones locales que usted pueda cometer como consecuencia del uso de una página y el ingreso en la misma en un país que no sea el de su residencia habitual.
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-white">
                           <div className="p-4 space-y-4 md:space-y-6 sm:p-8">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                              <img className="mx-auto h-32 w-auto"
-                                src="/img/logo/Logo.png"
-                                alt="MarianaHeredia abogados" />
+                              <img className="mx-auto h-32 w-auto" src="/img/logo/Logo.png" alt="MarianaHeredia abogados" />
                             </div>
                             <h1 className="text-xl text-center ml-8 mr-8 font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-white">
                               Bienvenido
                             </h1>
                             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                               <div>
-                                <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
+                                <label htmlFor="website-admin" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
                                 <div className='flex'>
                                   <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                     <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -78,7 +92,8 @@ const LoginClient = () => {
                                     onChange={usernameHandler}
                                     required
                                     className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder=" Ej. 30235865" />
+                                    placeholder=" Ej. 30235865"
+                                  />
                                 </div>
                               </div>
                               <div>
@@ -89,22 +104,25 @@ const LoginClient = () => {
                                   onChange={passwordHandler}
                                   required
                                   placeholder="••••••••"
-                                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                />
                               </div>
-                              {/* <a href="#" className="text-sm font-medium text-black hover:underline dark:text-primary-500">Olvidaste la contraseña?</a> */}
                               <div>
                                 <ForgotPassword />
                               </div>
-                              <div>
+                              <div className="flex justify-between">
                                 <button
                                   type="submit"
-                                  className="w-full text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                  className="w-5/12 text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                >
                                   Ingresar
                                 </button>
-                                <div
-                                  className="w-full mt-4 text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                  <RegisterClient />
-                                </div>
+                                <button
+                                  type="button"
+                                  className="w-5/12 text-white bg-blue-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                >
+                                  <RegisterClient/>
+                                </button>
                               </div>
                             </form>
                           </div>
@@ -116,6 +134,8 @@ const LoginClient = () => {
               </div>
             }
           </section>
+
+
         }
       </div>
     </main>

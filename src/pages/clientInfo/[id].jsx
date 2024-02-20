@@ -24,7 +24,7 @@ const idClient = () => {
     },
     {
       title: 'Información personal',
-      content: <InfoClientTab id={clientId} />
+      content: <InfoClientTab id={clientId} statusObs={1}/>
     }
   ]
 
