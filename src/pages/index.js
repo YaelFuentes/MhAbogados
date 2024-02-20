@@ -4,6 +4,7 @@ import withSession from "../lib/session";
 import HomePage from './Home';
 import Recordatorios from './recordatorios';
 import RequestClient from './requestClient';
+import WebsiteHome from './websiteHome';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ export default function Home({ user, mail, status, dni }) {
         <title>Home</title>
       </Head>
       <main className={`${inter.className}`}>
-        {status == 1 ? <RequestClient user={user} dni={dni}/> : <HomePage user={user} mail={mail} />}
+        {status == 1 ? <RequestClient user={user} dni={dni}/> : <WebsiteHome />}
       </main>
     </div>
   )
