@@ -4,6 +4,7 @@ import withSession from "../lib/session";
 import HomePage from './Home';
 import Recordatorios from './recordatorios';
 import RequestClient from './requestClient';
+import WebsiteHome from './websiteHome';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ export default function Home({ user, mail, status, dni }) {
         <title>Home</title>
       </Head>
       <main className={`${inter.className}`}>
-        {status == 1 ? <RequestClient user={user} dni={dni}/> : <HomePage user={user} mail={mail} />}
+        {status == 1 ? <RequestClient user={user} dni={dni}/> : <HomePage  />}
       </main>
     </div>
   )
@@ -34,7 +35,7 @@ export const getServerSideProps = withSession(async function ({ req, res }) {
 
   return {
     props: {
-      user: req.session.get("user"),
+      user: req.session.get("user") ? req.session.get("user") : null,
       mail: req.session.get("email") ? req.session.get("email") : null,
       status: req.session.get("status"),
       dni: req.session.get('DNI') ? req.session.get('DNI') : null

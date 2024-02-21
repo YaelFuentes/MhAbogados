@@ -56,7 +56,7 @@ const HomePage = ({ user }) => {
   return (
     <>
       <div className="flex items-center justify-between px-10 m-4">
-        <h1 className="text-xl font-bold">Bienvenido, {user.username ? user.username : ''}</h1>
+        {/* <h1 className="text-xl font-bold">Bienvenido, {user.username ? user.username : ''}</h1> */}
         <SearchComponent onSearch={handleSearch} className='' />
       </div>
       <TableResponsive rows={filteresUsers} columns={columnsTable} routes={'clientInfo'} />
