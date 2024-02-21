@@ -47,7 +47,7 @@ const ForgotPassword = () => {
   return (
     <>
       <BasicModal
-        nameButton={'Olvidaste la contraseña?'}
+        nameButton={'¿Olvidaste la contraseña?'}
         styledButton={style}
         titleModal={'Por favor introduzca su nro de documento.'}
         contentModal={
