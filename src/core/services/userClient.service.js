@@ -52,6 +52,7 @@ class UserClientService {
     }
   }
   async updateByIds(ids, updates) {
+    console.log(updates)
     try {
       let TABLE = 'userclient'
       const updateArray = Array.isArray(updates) ? updates : [updates];

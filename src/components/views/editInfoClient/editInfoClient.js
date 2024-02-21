@@ -24,10 +24,13 @@ const InfoClientTab = ({ id, statusObs }) => {
   const handleEdit = () => {
     setEditMode(true);
   }
+  console.log(editedClient);
 
   const handleSave = async () => {
     try {
-      await axios.put(`/api/usuarios/userClient?id=${client.dni}`, editedClient);
+      const userDataWithoutPassword = { ...editedClient };
+      delete userDataWithoutPassword.password;
+      await axios.put(`/api/usuarios/userClient?id=${client.id}`, userDataWithoutPassword);
       setEditMode(false);
       setClient(editedClient);
     } catch (err) {

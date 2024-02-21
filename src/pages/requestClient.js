@@ -50,7 +50,7 @@ const RequestClient = ({ user, dni }) => {
   const [dataClient, setDataClient] = useState([]);
   const [clientInfo, setClientInfo] = useState("");
   const [selectedRow, setSelectedRow] = useState(null);
-  console.log(dni)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -91,7 +91,9 @@ const RequestClient = ({ user, dni }) => {
     setSelectedRow(row);
   };
 
-  const filteredRows = dataClient.flatMap(array => array.filter(item => item.idexp === (selectedRow && selectedRow.idexp)));
+  const filteredRows = dataClient
+  .flatMap(array => array.filter(item => item.idexp === (selectedRow && selectedRow.idexp)))
+  .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
   const buttons = [
     {
       button: <BasicModal
@@ -126,8 +128,6 @@ const RequestClient = ({ user, dni }) => {
       }
     }
   ]
-
-  console.log(clientInfo)
 
   return (
     <>
