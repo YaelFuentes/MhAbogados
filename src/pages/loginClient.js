@@ -6,6 +6,7 @@ import useUser from '@/lib/useUser';
 import RegisterClient from './registerClient';
 import ForgotPassword from './forgotPassword';
 import NavbarWeb from "./navbarWeb";
+import NavbarWeb from "./navbarWeb";
 
 const clientService = clientServiceFactory()
 
@@ -44,6 +45,7 @@ const LoginClient = () => {
   return (
     <main>
       <NavbarWeb />
+      <NavbarWeb />
       <div>
         {!user ?
           (<Loading />) :
@@ -76,12 +78,14 @@ const LoginClient = () => {
                           <div className="p-4 space-y-4 md:space-y-6 sm:p-8">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                               <img className="mx-auto h-32 w-auto" src="/img/logo/Logo.png" alt="MarianaHeredia abogados" />
+                              <img className="mx-auto h-32 w-auto" src="/img/logo/Logo.png" alt="MarianaHeredia abogados" />
                             </div>
                             <h1 className="text-xl text-center ml-8 mr-8 font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-white">
                               Bienvenido
                             </h1>
                             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                               <div>
+                                <label htmlFor="website-admin" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
                                 <label htmlFor="website-admin" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
                                 <div className='flex'>
                                   <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
@@ -109,13 +113,18 @@ const LoginClient = () => {
                                   placeholder="••••••••"
                                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 />
+                                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                />
                               </div>
                               <div>
                                 <ForgotPassword />
                               </div>
                               <div className="flex justify-between">
+                              <div className="flex justify-between">
                                 <button
                                   type="submit"
+                                  className="w-5/12 text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                >
                                   className="w-5/12 text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                 >
                                   Ingresar
@@ -137,6 +146,8 @@ const LoginClient = () => {
               </div>
             }
           </section>
+
+
 
 
         }

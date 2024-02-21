@@ -61,7 +61,7 @@ const InfoClientTab = ({ id, statusObs }) => {
                     type='text'
                     name='name'
                     placeholder='Nombre'
-                    value={editedClient.name}
+                    value={editedClient.name ? editedClient.name : editedClient.nombre}
                     onChange={handleClientChange}
                     className='w-full p-2 mb-2 border border-gray-300 rounded'
                   />
@@ -73,7 +73,7 @@ const InfoClientTab = ({ id, statusObs }) => {
                   type='text'
                   name='lastname'
                   placeholder='Apellido'
-                  value={editedClient.lastname}
+                  value={editedClient.lastname ? editedClient.lastname : editedClient.apellido}
                   onChange={handleClientChange}
                   className='w-full p-2 mb-2 border border-gray-300 rounded'
                 />
@@ -158,12 +158,12 @@ const InfoClientTab = ({ id, statusObs }) => {
                   <div><h3 className='font-bold m-2 text-xl '>
                     Nombre:
                     <br />
-                    <span>{client.name}</span>
+                    <span>{client.name ? client.name : client.nombre}</span>
                   </h3></div>
                   <div><h3 className='font-bold m-2 text-xl '>
                     Apellido:
                     <br />
-                    {client.lastname}
+                    {client.lastname ? client.lastname : client.apellido}
                   </h3></div>
                   <div><h3 className='font-bold m-2 text-xl '>DNI:
                     <br />

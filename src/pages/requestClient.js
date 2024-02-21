@@ -91,16 +91,6 @@ const RequestClient = ({ user, dni }) => {
     setSelectedRow(row);
   };
 
-  /* const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.put(`/api/cliente/cliente?id=${clientInfo.getClientDniId.id}`)
-      
-    } catch (e) {
-      console.error('Error al intentar modificar el usuario. intentelo mas tarde. ',e);
-    }
-  } */
-
   const filteredRows = dataClient.flatMap(array => array.filter(item => item.idexp === (selectedRow && selectedRow.idexp)));
   const buttons = [
     {
