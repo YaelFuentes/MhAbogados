@@ -159,12 +159,12 @@ const InfoClientTab = ({ id, statusObs }) => {
               <div>
                 <div class="grid lg:grid-cols-3 sm:grid-cols-12 gap-4">
                   <div><h3 className='font-bold m-2 text-xl '>
-                    Nombre del cliente :
+                    Nombre:
                     <br />
                     <span>{client.name ? client.name : client.nombre}</span>
                   </h3></div>
                   <div><h3 className='font-bold m-2 text-xl '>
-                    Apellido del cliente:
+                    Apellido:
                     <br />
                     {client.lastname ? client.lastname : client.apellido}
                   </h3></div>

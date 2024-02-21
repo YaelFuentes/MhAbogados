@@ -14,10 +14,10 @@ const Navbar = () => {
             <Link href='/' color='inherit' underline='none'>Inicio</Link>
           </Button>
           <Button color="inherit" sx={{ color: 'white', '&:hover': { backgroundColor: 'transparent' } }}>
-            <Link href='/loginClient' color='inherit' underline='none'>Mis juicios</Link>
+            <Link href='/loginClient' color='inherit' underline='none'>Acceso clientes</Link>
           </Button>
           <Button color="inherit" sx={{ color: 'white', '&:hover': { backgroundColor: 'transparent' } }}>
-            <Link href='/login' color='inherit' underline='none'>Ingresar</Link>
+            <Link href='/login' color='inherit' underline='none'>Uso interno</Link>
           </Button>
         </Toolbar>
       </AppBar>

@@ -41,8 +41,9 @@ const RegisterClient = () => {
   return (
     <>
       <BasicModal
-        nameButton={'Registrarse'}
-        titleModal={'Registrese para ver los moviminentos de su expediente'}
+        styledButton={{ color: 'white'}}
+        nameButton={'Registrarme'}
+        titleModal={'Registrese para ver los movimientos de su expediente'}
         contentModal={
           <>
             <div>

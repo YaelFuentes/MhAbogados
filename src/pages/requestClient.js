@@ -134,9 +134,7 @@ const RequestClient = ({ user, dni }) => {
       <div className='text-center color-white pt-5 pb-2'>
         <h1 className={`text-4xl font-bold mb-4 text-[#284285]`}>Formulario de consulta online</h1>
         <h3 className={`text-[#284285]`}>
-          ¡Bienvenido/a! En esta sección, podes editar tu información personal fácilmente haciendo clic en el botón "Editar Información".
-          Los campos disponibles para editar son el nombre, apellido, DNI, contacto y correo electrónico.
-          Simplemente debes hacer click en el botón y actualiza la información solamente si es necesario
+          En esta sección, podrá fácilmente editar su información personal, haciendo clic en el botón "Editar Información". Los campos disponibles para editar son el nombre, apellido, contacto y correo electrónico. Para ello, debe hacer click en el botón y actualizar la información, solo en caso de ser necesario
         </h3>
         <div className="pt-4 mt-4 w-full">
           <a href="/api/logout" className="text-white bg-red-600 px-4 py-2 rounded-md hover:bg-red-700 transition duration-300 ease-in-out inline-block">Cerrar sesión</a>

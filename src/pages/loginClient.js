@@ -53,22 +53,25 @@ const LoginClient = () => {
                 {isLoading ?
                   (<Loading />) :
                   (
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       <div className="md:mx-4">
-                        <h1 className="mb-4">¡Bienvenido al servicio de acceso en línea de MhAbogados!</h1>
+                        <h1 className="mb-4">Bienvenido al servicio de acceso en línea de MhAbogados</h1>
                         <p className="mb-4">
-                          Nuestro portal en línea te brinda acceso a toda la información asociada a tu causa. Te invitamos a completar el formulario de login en tu primer acceso para garantizar la seguridad de tus datos.
+                          Este portal en línea le brinda acceso a toda la información asociada a las causas judiciales que tiene con el estudio jurídico de la Dra. Mariana Heredia. Lo invitamos a completar el formulario de login
+                          en su primer acceso para garantizar la seguridad de sus datos.
+
                         </p>
                         <br />
                         <p className="mb-4">
-                          Una vez dentro del portal, podrás acceder a la información asociada a tus causas, las 24 horas del día, los 7 días de la semana.
+                          Una vez dentro del portal, podrá acceder a la información asociada a sus causas.
                         </p>
                         <br />
                         <p>
-                          Queda bajo su exclusiva responsabilidad el uso del Sitio al ingresar en una jurisdicción en la cual no reside en forma habitual, y nos deslindamos de toda responsabilidad por cualquier incumplimiento de leyes o regulaciones locales que usted pueda cometer como consecuencia del uso de una página y el ingreso en la misma en un país que no sea el de su residencia habitual.
+                          Queda bajo su exclusiva responsabilidad el uso del Sitio al momento de su ingreso,
+                          y nos deslindamos de toda responsabilidad por el uso inadecuado de la información que brinda este sitio.
                         </p>
                       </div>
-                      <div className="flex items-center justify-center">
+                      <div className="flex items-center justify-center md:col-span-1">
                         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-white">
                           <div className="p-4 space-y-4 md:space-y-6 sm:p-8">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -110,20 +113,22 @@ const LoginClient = () => {
                               <div>
                                 <ForgotPassword />
                               </div>
-                              <div className="flex justify-between">
-                                <button
-                                  type="submit"
-                                  className="w-5/12 text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                >
-                                  Ingresar
-                                </button>
-                                <button
-                                  type="button"
-                                  className="w-5/12 text-white bg-blue-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                >
-                                  <RegisterClient/>
-                                </button>
-                              </div>
+                                <div className="flex">
+                                  <button
+                                    type="submit"
+                                    className="w-full mb-4 text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                  >
+                                    Ingresar
+                                  </button>
+                                </div>
+                                <div className="flex">
+                                  <button
+                                    type="button"
+                                    className="w-full text-white bg-blue-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                  >
+                                    <RegisterClient />
+                                  </button>
+                                </div>
                             </form>
                           </div>
                         </div>
@@ -134,6 +139,8 @@ const LoginClient = () => {
               </div>
             }
           </section>
+
+
 
 
         }

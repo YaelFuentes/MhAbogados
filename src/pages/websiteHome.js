@@ -67,8 +67,8 @@ const WebsiteHome = () => {
             style={{ filter: "brightness(70%)" }}
           />
           <div style={contenidoEstilo}>
-            <h1 className={` text-4xl font-bold mb-4`}>MH Estudio Juridico</h1>
-            <h3>Especialistas en el Reajuste de Haberes para Personal de Fuerzas Armadas y Seguridad</h3>
+            <h1 className={` text-4xl font-bold mb-4`}>MH Abogados</h1>
+            <h3>Estudio juridico especializado en el reajuste de haberes del personal de las Fuerzas Armadas y de Seguridad</h3>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@ const WebsiteHome = () => {
             fontWeight: "bold"
           }}>
             Nos especializamos en causas vinculadas al reajuste de haberes del personal de las Fuerzas Armadas y de Seguridad,
-            ya sea en situación de retiro o en actividad, procurando el dictado de sentencia favorable y posterior coboro por parte del cliente de las sumas que deriven en virtud del dictado de sentencia firme.
+            ya sea en situación de retiro o en actividad, procurando el dictado de sentencia favorable y posterior cobro por parte del cliente de las sumas que deriven en virtud del dictado de sentencia firme.
           </p>
           <br />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
