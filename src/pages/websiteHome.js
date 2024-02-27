@@ -77,7 +77,7 @@ const WebsiteHome = () => {
         <div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 flex items-center justify-center">
           <Image
             src={aboutUs}
-            className="rounded-xl hidden md:block" 
+            className="rounded-xl hidden md:block"
             alt="About Us"
           />
         </div>
@@ -102,8 +102,7 @@ const WebsiteHome = () => {
             color: '#E7ECF8',
             fontWeight: "bold"
           }}>
-            Nos especializamos en causas vinculadas al reajuste de haberes del personal de las Fuerzas Armadas y de Seguridad,
-            ya sea en situación de retiro o en actividad, procurando el dictado de sentencia favorable y posterior cobro por parte del cliente de las sumas que deriven en virtud del dictado de sentencia firme.
+            Nos especializamos en causas judiciales vinculadas al reajuste de haberes del personal de las Fuerzas Armadas y de Seguridad, ya sea en situación de retiro o en actividad, procurando el dictado de sentencia favorable y posterior cobro de las sumas que deriven en virtud del dictado de sentencia firme.
           </p>
           <br />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -124,9 +123,9 @@ const WebsiteHome = () => {
             color: '#E7ECF8',
             fontWeight: "bold"
           }}>
-            Nuesto objetivo siempre es en defensa del personal de las Fuerzas Armadas y de Seguridad, aún cuando en dicha defensa se insuma más tiempo o implique la apertura de nuevos procesos para lograr el cobro de lo que corresponde.
+            Dentro del proceso judicial se establece como objetivo final el dictado de sentencia favorable, pero después de esta etapa se inicia el proceso de cobro, tendiente a determinar los montos a favor de cada cliente, y ello implica la revisión de las liquidaciones presentadas por cada organismo liquidador.
             <br />
-            La comunicación del cliente con el estudio es preferentemente a través de esta página web y de los canales que ofrece (correo electrónico y whatsappa), ya que la totalidad de la información de cada expediente se encuentra volcada en este sitio y permite al cliente conocer los movimientos procesales que posee.
+            Este es un proceso largo que involucra innumerables actos procesales que transitan por distintas etapas.
           </p>
           <br />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -147,7 +146,29 @@ const WebsiteHome = () => {
             color: '#E7ECF8',
             fontWeight: "bold"
           }}>
-            Aspiramos a que ésta sea una herramienta útil para el cliente, en el sentido de poder conocer que sus causas se encuentran en mvimiento y siempre direccionadas al objetivo fianl que no es otro que percibir lo que les corresponde conforme a derechos.
+            Nuesto objetivo siempre es en defensa del personal de las Fuerzas Armadas y de Seguridad, aún cuando ello insuma más tiempo o implique la apertura de nuevos procesos.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span style={{
+              float: 'right',
+              fontSize: '60px',
+              color: '#906902',
+              fontFamily: 'Lora, serif',
+              fontWeight: 'bold',
+              position: 'relative',
+              top: '-16px'
+            }}>04.</span>
+          </div>
+          <p style={{
+            fontFamily: 'Lora, sans-serif',
+            fontSize: '15px',
+            lineHeight: "24px",
+            color: '#E7ECF8',
+            fontWeight: "bold"
+          }}>
+            La comunicación del cliente con el estudio es preferentemente a través de esta página web y de los canales que ofrece (correo electrónico y whatsapp), ya que la totalidad de la información de cada expediente se encuentra volcada en este sitio y permite al cliente conocer los movimientos procesales existentes.
+            <br />
+            Aspiramos a que ésta sea una herramienta útil para conocer en todo momento el movimiento de sus causas judiciales.
           </p>
         </div>
 
