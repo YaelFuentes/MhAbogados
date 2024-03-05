@@ -6,6 +6,7 @@ import useUser from '@/lib/useUser';
 import RegisterClient from './registerClient';
 import ForgotPassword from './forgotPassword';
 import NavbarWeb from "./navbarWeb";
+import Swal from 'sweetalert2';
 
 const clientService = clientServiceFactory()
 
@@ -31,7 +32,13 @@ const LoginClient = () => {
       mutateUser(clientData)
     } catch (e) {
       setIsLoading(false)
-      alert(e.response.data.error)
+      /* alert(e.response.data.error) */
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: e.response.data.error,
+        showConfirmButton: true,
+      })
     }
   }
   const usernameHandler = (e) => {

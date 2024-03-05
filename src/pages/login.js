@@ -3,6 +3,7 @@ import { userServiceFactory } from "../clientServices/userService.js";
 import useUser from "../lib/useUser";
 import Loading from "@/components/mui/Loading.jsx";
 import NavbarWeb from "./navbarWeb";
+import Swal from 'sweetalert2';
 
 const userService = userServiceFactory();
 
@@ -26,7 +27,13 @@ export default function Login() {
       mutateUser(userData);
     } catch (error) {
       setIsLoading(false);
-      alert(error.response.data.error);
+      /* alert(error.response.data.error); */
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: error.response.data.error,
+        showConfirmButton: true,
+      })
     }
   };
 

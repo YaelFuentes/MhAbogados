@@ -6,7 +6,7 @@ const dbService = databaseServiceClient();
 const authService = authServiceFactory();
 
 export default withSession(async (req, res) => {
-  const ERROR_CREDENTIALS = 'Usuario y/o apellido incorrectos'
+  const ERROR_CREDENTIALS = 'Usuario y/o contraseña incorrectos'
 
   const method = req.method.toLowerCase();
   const { username, password } = req.body;
