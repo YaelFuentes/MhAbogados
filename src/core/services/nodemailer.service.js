@@ -51,8 +51,8 @@ class NotificationService {
         };
 
         const infoDataMail = { from, ...mailOptions };
-        /* const info = await transporter.sendMail(mailDataInfo) */
-        /* console.log(info) */
+        const info = await transporter.sendMail(mailDataInfo)
+        console.log(info)
       } else {
         throw new Error('La dirección de correo electrónico no es válida');
       }
