@@ -11,7 +11,6 @@ const db = knex({
     database: process.env.DB,
   }
 });
-console.log(db)
 db.raw('select 1+1 as result')
   .then(() => {
     console.log('Conexión a la base de datos establecida correctamente');
