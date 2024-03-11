@@ -182,12 +182,14 @@ const ExpedienteCliente = ({ id }) => {
         </div>
         <div className="p-4 flex text-center">
           <div className="w-1/2">
-            <h3 className=" font-semibold">
+            <h3 className=" font-semibold text-black">
               Nombre y apellido: {expediente.getClientDni.nombre} {expediente.getClientDni.apellido}
             </h3>
           </div>
           <div className="w-1/2">
-            <h3 className=" font-semibold">Dni: {expediente.getClientDni.dni}</h3>
+            <h3 className=" font-semibold text-black">
+              Dni: {expediente.getClientDni.dni}
+            </h3>
           </div>
         </div>
         <div>
