@@ -59,7 +59,7 @@ const InfoClientTab = ({ id, statusObs }) => {
             <div class="grid lg:grid-cols-3 sm:grid-cols-12 gap-4">
               <div>
                 <div className='mb-4'>
-                  <label htmlFor='nombre' className='block text-lg font-bold mb-2'>Nombre</label>
+                  <label htmlFor='nombre' className='block text-lg font-bold mb-2 text-black'>Nombre</label>
                   <input
                     type='text'
                     name='name'
@@ -71,7 +71,7 @@ const InfoClientTab = ({ id, statusObs }) => {
                 </div>
               </div>
               <div><div className='mb-4'>
-                <label htmlFor='apellido' className='block text-lg font-bold mb-2'>Apellido</label>
+                <label htmlFor='apellido' className='block text-lg font-bold mb-2 text-black'>Apellido</label>
                 <input
                   type='text'
                   name='lastname'
@@ -97,7 +97,7 @@ const InfoClientTab = ({ id, statusObs }) => {
               </div> */}
               <div>
                 <div className='mb-4'>
-                  <label htmlFor='phone' className='block text-lg font-bold mb-2'>Contacto</label>
+                  <label htmlFor='phone' className='block text-lg font-bold mb-2 text-black'>Contacto</label>
                   <input
                     type='text'
                     name='cel'
@@ -110,7 +110,7 @@ const InfoClientTab = ({ id, statusObs }) => {
               </div>
               <div>
                 <div className='mb-4'>
-                  <label htmlFor='email' className='block text-lg font-bold mb-2'>Email</label>
+                  <label htmlFor='email' className='block text-lg font-bold mb-2 text-black'>Email</label>
                   <input
                     type='text'
                     name='email'
@@ -139,7 +139,7 @@ const InfoClientTab = ({ id, statusObs }) => {
               {statusObs == 1 ?
                 <div className='p-4'>
                   <div className='mb-4'>
-                    <label htmlFor='observaciones' className='block text-lg font-bold mb-2'>Observaciones</label>
+                    <label htmlFor='observaciones' className='block text-lg font-bold mb-2 text-black'>Observaciones</label>
                     <input
                       type='text'
                       name='observaciones'
@@ -158,25 +158,28 @@ const InfoClientTab = ({ id, statusObs }) => {
             <div>
               <div>
                 <div class="grid lg:grid-cols-3 sm:grid-cols-12 gap-4">
-                  <div><h3 className='font-bold m-2 text-xl '>
+                  <div><h3 className='font-bold m-2 text-xl text-black'>
                     Nombre:
                     <br />
-                    <span>{client.name ? client.name : client.nombre}</span>
+                    <span className='text-black'>{client.name ? client.name : client.nombre}</span>
                   </h3></div>
-                  <div><h3 className='font-bold m-2 text-xl '>
+                  <div><h3 className='font-bold m-2 text-xl text-black'>
                     Apellido:
                     <br />
-                    {client.lastname ? client.lastname : client.apellido}
+                    <span className='text-black'>{client.lastname ? client.lastname : client.apellido}</span>
                   </h3></div>
-                  <div><h3 className='font-bold m-2 text-xl '>DNI:
-                    <br />
-                    {client.dni}</h3></div>
-                  <div><h3 className='font-bold m-2 text-xl '>
+                  <div>
+                    <h3 className='font-bold m-2 text-xl text-black'>DNI:
+                      <br />
+                      {client.dni}
+                    </h3>
+                  </div>
+                  <div><h3 className='font-bold m-2 text-xl text-black'>
                     Contacto :{' '}
                     <br />
                     {client.telcel}
                   </h3></div>
-                  <div><h3 className='font-bold m-2 text-xl '>
+                  <div><h3 className='font-bold m-2 text-xl text-black'>
                     email :{' '}
                     <br />
                     {client.email}
@@ -189,9 +192,9 @@ const InfoClientTab = ({ id, statusObs }) => {
                 </div>
                 {statusObs == 1 ?
                   <div>
-                    <h3 className='font-bold m-2 text-xl '>
+                    <h3 className='font-bold m-2 text-xl text-black'>
                       Observaciones :{' '}
-                      <p className='font-bold text-sm text-black'>
+                      <p className='font-bold text-xl text-black'>
                         {client.observaciones}
                       </p>
                     </h3>
