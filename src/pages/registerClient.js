@@ -40,72 +40,80 @@ const RegisterClient = () => {
   }
   return (
     <>
-      <BasicModal
-        styledButton={{ color: 'white'}}
-        nameButton={'Registrarme'}
-        titleModal={'Registrese para ver los movimientos de su expediente'}
-        contentModal={
-          <>
-            <div>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Nombre</label>
-                  <input
-                    name="name"
-                    type="text"
-                    onChange={handleChange}
-                    required
-                    placeholder="Nombre"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div>
-                  <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Apellido</label>
-                  <input
-                    name="lastname"
-                    type="text"
-                    onChange={handleChange}
-                    required
-                    placeholder="Apellido"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div>
-                  <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Email</label>
-                  <input
-                    name="email"
-                    type="text"
-                    onChange={handleChange}
-                    required
-                    placeholder="Email"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div>
-                  <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">DNI</label>
-                  <input
-                    name="dni"
-                    type="text"
-                    onChange={handleChange}
-                    required
-                    placeholder="DNI"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div>
-                  <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Contraseña</label>
-                  <input
-                    name="password"
-                    type="password"
-                    onChange={handleChange}
-                    required
-                    placeholder="Contraseña"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div className='text-center p-5'>
-                  <button type="submit" class="text-white bg-primary-10 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
-                </div>
-              </form>
-            </div>
-          </>
-        }
-      />
+      <button
+        type="button"
+        className="w-full text-white bg-blue-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      >
+        <BasicModal
+          styledButton={{
+            color: 'white',
+            width: '100%',
+          }}
+          nameButton={'Registrarme'}
+          titleModal={'Registrese para ver los movimientos de su expediente'}
+          contentModal={
+            <>
+              <div>
+                <form onSubmit={handleSubmit}>
+                  <div>
+                    <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Nombre</label>
+                    <input
+                      name="name"
+                      type="text"
+                      onChange={handleChange}
+                      required
+                      placeholder="Nombre"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                  </div>
+                  <div>
+                    <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Apellido</label>
+                    <input
+                      name="lastname"
+                      type="text"
+                      onChange={handleChange}
+                      required
+                      placeholder="Apellido"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                  </div>
+                  <div>
+                    <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Email</label>
+                    <input
+                      name="email"
+                      type="text"
+                      onChange={handleChange}
+                      required
+                      placeholder="Email"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                  </div>
+                  <div>
+                    <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">DNI</label>
+                    <input
+                      name="dni"
+                      type="text"
+                      onChange={handleChange}
+                      required
+                      placeholder="DNI"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                  </div>
+                  <div>
+                    <label htmlFor="text" className="block mb-2 text-sm font-medium text-black dark:text-white">Contraseña</label>
+                    <input
+                      name="password"
+                      type="password"
+                      onChange={handleChange}
+                      required
+                      placeholder="Contraseña"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                  </div>
+                  <div className='text-center p-5'>
+                    <button type="submit" class="text-white bg-primary-10 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
+                  </div>
+                </form>
+              </div>
+            </>
+          }
+        />
+      </button>
     </>
   )
 }

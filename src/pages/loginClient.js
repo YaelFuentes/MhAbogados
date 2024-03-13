@@ -62,18 +62,18 @@ const LoginClient = () => {
                   (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       <div className="md:mx-4">
-                        <h1 className="mb-4">Bienvenido al servicio de acceso en línea de MhAbogados</h1>
-                        <p className="mb-4">
+                        <h1 className="mb-4 text-black">Bienvenido al servicio de acceso en línea de MhAbogados</h1>
+                        <p className="mb-4 text-black">
                           Este portal en línea le brinda acceso a toda la información asociada a las causas judiciales que tiene con el estudio jurídico de la Dra. Mariana Heredia. Lo invitamos a completar el formulario de login
                           en su primer acceso para garantizar la seguridad de sus datos.
 
                         </p>
                         <br />
-                        <p className="mb-4">
+                        <p className="mb-4 text-black">
                           Una vez dentro del portal, podrá acceder a la información asociada a sus causas.
                         </p>
                         <br />
-                        <p>
+                        <p className='text-black'>
                           Queda bajo su exclusiva responsabilidad el uso del Sitio al momento de su ingreso,
                           y nos deslindamos de toda responsabilidad por el uso inadecuado de la información que brinda este sitio.
                         </p>
@@ -129,12 +129,12 @@ const LoginClient = () => {
                                   </button>
                                 </div>
                                 <div className="flex">
-                                  <button
+                                  {/* <button
                                     type="button"
                                     className="w-full text-white bg-blue-500 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                  >
+                                  > */}
                                     <RegisterClient />
-                                  </button>
+                                  {/* </button> */}
                                 </div>
                             </form>
                           </div>
