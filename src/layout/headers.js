@@ -93,6 +93,12 @@ function ResponsiveAppBar({ mail }) {
                 </Button>
                 <Button
                   onClick={handleCloseNavMenu}
+
+                >
+                  <Link href='/listExp'>Expedientes</Link>
+                </Button>
+                <Button
+                  onClick={handleCloseNavMenu}
                 >
                   <Link href='/administrador'>Administrador</Link>
                 </Button>
@@ -134,8 +140,15 @@ function ResponsiveAppBar({ mail }) {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
             >
+              <Link href='/listExp'>Expediente</Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
+            >
               <Link href='/administrador'>Administrador</Link>
             </Button>
+            
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: 'white', display: 'block', marginLeft: '20px' }}
