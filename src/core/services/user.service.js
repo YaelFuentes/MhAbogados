@@ -34,13 +34,13 @@ class UserService {
 
   async create(newUserData) {
     try {
-      const hashedPassword = await bcrypt.hash(newUserData.password, 60);
+      const hashedPassword = await bcrypt.hash(newUserData.password, 10);
       const newDataInfo = {
         ...newUserData,
         password: hashedPassword,
       };
-      /* const newUserId = await db("users").insert(newUserData)
-      return newUserId; */
+      const newUserId = await db("users").insert(newDataInfo)
+      return newUserId;
     } catch (e) {
       console.error('Error creating a new client:', e);
       return null;
