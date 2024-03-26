@@ -7,14 +7,14 @@ class MovimientosService {
     this.tipofuerza = tipofuerza;
   }
 
-  async getById(id, dni) {
+  async getById(info) {
     try {
-      const table = 'movimiento'
+      /* const table = 'movimiento'
       const tableClient = 'cliente'
       const tableExpcliente = 'expcliente'
       if (dni) {
-        /* const movimientoExpcliente = await db(`${table}`).where('idexp', dni);
-        return movimientoExpcliente; */
+        --const movimientoExpcliente = await db(`${table}`).where('idexp', dni);
+        --return movimientoExpcliente;
         const dataExpcliente = await db(`${tableExpcliente}`).where('dni', dni)
 
         const movimientoExpclienteInfo = await Promise.all(
@@ -35,6 +35,35 @@ class MovimientosService {
           })
         );
         return movimientoExpclienteInfo
+      } */
+      const table = 'movimiento'
+      const tableClient = 'cliente'
+      const tableExpcliente = 'expcliente'
+      switch (info) {
+        case dni:
+          const dataExpcliente = await db(`${tableExpcliente}`).where('dni', info.dni)
+
+          const movimientoExpclienteInfo = await Promise.all(
+            dataExpcliente.map(async (exp) => {
+              const movimientoExpcliente = await db(`${table}`).where('idexp', exp.idexp);
+              return movimientoExpcliente;
+            })
+          );
+          return movimientoExpclienteInfo;
+        case id:
+          const dataClient = await db(`${tableClient}`).where('id', info.id).first()
+          const dataExpclienteId = await db(`${tableExpcliente}`).where('dni', dataClient.dni)
+
+          const movimientoExpclienteInfoId = await Promise.all(
+            dataExpclienteId.map(async (exp) => {
+              const movimientoExpcliente = await db(`${table}`).where('idexp', exp.idexp);
+              return movimientoExpcliente;
+            })
+          );
+          return movimientoExpclienteInfoId
+        case mov:
+          const dataMov = await db(`${table}`).where('idexp', info.idexp)
+          return dataMov
       }
     } catch (e) {
       console.error(`Error al traer los datos de movimiento: `, e);

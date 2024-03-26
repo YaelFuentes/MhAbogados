@@ -5,8 +5,10 @@ export default async function handler(req, res) {
     case 'GET':
       if (req.query.id || req.query.dni) {
         const id = parseInt(req.query.id);
-        const dni = parseInt(req.query.dni)
-        const response = await MovimientoController.getDataById(id, dni);
+        const dni = parseInt(req.query.dni);
+        const idexp = parseInt(req.query.idexp);
+        const info = {idexp, dni, id}
+        const response = await MovimientoController.getDataById(info);
         res.json(response);
       } else {
         /* const response = await MovimientoController.getAllData();
