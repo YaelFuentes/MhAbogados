@@ -50,7 +50,7 @@ export default function TableResponsive({ columns, rows, optional, routes }) {
                   {columns.map((column) => (
                     <td className="px-6 py-4" key={`${i.id}-${column.id}`}>
                       {routes ? (
-                        <Link href={`/${routes}/[id]`} as={`/${routes}/${i.clientId || i.id}`}>
+                        <Link href={`/${routes}/[id]`} as={`/${routes}/${i.clientId || i.id || i.idexp || i.idexpediente}`}>
                           {i[column.id]}
                         </Link>
                       ) : (

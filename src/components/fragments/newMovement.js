@@ -32,7 +32,7 @@ const NewMovement = ({ idexp, infoClient, infoExp }) => {
           showConfirmButton: false,
           timer: '1500',
           customClass: {
-            container: 'z-[1500]' // Ajusta este valor según sea necesario
+            container: 'z-[1500]'
           }
         })
         /* setTimeout(() => {
@@ -46,7 +46,7 @@ const NewMovement = ({ idexp, infoClient, infoExp }) => {
           showConfirmButton: false,
           timer: '1500',
           customClass: {
-            container: 'z-[1500]' // Ajusta este valor según sea necesario
+            container: 'z-[1500]'
           }
         })
       }
