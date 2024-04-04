@@ -26,6 +26,13 @@ export default function TableResponsive({ columns, rows, optional, routes }) {
     }
   };
 
+  const formatId = (id) => {
+    if (id && id.includes('/')) {
+      return id.replace(/\//g, '-');
+    }
+    return id;
+  };
+
   return (
     <>
       <div className="container mx-auto my-4">
@@ -50,7 +57,7 @@ export default function TableResponsive({ columns, rows, optional, routes }) {
                   {columns.map((column) => (
                     <td className="px-6 py-4" key={`${i.id}-${column.id}`}>
                       {routes ? (
-                        <Link href={`/${routes}/[id]`} as={`/${routes}/${i.clientId || i.id || i.idexp || i.idexpediente}`}>
+                        <Link href={`/${routes}/[id]`} as={`/${routes}/${formatId(i.clientId || i.id || i.idexp || i.idexpediente)}`}>
                           {i[column.id]}
                         </Link>
                       ) : (
