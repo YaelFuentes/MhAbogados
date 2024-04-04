@@ -27,10 +27,7 @@ export default function TableResponsive({ columns, rows, optional, routes }) {
   };
 
   const formatId = (id) => {
-    if (id && id.includes('/')) {
-      return id.replace(/\//g, '-');
-    }
-    return id;
+    return typeof id === 'string' && id.includes('/') ? id.replace(/\//g, '-') : id;
   };
 
   return (
