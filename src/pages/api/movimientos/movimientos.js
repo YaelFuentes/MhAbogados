@@ -3,11 +3,11 @@ import { MovimientoController } from "@/core/controller";
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET':
-      if (req.query.id || req.query.dni) {
+      if (req.query.id || req.query.dni || req.query.mov) {
         const id = parseInt(req.query.id);
         const dni = parseInt(req.query.dni);
-        const idexp = parseInt(req.query.idexp);
-        const info = {idexp, dni, id}
+        const mov = parseInt(req.query.mov);
+        const info = {mov, dni, id}
         const response = await MovimientoController.getDataById(info);
         res.json(response);
       } else {

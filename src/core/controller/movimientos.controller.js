@@ -2,8 +2,8 @@ import { MovimientosService } from "../services";
 
 class MovimientoController {
   static movimientoService = new MovimientosService();
-  static async getDataById(id, dni) {
-    return await this.movimientoService.getById(id, dni);
+  static async getDataById(info) {
+    return await this.movimientoService.getById(info);
   }
 
   static async createData(fileData) {

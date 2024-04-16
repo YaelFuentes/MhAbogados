@@ -39,8 +39,9 @@ class MovimientosService {
       const table = 'movimiento'
       const tableClient = 'cliente'
       const tableExpcliente = 'expcliente'
-      switch (info) {
-        case dni:
+      console.log(info)
+      /* switch (info) {
+        case dni: 
           const dataExpcliente = await db(`${tableExpcliente}`).where('dni', info.dni)
 
           const movimientoExpclienteInfo = await Promise.all(
@@ -62,8 +63,37 @@ class MovimientosService {
           );
           return movimientoExpclienteInfoId
         case mov:
+          console.log('here', info)
           const dataMov = await db(`${table}`).where('idexp', info.idexp)
           return dataMov
+        /* case expmov : 
+        const expedienteMov = await db(`${table}`) 
+      } */
+      if (!isNaN(info.dni)) {
+        const dataExpcliente = await db(`${tableExpcliente}`).where('dni', info.dni)
+
+        const movimientoExpclienteInfo = await Promise.all(
+          dataExpcliente.map(async (exp) => {
+            const movimientoExpcliente = await db(`${table}`).where('idexp', exp.idexp);
+            return movimientoExpcliente;
+          })
+        );
+        return movimientoExpclienteInfo;
+      } else if (!isNaN(info.id)) {
+        const dataClient = await db(`${tableClient}`).where('id', info.id).first()
+        const dataExpclienteId = await db(`${tableExpcliente}`).where('dni', dataClient.dni)
+
+        const movimientoExpclienteInfoId = await Promise.all(
+          dataExpclienteId.map(async (exp) => {
+            const movimientoExpcliente = await db(`${table}`).where('idexp', exp.idexp);
+            return movimientoExpcliente;
+          })
+        );
+        return movimientoExpclienteInfoId
+      } else if (!isNaN(info.mov)) {
+        console.log('here', info)
+        const dataMov = await db(`${table}`).where('idexp', info.mov)
+        return dataMov
       }
     } catch (e) {
       console.error(`Error al traer los datos de movimiento: `, e);
@@ -74,6 +104,7 @@ class MovimientosService {
   async create(newData) {
     try {
       const table = 'movimiento'
+      console.log(newData)
       const newResult = await db(`${table}`).insert(newData)
       return newResult
     } catch (e) {
