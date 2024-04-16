@@ -31,7 +31,12 @@ const idExpediente = () => {
       try {
         const response = await axios.get('/api/usuarios/usuario')
         const responseExp = await axios.get(`/api/movimientos/movimientos?mov=${expedienteId}`)
-        setExpediente(responseExp.data)
+        const expedienteData = responseExp.data.map(item => ({
+          idexp: item.idexp,
+          fecha: moment(item.fecha).format('DD/MM/YYYY'),
+          tipomov: item.tipomov
+        }));
+        setExpediente(expedienteData)
         setUsers(response.data)
         setLoading(false)
       } catch (e) {
@@ -56,7 +61,6 @@ const idExpediente = () => {
     e.preventDefault()
     try {
       const response = await axios.post(`/api/movimientos/movimientos?id=${expedienteId}`, formData)
-      console.log(response)
       if (response.status === 201) {
         Swal.fire({
           position: 'bottom-start',
@@ -94,9 +98,7 @@ const idExpediente = () => {
     return <p>Cargando...</p>;
   }
 
-  console.log(expediente)
-
-  const buttons = [
+  /* const buttons = [
     {
       button: <BasicModal
         nameButton={'Editar'}
@@ -138,13 +140,13 @@ const idExpediente = () => {
     {
       button: <IconButton
         icon={<DeleteIcon />}
-      /* onClick={deleteRow} */
+      /* onClick={deleteRow} 
       />,
       onClick: (row) => {
         handleRowClick(row)
       }
     }
-  ]
+  ] */
 
   return (
     <>
@@ -195,7 +197,7 @@ const idExpediente = () => {
               rows={filteresUsers}
               columns={columnsTable}
               onClickRow={handleRowClick}
-              buttons={buttons}
+
             />
           </div>
         </div >
