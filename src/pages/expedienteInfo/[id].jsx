@@ -188,7 +188,7 @@ const idExpediente = () => {
             </div>
           </form>
           <div>
-            <h1 className='font-bold m-2 text-xl text-center'>Los movimientos afectaran a los siguientes clientes</h1>
+            <h1 className='font-bold m-2 text-xl text-center'>Historial de movimientos</h1>
           </div>
           <div>
             <TableEdit
