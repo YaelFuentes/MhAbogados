@@ -12,7 +12,7 @@ const idClient = () => {
   if (!clientId) {
     return <p>Cargando...</p>;
   }
-
+  console.log(clientId)
   const tabData = [
     {
       title: 'Expedientes',

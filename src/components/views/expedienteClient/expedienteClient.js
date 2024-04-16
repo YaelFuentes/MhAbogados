@@ -180,7 +180,7 @@ const ExpedienteCliente = ({ id }) => {
         <div className='p-2 m-2'>
           <h1 className='font-bold m-2 text-xl text-center'>Datos del cliente</h1>
         </div>
-        <div className="p-4 flex text-center">
+       {/*  <div className="p-4 flex text-center">
           <div className="w-1/2">
             <h3 className=" font-semibold text-black">
               Nombre y apellido: {expediente.getClientDni.nombre} {expediente.getClientDni.apellido}
@@ -191,7 +191,7 @@ const ExpedienteCliente = ({ id }) => {
               Dni: {expediente.getClientDni.dni}
             </h3>
           </div>
-        </div>
+        </div> */}
         <div>
           <h1 className='font-bold m-2 text-xl text-center'>Listado de expedientes</h1>
           <TableEdit
