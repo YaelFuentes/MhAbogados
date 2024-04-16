@@ -39,7 +39,6 @@ class MovimientosService {
       const table = 'movimiento'
       const tableClient = 'cliente'
       const tableExpcliente = 'expcliente'
-      console.log(info)
       /* switch (info) {
         case dni: 
           const dataExpcliente = await db(`${tableExpcliente}`).where('dni', info.dni)
@@ -91,7 +90,6 @@ class MovimientosService {
         );
         return movimientoExpclienteInfoId
       } else if (!isNaN(info.mov)) {
-        console.log('here', info)
         const dataMov = await db(`${table}`).where('idexp', info.mov)
         return dataMov
       }
@@ -104,7 +102,6 @@ class MovimientosService {
   async create(newData) {
     try {
       const table = 'movimiento'
-      console.log(newData)
       const newResult = await db(`${table}`).insert(newData)
       return newResult
     } catch (e) {
