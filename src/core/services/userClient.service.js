@@ -14,7 +14,7 @@ class UserClientService {
   }
   async getById(id) {
     try {
-
+      console.log(id)
       let TABLECLIENT = 'userclient'
       let TABLE = 'cliente'
       const clientData = await db(TABLE).where('id', id).first();

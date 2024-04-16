@@ -50,6 +50,7 @@ const RequestClient = ({ user, dni }) => {
   const [dataClient, setDataClient] = useState([]);
   const [clientInfo, setClientInfo] = useState("");
   const [selectedRow, setSelectedRow] = useState(null);
+  console.log(clientInfo)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -145,7 +146,7 @@ const RequestClient = ({ user, dni }) => {
           {dataClient && dataClient.length > 0 ? (
             <div className='p-4 m-4'>
               <InfoClientTab
-                id={clientInfo.getClientDni.id ? clientInfo.getClientDni.id : null}
+                id={clientInfo.getClientDni[0].id ? clientInfo.getClientDni[0].id : null}
                 statusObs={0}
               />
             </div>

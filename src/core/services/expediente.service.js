@@ -23,17 +23,19 @@ class ExpedienteService {
   }
   async getById(id) {
     try {
-      const isDNI = id && id.toString().length >= 6;
+/*       const isDNI = id && id.toString().length >= 6;
+      console.log(id)
+      console.log(isDNI)
       let clienteQuery;
       if (isDNI) {
-        clienteQuery = db('cliente').where('dni', id);
+        clienteQuery = await db('cliente').where('dni', id);
       } else {
-        clienteQuery = db('cliente').where('id', id);
+        clienteQuery = await db('cliente').where('id', id);
       }
-
-      const getClientDni = await clienteQuery.first();
-
-      const expCliente = await db('expcliente').where('dni', getClientDni.dni);
+      console.log(clienteQuery) */
+      /* const getClientDni = await clienteQuery.first(); */
+      const getClientDni = await db('cliente').where('dni', id);
+      const expCliente = await db('expcliente').where('dni', id);
       const expedienteInfo = await Promise.all(
         expCliente.map(async (exp) => {
           const expedienteData = await db('expediente').where('idexp', exp.idexp).first();
@@ -46,6 +48,7 @@ class ExpedienteService {
         expCliente,
         expedienteInfo,
       };
+      console.log(resultArray)
       return resultArray;
     } catch (e) {
       console.error("Error fetching user by ID:", e);
