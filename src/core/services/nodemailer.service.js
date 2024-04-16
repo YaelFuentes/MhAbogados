@@ -124,7 +124,9 @@ class NotificationService {
   }
   async forgotPassword(dni) {
     try {
+      console.log(dni)
       const client = await db('userclient').where('dni', dni.dni).first()
+      console.log(client)
       if (!client) {
         throw new Error('Cliente no encontrado');
       }

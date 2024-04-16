@@ -50,7 +50,7 @@ const RequestClient = ({ user, dni }) => {
   const [dataClient, setDataClient] = useState([]);
   const [clientInfo, setClientInfo] = useState("");
   const [selectedRow, setSelectedRow] = useState(null);
-  console.log(clientInfo)
+  console.log(dataClient)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -192,7 +192,7 @@ const RequestClient = ({ user, dni }) => {
               </div>
             </div> */
           ) : (
-            <p>No hay datos disponibles.</p>
+            <p className='text-center m-4 p-4 font-bold text-3xl'>No hay datos disponibles.</p>
           )}
         </div>
       )}
