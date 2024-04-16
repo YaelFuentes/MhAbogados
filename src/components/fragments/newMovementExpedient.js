@@ -33,8 +33,6 @@ const NewMovementExp = ({ id }) => {
   if (loading) {
     return <p>Cargando...</p>;
   }
-
-  console.log(movimientos)
   return (
     <>
       <div>

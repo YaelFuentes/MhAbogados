@@ -34,7 +34,8 @@ const idExpediente = () => {
         const expedienteData = responseExp.data.map(item => ({
           idexp: item.idexp,
           fecha: moment(item.fecha).format('DD/MM/YYYY'),
-          tipomov: item.tipomov
+          tipomov: item.tipomov,
+          detalles: item.detalles
         }));
         setExpediente(expedienteData)
         setUsers(response.data)
@@ -55,6 +56,7 @@ const idExpediente = () => {
     { id: "idexp", label: 'Id exp' },
     { id: "fecha", label: 'Fecha' },
     { id: "tipomov", label: 'Movimiento' },
+    { id: "detalles", label: 'Detalles' }
   ];
 
   const handleSubmit = async (e) => {
@@ -65,7 +67,7 @@ const idExpediente = () => {
         Swal.fire({
           position: 'bottom-start',
           icon: 'success',
-          title: 'Usuario guardado con exito',
+          title: 'Movimiento generado con exito',
           showConfirmButton: false,
           timer: '1500'
         })
@@ -76,7 +78,7 @@ const idExpediente = () => {
         Swal.fire({
           position: 'bottom-start',
           icon: 'error',
-          title: 'Error al crear el usuario, intentelo mas tarde',
+          title: 'Error al crear un movimiento, intentelo mas tarde',
           showConfirmButton: false,
           timer: '1500'
         })
@@ -151,7 +153,7 @@ const idExpediente = () => {
   return (
     <>
       <div className='p-2 m-2'>
-        <div className='font-bold text-2xl'>
+        <div className='font-bold text-2xl text-center'>
           Agregar Movimientos directos al expediente
         </div>
         <div className='mt-4 mb-4 text-center'>
@@ -159,9 +161,9 @@ const idExpediente = () => {
           asociados a ese expediente.
         </div>
         <div>
-          <h1 className='font-bold m-2 text-xl text-center'>Agregar movimiento al expediente</h1>
+          {/* <h1 className='font-bold m-2 text-xl text-center'>Agregar movimiento al expediente</h1> */}
           <form class="max-w-md mx-auto" onSubmit={handleSubmit}>
-            <div class="relative z-0 w-full mb-5 group">
+            <div class="relative z-0 w-full mb-5 group mt-10">
               <input
                 type="text"
                 name="tipomov"
@@ -201,7 +203,7 @@ const idExpediente = () => {
             />
           </div>
         </div >
-        <NewMovementExp id={expedienteId} />
+        {/* <NewMovementExp id={expedienteId} /> */}
       </div >
     </>
   )

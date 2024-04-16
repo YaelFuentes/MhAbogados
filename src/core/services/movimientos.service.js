@@ -90,7 +90,7 @@ class MovimientosService {
         );
         return movimientoExpclienteInfoId
       } else if (!isNaN(info.mov)) {
-        const dataMov = await db(`${table}`).where('idexp', info.mov)
+        const dataMov = await db(`${table}`).where('idexp', info.mov).orderBy('fecha', 'desc');
         return dataMov
       }
     } catch (e) {
