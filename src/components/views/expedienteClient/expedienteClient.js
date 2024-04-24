@@ -16,7 +16,7 @@ const ExpedienteCliente = ({ id }) => {
   const [movimientos, setMovimientos] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
   const [movimientosDelExpediente, setMovimientosDelExpediente] = useState([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -174,26 +174,27 @@ const ExpedienteCliente = ({ id }) => {
       }
     }
   ]
+  console.log(expediente)
   return (
     <>
       <div className='w-full'>
         <div className='p-2 m-2'>
-          <h1 className='font-bold m-2 text-xl text-center'>Datos del cliente</h1>
+          <h1 className='font-bold m-2 text-xl text-center text-black'>Datos del cliente</h1>
         </div>
-       {/*  <div className="p-4 flex text-center">
+        <div className="p-4 flex text-center">
           <div className="w-1/2">
             <h3 className=" font-semibold text-black">
-              Nombre y apellido: {expediente.getClientDni.nombre} {expediente.getClientDni.apellido}
+              Nombre y apellido: {expediente.getClientDni[0].nombre} {expediente.getClientDni[0].apellido}
             </h3>
           </div>
           <div className="w-1/2">
             <h3 className=" font-semibold text-black">
-              Dni: {expediente.getClientDni.dni}
+              Dni: {expediente.getClientDni[0].dni}
             </h3>
           </div>
-        </div> */}
+        </div>
         <div>
-          <h1 className='font-bold m-2 text-xl text-center'>Listado de expedientes</h1>
+          <h1 className='font-bold m-2 text-xl text-center text-black'>Listado de expedientes</h1>
           <TableEdit
             columns={columnsTable}
             rows={expediente.expedienteInfo}

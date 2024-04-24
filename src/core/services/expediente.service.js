@@ -21,20 +21,44 @@ class ExpedienteService {
     this.fechasentencia = fechasentencia;
     this.sentencia = sentencia;
   }
-  async getById(id) {
+  async getById(info) {
     try {
-/*       const isDNI = id && id.toString().length >= 6;
-      console.log(id)
-      console.log(isDNI)
-      let clienteQuery;
-      if (isDNI) {
-        clienteQuery = await db('cliente').where('dni', id);
-      } else {
-        clienteQuery = await db('cliente').where('id', id);
+      if (!isNaN(info.id)) {
+        const getClientDni = await db('cliente').where('id', info.id);
+        const expCliente = await db('expcliente').where('dni', getClientDni[0].dni);
+        const expedienteInfo = await Promise.all(
+          expCliente.map(async (exp) => {
+            const expedienteData = await db('expediente').where('idexp', exp.idexp).first();
+            return expedienteData;
+          })
+        );
+
+        const resultArray = {
+          getClientDni,
+          expCliente,
+          expedienteInfo,
+        };
+        console.log(getClientDni[0].dni)
+        return resultArray;
+      } else if (!isNaN(info.dni)) {
+        const getClientDni = await db('cliente').where('dni', info.dni);
+        const expCliente = await db('expcliente').where('dni', info.dni);
+        const expedienteInfo = await Promise.all(
+          expCliente.map(async (exp) => {
+            const expedienteData = await db('expediente').where('idexp', exp.idexp).first();
+            return expedienteData;
+          })
+        );
+
+        const resultArray = {
+          getClientDni,
+          expCliente,
+          expedienteInfo,
+        };
+        console.log(resultArray)
+        return resultArray;
       }
-      console.log(clienteQuery) */
-      /* const getClientDni = await clienteQuery.first(); */
-      const getClientDni = await db('cliente').where('dni', id);
+      /* const getClientDni = await db('cliente').where('dni', id);
       const expCliente = await db('expcliente').where('dni', id);
       const expedienteInfo = await Promise.all(
         expCliente.map(async (exp) => {
@@ -49,7 +73,7 @@ class ExpedienteService {
         expedienteInfo,
       };
       console.log(resultArray)
-      return resultArray;
+      return resultArray; */
     } catch (e) {
       console.error("Error fetching user by ID:", e);
       return null;

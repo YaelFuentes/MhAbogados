@@ -114,7 +114,7 @@ const Recordatorios = () => {
         endAccessor="end"
         selectable
         onSelectSlot={handleSelectSlot}
-        style={{ height: 500 }}
+        style={{ height: 500, color: 'black' }}
         formats={{
           timeGutterFormat: 'HH:mm',
           eventTimeRangeFormat: ({ start, end }, culture, local) =>

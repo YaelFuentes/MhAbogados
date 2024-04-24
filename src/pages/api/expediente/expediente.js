@@ -3,10 +3,25 @@ import { ExpedienteController } from "@/core/controller/index";
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET':
-      if (req.query.id) {
-        const fileId = parseInt(req.query.id);
-        const file = await ExpedienteController.getFileById(fileId);
-        res.json(file);
+      /* case 'GET':
+      if (req.query.id || req.query.dni || req.query.mov) {
+        const id = parseInt(req.query.id);
+        const dni = parseInt(req.query.dni);
+        const mov = parseInt(req.query.mov);
+        const info = {mov, dni, id}
+        const response = await MovimientoController.getDataById(info);
+        res.json(response);
+      } else {
+        /* const response = await MovimientoController.getAllData();
+        res.json(response);
+      }
+      break; */
+      if (req.query.id || req.query.dni) {
+        const dni = parseInt(req.query.dni)
+        const id = parseInt(req.query.id);
+        const info={id, dni}
+        const response = await ExpedienteController.getFileById(info);
+        res.json(response);
       } else {
         const files = await ExpedienteController.getAllFiles();
         res.json(files);
