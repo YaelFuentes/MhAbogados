@@ -43,11 +43,22 @@ class ExpclienteService {
     this.honodeuda = honodeuda;
     this.honoobs = honoobs;
   }
-  async getById(id) {
+  async getById(info) {
     try {
-      const clientId = await db("cliente").where("id", id)
-      const expCliente = await db("expcliente").where("dni", clientId[0].dni).first(); 
-      return expCliente;
+      if (!isNaN(info.id)) {
+        const clientId = await db("cliente").where("id", info.id)
+        const expCliente = await db("expcliente").where("dni", clientId[0].dni).first();
+        return expCliente;
+      } else if (!isNaN(info.expc)) {
+        const expedienteId = await db("expcliente").where("idexp", info.expc)
+        const promises = expedienteId.map(async (expediente) => {
+          const cliente = await db("cliente").where("dni", expediente.dni).first();
+          return  cliente ; // Retornar objeto con expediente y cliente asociado
+        });
+        const result = await Promise.all(promises);
+        console.log(result)
+        return result;
+      }
     } catch (e) {
       console.error("Error fetching client by ID:", e);
       return null;

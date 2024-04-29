@@ -5,11 +5,11 @@ import Swal from 'sweetalert2';
 import moment from 'moment';
 import TableEdit from '@/components/flowbite/tableEdit';
 import BasicModal from '@/components/mui/modal';
+import ExpedienteTableCliente from '@/components/fragments/expCliente';
 
 const IdExpediente = () => {
   const router = useRouter();
   const expedienteId = router.query.id;
-  const [users, setUsers] = useState([]);
   const [expediente, setExpediente] = useState([]);
   const [formData, setFormData] = useState({
     fecha: moment().format('YYYY-MM-DD'),
@@ -23,7 +23,6 @@ const IdExpediente = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/usuarios/usuario');
         const responseExp = await axios.get(`/api/movimientos/movimientos?mov=${expedienteId}`);
         const expedienteData = responseExp.data.map(item => ({
           idexp: item.idexp,
@@ -155,10 +154,24 @@ const IdExpediente = () => {
             <button type="submit" class="text-white bg-primary-10 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Agregar movimiento</button>
           </div>
         </form>
-        <div>
+        <div className='grid grid-cols-2'>
+          <div className='m-2 p-2'>
+            <h1 className="font-bold m-2 text-xl text-center">Historial de movimientos</h1>
+            <TableEdit rows={expediente} columns={columnsTable} onClickRow={handleRowClick} />
+          </div>
+          <div className='m-2 p-2'>
+            <h1 className='font-bold m-2 text-xl text-center'>Clientes con el expediente nro: {expedienteId}</h1>
+            <ExpedienteTableCliente exp={expedienteId} />
+          </div>
+        </div>
+        {/* <div>
           <h1 className="font-bold m-2 text-xl text-center">Historial de movimientos</h1>
           <TableEdit rows={expediente} columns={columnsTable} onClickRow={handleRowClick} />
         </div>
+        <div>
+          <h1 className='font-bold m-4 text-xl text-center'>Clientes con el expediente nro: {expedienteId}</h1>
+          <ExpedienteTableCliente exp={expedienteId} />
+        </div> */}
       </div>
     </>
   );

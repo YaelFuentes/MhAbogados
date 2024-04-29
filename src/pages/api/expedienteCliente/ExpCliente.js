@@ -4,9 +4,11 @@ import { ExpClienteController } from "@/core/controller";
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET':
-      if (req.query.id) {
-        const clientId = parseInt(req.query.id);
-        const client = await ExpClienteController.getDataById(clientId);
+      if (req.query.id || req.query.expc) {
+        const id = parseInt(req.query.id);
+        const expc = parseInt(req.query.expc);
+        const info = { id, expc}
+        const client = await ExpClienteController.getDataById(info);
         res.json(client);
       } else {
         const clients = await ExpClienteController.getAllData();

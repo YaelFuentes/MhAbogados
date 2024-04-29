@@ -58,22 +58,6 @@ class ExpedienteService {
         console.log(resultArray)
         return resultArray;
       }
-      /* const getClientDni = await db('cliente').where('dni', id);
-      const expCliente = await db('expcliente').where('dni', id);
-      const expedienteInfo = await Promise.all(
-        expCliente.map(async (exp) => {
-          const expedienteData = await db('expediente').where('idexp', exp.idexp).first();
-          return expedienteData;
-        })
-      );
-
-      const resultArray = {
-        getClientDni,
-        expCliente,
-        expedienteInfo,
-      };
-      console.log(resultArray)
-      return resultArray; */
     } catch (e) {
       console.error("Error fetching user by ID:", e);
       return null;

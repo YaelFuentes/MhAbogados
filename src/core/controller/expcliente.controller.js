@@ -2,8 +2,8 @@ import { ExpclienteService } from "../services";
 
 class ExpClienteController {
   static expClienteService = new ExpclienteService();
-  static async getDataById(id) {
-    return await this.expClienteService.getById(id);
+  static async getDataById(info) {
+    return await this.expClienteService.getById(info);
   }
 
   static async createData(data) {
