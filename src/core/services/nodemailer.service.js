@@ -125,7 +125,6 @@ class NotificationService {
 
 
   async forgotPassword(dni) {
-    console.log(process.env.RESEND_KEY, ' resend key')
     try {
       const client = await db('userclient').where('dni', dni.dni).first()
       if (!client) {

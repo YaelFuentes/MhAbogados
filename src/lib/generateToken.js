@@ -1,4 +1,6 @@
 import jwt from 'jsonwebtoken';
+const dotenv = require('dotenv');
+dotenv.config();
 
 export function generateToken(){
   const payload = {
