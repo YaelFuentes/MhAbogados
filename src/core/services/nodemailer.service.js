@@ -2,10 +2,8 @@ const nodemailer = require('nodemailer')
 import { Resend } from 'resend';
 import { db } from '@/core/connection/databaseService'
 import { generateToken } from '@/lib/generateToken';
-import { withIronSession } from "next-iron-session";
-import { transport } from '../connection/nodemailer';
-require('dotenv').config();
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 class NotificationService {
   constructor(id, user, password) {
@@ -146,7 +144,7 @@ class NotificationService {
           pass: `${process.env.APP_PASS}`
         }
       }); */
-      const resend = new Resend(`${process.env.RESEND_KEY}`);
+      const resend = new Resend(process.env.RESEND_KEY);
       resend.emails.send({
         from: 'onboarding@resend.dev',
         to: client.email,
