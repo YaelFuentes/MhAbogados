@@ -2,6 +2,7 @@ const nodemailer = require('nodemailer')
 import { db } from '@/core/connection/databaseService'
 import { generateToken } from '@/lib/generateToken';
 import { withIronSession } from "next-iron-session";
+require('dotenv').config();
 
 
 class NotificationService {
