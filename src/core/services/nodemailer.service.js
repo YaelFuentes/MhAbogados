@@ -1,7 +1,9 @@
 const nodemailer = require('nodemailer')
+import { Resend } from 'resend';
 import { db } from '@/core/connection/databaseService'
 import { generateToken } from '@/lib/generateToken';
 import { withIronSession } from "next-iron-session";
+import { transport } from '../connection/nodemailer';
 require('dotenv').config();
 
 
@@ -53,7 +55,6 @@ class NotificationService {
 
         const infoDataMail = { from, ...mailOptions };
         const info = await transporter.sendMail(mailDataInfo)
-        console.log(info)
       } else {
         throw new Error('La dirección de correo electrónico no es válida');
       }
@@ -80,7 +81,7 @@ class NotificationService {
         const fechaFormateada = `${diaFormateado}/${mesFormateado}/${año} ${horaFormateada}:${minutoFormateado}`;
         return fechaFormateada;
       }
-      const transporter = nodemailer.createTransport({
+      /* const transporter = nodemailer.createTransport({
         service: 'smtp.gmail.com',
         port: 465,
         secure: true,
@@ -88,7 +89,7 @@ class NotificationService {
           user: process.env.MAIL_FROM,
           pass: process.env.APP_PASS
         }
-      });
+      }); */
 
       const from = process.env.MAIL_FROM;
       const mailDataInfo = {
@@ -125,9 +126,7 @@ class NotificationService {
   }
   async forgotPassword(dni) {
     try {
-      console.log(dni)
       const client = await db('userclient').where('dni', dni.dni).first()
-      console.log(client)
       if (!client) {
         throw new Error('Cliente no encontrado');
       }
@@ -138,7 +137,7 @@ class NotificationService {
         expires_at: new Date(Date.now() + 3600000), // Expira en 1 hora
       });
       const resetLink = `${process.env.URL}/reset-password?token=${resetToken}&id=${client.id}`;
-      const transporter = nodemailer.createTransport({
+       /* const transporter = nodemailer.createTransport({
         service: 'smtp.gmail.com',
         port: 465,
         secure: true,
@@ -146,9 +145,34 @@ class NotificationService {
           user: process.env.MAIL_FROM,
           pass: `${process.env.APP_PASS}`
         }
-      });
+      }); */
+      const resend = new Resend(`${process.env.RESEND_KEY}`);
       const from = process.env.MAIL_FROM;
-      const mailDataInfo = {
+      resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: client.email,
+        subject:`Notificacion MH Abogados`,
+        html: `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+      </head>
+      <body>
+        <h2>Restableceer contraseña</h2>
+        <p>Por favor para restablecer su contraseña haga<strong>click</strong>
+          en el siguiente enlace. 
+          <a href="${resetLink}">${resetLink}</a>
+        </p>
+      </body>
+      </html>`,
+        replyTo: 'noreply@miempresa.com'
+      });
+      
+      /* const mailDataInfo = {
         from: from,
         to: client.email,
         subject: `Notificacion MH Abogados`,
@@ -170,9 +194,9 @@ class NotificationService {
       </body>
       </html>`,
         replyTo: 'noreply@miempresa.com'
-      };
-      const sendInfo = transporter.sendMail(mailDataInfo);
-      console.log(sendInfo)
+      }; */
+      /* const sendInfo = transporter.sendMail(mailDataInfo);
+      console.log(sendInfo) */
     } catch (e) {
       console.error('Error al restablecer la contraseña', e)
     }
