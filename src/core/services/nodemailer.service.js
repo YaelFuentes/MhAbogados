@@ -125,19 +125,21 @@ class NotificationService {
 
 
   async forgotPassword(dni) {
+    console.log(process.env.RESEND_KEY, ' resend key')
     try {
       const client = await db('userclient').where('dni', dni.dni).first()
       if (!client) {
         throw new Error('Cliente no encontrado');
       }
       const resetToken = generateToken()
+      const resend = new Resend(process.env.RESEND_KEY);
       await db('userclient').insert({
         email: client.email,
         token: resetToken,
         expires_at: new Date(Date.now() + 3600000), // Expira en 1 hora
       });
       const resetLink = `${process.env.URL}/reset-password?token=${resetToken}&id=${client.id}`;
-      const resend = new Resend(process.env.RESEND_KEY);
+      
       console.log(process.env.RESEND_KEY, ' resend key')
       resend.emails.send({
         from: 'onboarding@resend.dev',
