@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import NewMovementExp from '@/components/fragments/newMovementExpedient';
-import DeleteIcon from '@mui/icons-material/Delete';
-import ButtonIcon from '@/components/mui/iconButton';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import moment from 'moment'
 import TableEdit from '@/components/flowbite/tableEdit';
 import BasicModal from '@/components/mui/modal';
-import MovementView from '@/components/fragments/movementView';
-import { IconButton } from '@mui/material';
+
 
 const idExpediente = () => {
   const router = useRouter();
@@ -153,17 +149,17 @@ const idExpediente = () => {
   return (
     <>
       <div className='p-2 m-2'>
-        <div className='font-bold text-2xl text-center'>
+        <div className='font-bold text-2xl text-center text-black'>
           Agregar Movimientos directos al expediente
         </div>
-        <div className='mt-4 mb-4 text-center'>
+        <div className='mt-4 mb-4 text-center text-black'>
           Advertencia: Al cargar un movimiento directo al expediente se veran reflejado en todos los clientes que esten
           asociados a ese expediente.
         </div>
         <div>
           {/* <h1 className='font-bold m-2 text-xl text-center'>Agregar movimiento al expediente</h1> */}
-          <form class="max-w-md mx-auto" onSubmit={handleSubmit}>
-            <div class="relative z-0 w-full mb-5 group mt-10">
+          <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+            <div className="relative z-0 w-full mb-5 group mt-10">
               <input
                 type="text"
                 name="tipomov"
@@ -173,7 +169,9 @@ const idExpediente = () => {
                 placeholder=" "
                 required
               />
-              <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tipo de movimiento</label>
+              <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                Tipo de movimiento
+              </label>
               <div className="relative z-0 w-full mt-5 group">
                 <input
                   type="text"
@@ -184,15 +182,47 @@ const idExpediente = () => {
                   placeholder=" "
                   required
                 />
-                <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Detalle (opcional)</label>
+                <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                  Detalle (opcional)
+                </label>
               </div>
             </div>
             <div className='text-center p-5'>
-              <button type="submit" class="text-white bg-primary-10 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Agregar movimiento</button>
+              {/* <button type="submit" className="text-white bg-primary-10 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Agregar movimiento
+              </button> */}
+              <BasicModal
+                nameButton='Enviar Informacion'
+                titleModal='Por favor revise la informacion antes de enviar.'
+                contentModal={
+                  <>
+                    <div className='grid grid-cols-2 gap-2 p-2 m-2'>
+                      <div className='mr-5'>
+                        <div className='font-bold text-center text-black text-xl'>Movimiento</div>
+                        <div className='mt-6'>{formData.tipomov}</div>
+                      </div>
+                      <div className='ml-5'>
+                        <div className='font-bold text-center text-black text-xl'>Detalles (opcional)</div>
+                        <div className='mt-6'>
+                          {formData.detalles}
+                        </div>
+                      </div>
+                    </div>
+                    <div className='text-center p-5'>
+                      <button 
+                      type="submit" 
+                      className="text-white bg-primary-10 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      onClick={handleSubmit}
+                      >
+                        Agregar movimiento
+                      </button>
+                    </div>
+                  </>
+                } />
             </div>
           </form>
           <div>
-            <h1 className='font-bold m-2 text-xl text-center'>Historial de movimientos</h1>
+            <h1 className='font-bold m-2 text-xl text-center text-black'>Historial de movimientos</h1>
           </div>
           <div>
             <TableEdit

@@ -56,7 +56,7 @@ const NewFile = ({ id }) => {
   return (
     <>
       <div>
-        <h1 className='font-bold m-2 text-xl text-center'>Agregar expediente al usuario</h1>
+        <h1 className='font-bold m-2 text-xl text-center text-black'>Agregar expediente al usuario</h1>
         <form class="max-w-md mx-auto" onSubmit={handleSubmit}>
           <div class="relative z-0 w-full mb-5 group">
             <input

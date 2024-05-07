@@ -178,7 +178,7 @@ const ExpedienteCliente = ({ id }) => {
     <>
       <div className='w-full'>
         <div className='p-2 m-2'>
-          <h1 className='font-bold m-2 text-xl text-center'>Datos del cliente</h1>
+          <h1 className='font-bold m-2 text-xl text-center text-black'>Datos del cliente</h1>
         </div>
         <div className="p-4 flex text-center">
           <div className="w-1/2">
@@ -193,7 +193,7 @@ const ExpedienteCliente = ({ id }) => {
           </div>
         </div>
         <div>
-          <h1 className='font-bold m-2 text-xl text-center'>Listado de expedientes</h1>
+          <h1 className='font-bold m-2 text-xl text-center text-black'>Listado de expedientes</h1>
           <TableEdit
             columns={columnsTable}
             rows={expediente.expedienteInfo}

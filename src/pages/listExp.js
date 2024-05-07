@@ -44,7 +44,7 @@ const ListExp = () => {
   const columnsTable = [
     { id: "idexp", label: 'Nro de expediente' },
     { id: "caratula", label: 'Caratula' },
-    { id: "juzgasecret", label: 'Juzgado' },
+    { id: "juzgasecret", label: 'Juzgado/Secretaria/Situacion' },
     { id: "decretos", label: 'decretos' },
 
   ];
