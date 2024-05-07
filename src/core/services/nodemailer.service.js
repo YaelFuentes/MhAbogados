@@ -122,6 +122,8 @@ class NotificationService {
       console.log('error')
     }
   }
+
+
   async forgotPassword(dni) {
     try {
       const client = await db('userclient').where('dni', dni.dni).first()
@@ -135,16 +137,8 @@ class NotificationService {
         expires_at: new Date(Date.now() + 3600000), // Expira en 1 hora
       });
       const resetLink = `${process.env.URL}/reset-password?token=${resetToken}&id=${client.id}`;
-       /* const transporter = nodemailer.createTransport({
-        service: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-          user: process.env.MAIL_FROM,
-          pass: `${process.env.APP_PASS}`
-        }
-      }); */
       const resend = new Resend(process.env.RESEND_KEY);
+      console.log(process.env.RESEND_KEY, ' resend key')
       resend.emails.send({
         from: 'onboarding@resend.dev',
         to: client.email,
@@ -169,31 +163,6 @@ class NotificationService {
         replyTo: 'noreply@miempresa.com'
       });
       
-      /* const mailDataInfo = {
-        from: from,
-        to: client.email,
-        subject: `Notificacion MH Abogados`,
-        html: `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-      </head>
-      <body>
-        <h2>Restableceer contraseña</h2>
-        <p>Por favor para restablecer su contraseña haga<strong>click</strong>
-          en el siguiente enlace. 
-          <a href="${resetLink}">${resetLink}</a>
-        </p>
-      </body>
-      </html>`,
-        replyTo: 'noreply@miempresa.com'
-      }; */
-      /* const sendInfo = transporter.sendMail(mailDataInfo);
-      console.log(sendInfo) */
     } catch (e) {
       console.error('Error al restablecer la contraseña E:', e)
     }
