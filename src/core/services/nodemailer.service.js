@@ -143,7 +143,7 @@ class NotificationService {
         secure: true,
         auth: {
           user: process.env.MAIL_FROM,
-          pass: process.env.APP_PASS
+          pass: `${process.env.APP_PASS}`
         }
       });
       const from = process.env.MAIL_FROM;
