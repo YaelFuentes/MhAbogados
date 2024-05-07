@@ -147,7 +147,6 @@ class NotificationService {
         }
       }); */
       const resend = new Resend(`${process.env.RESEND_KEY}`);
-      const from = process.env.MAIL_FROM;
       resend.emails.send({
         from: 'onboarding@resend.dev',
         to: client.email,
@@ -198,7 +197,7 @@ class NotificationService {
       /* const sendInfo = transporter.sendMail(mailDataInfo);
       console.log(sendInfo) */
     } catch (e) {
-      console.error('Error al restablecer la contraseña', e)
+      console.error('Error al restablecer la contraseña E:', e)
     }
   }
 }
