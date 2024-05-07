@@ -15,8 +15,8 @@ class NotificationService {
     try {
       if (/@/.test(mailOptions.infoClient.email)) {
         const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          port: 587,
+          service: 'smtp.gmail.com',
+          port: 465,
           secure: true,
           auth: {
             user: process.env.MAIL_FROM,
@@ -80,8 +80,8 @@ class NotificationService {
         return fechaFormateada;
       }
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        port: 587,
+        service: 'smtp.gmail.com',
+        port: 465,
         secure: true,
         auth: {
           user: process.env.MAIL_FROM,
@@ -138,8 +138,8 @@ class NotificationService {
       });
       const resetLink = `${process.env.URL}/reset-password?token=${resetToken}&id=${client.id}`;
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        port: 587,
+        service: 'smtp.gmail.com',
+        port: 465,
         secure: true,
         auth: {
           user: process.env.MAIL_FROM,
