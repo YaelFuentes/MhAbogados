@@ -79,15 +79,6 @@ class NotificationService {
         const fechaFormateada = `${diaFormateado}/${mesFormateado}/${año} ${horaFormateada}:${minutoFormateado}`;
         return fechaFormateada;
       }
-      /* const transporter = nodemailer.createTransport({
-        service: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-          user: process.env.MAIL_FROM,
-          pass: process.env.APP_PASS
-        }
-      }); */
 
       const from = process.env.MAIL_FROM;
       const mailDataInfo = {
@@ -138,8 +129,6 @@ class NotificationService {
         expires_at: new Date(Date.now() + 3600000), // Expira en 1 hora
       });
       const resetLink = `${process.env.URL}/reset-password?token=${resetToken}&id=${client.id}`;
-      
-      console.log(process.env.RESEND_KEY, ' resend key')
       resend.emails.send({
         from: 'onboarding@resend.dev',
         to: client.email,
