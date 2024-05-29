@@ -11,12 +11,20 @@ const createDbConnection = () => {
       password: process.env.DB_PASS,
       database: process.env.DB,
     },
+    pool: { min: 0, max: 10 },
     acquireConnectionTimeout: 10000,
   });
 };
 
 let db = createDbConnection();
-
+const handleDisconnect = () => {
+  db.raw('select 1')
+    .catch(err => {
+      console.error('Database connection lost. Reconnecting...', err);
+      db = createDbConnection();
+    });
+};
+setInterval(handleDisconnect, 60000);
 const databaseServiceFactory = () => {
   const TABLE = 'users';
 
